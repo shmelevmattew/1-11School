@@ -188,10 +188,127 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlidePosition();
   };
 
+  // Teachers slider functionality
+  const setupTeachersSlider = () => {
+    const teachersWrapper = document.querySelector('.teachers__wrapper');
+    const prevButton = document.querySelector('.teachers__nav-button--prev');
+    const nextButton = document.querySelector('.teachers__nav-button--next');
+    const teachers = document.querySelectorAll('.teacher');
+    
+    if (!teachersWrapper || !teachers.length) {
+      return;
+    }
+    
+    let currentIndex = 0;
+    let startX;
+    let currentX;
+    const slidesToShow = getTeacherSlidesToShow();
+    const totalSlides = teachers.length;
+    
+    function getTeacherSlidesToShow() {
+      if (window.innerWidth <= 768) {
+        return 1;
+      } else if (window.innerWidth <= 1024) {
+        return 2;
+      } else {
+        return 3; // Основных карточек всегда видно 3, но частично видны еще две
+      }
+    }
+    
+    // Update slide position
+    function updateTeacherPosition() {
+      const slideWidth = teachers[0].offsetWidth;
+      const gap = 30; // gap between slides in px
+      const offset = currentIndex * (slideWidth + gap);
+      teachersWrapper.style.transform = `translateX(-${offset}px)`;
+    }
+    
+    // Handle navigation buttons
+    if (prevButton && nextButton) {
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateTeacherPosition();
+        }
+      });
+      
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < totalSlides - slidesToShow) {
+          currentIndex++;
+          updateTeacherPosition();
+        }
+      });
+    }
+    
+    // Touch events for swipe on mobile
+    teachersWrapper.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      teachersWrapper.style.transition = 'none';
+    }, { passive: true });
+    
+    teachersWrapper.addEventListener('touchmove', (e) => {
+      if (!startX) return;
+      
+      currentX = e.touches[0].clientX;
+      const diff = startX - currentX;
+      const slideWidth = teachers[0].offsetWidth;
+      const gap = 30;
+      const currentOffset = currentIndex * (slideWidth + gap);
+      
+      // Apply resistance if at the edges
+      let newOffset = currentOffset + diff;
+      if (newOffset < 0) {
+        newOffset = diff / 4; // Add resistance at the beginning
+      } else if (currentIndex >= totalSlides - slidesToShow) {
+        newOffset = currentOffset + diff / 4; // Add resistance at the end
+      }
+      
+      teachersWrapper.style.transform = `translateX(-${newOffset}px)`;
+    }, { passive: true });
+    
+    teachersWrapper.addEventListener('touchend', (e) => {
+      if (!startX || !currentX) {
+        startX = null;
+        currentX = null;
+        return;
+      }
+      
+      teachersWrapper.style.transition = 'transform 0.5s ease';
+      const diff = startX - currentX;
+      const threshold = 100; // Minimum swipe distance
+      
+      if (diff > threshold && currentIndex < totalSlides - slidesToShow) {
+        currentIndex++;
+      } else if (diff < -threshold && currentIndex > 0) {
+        currentIndex--;
+      }
+      
+      updateTeacherPosition();
+      startX = null;
+      currentX = null;
+    }, { passive: true });
+    
+    // Resize handler to adjust for different screen sizes
+    window.addEventListener('resize', () => {
+      const newSlidesToShow = getTeacherSlidesToShow();
+      if (slidesToShow !== newSlidesToShow) {
+        // Reset position if needed
+        if (currentIndex > totalSlides - newSlidesToShow) {
+          currentIndex = Math.max(0, totalSlides - newSlidesToShow);
+        }
+        updateTeacherPosition();
+      }
+    });
+    
+    // Initialize slider
+    updateTeacherPosition();
+  };
+
   // Initialize functionality
   setupSmoothScroll();
   setupMobileMenu();
   setupGallerySlider();
+  setupTeachersSlider();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {
