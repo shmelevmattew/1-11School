@@ -704,4 +704,514 @@ ul, ol {
     right: 20px;
     top: 15px;
   }
+}
+
+/* Mission section */
+.mission {
+  padding: 80px 0;
+  background-color: var(--color-white);
+}
+
+.mission__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 60px;
+}
+
+.mission__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: var(--color-text);
+}
+
+.mission__description {
+  margin-bottom: 50px;
+}
+
+.mission__text {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: var(--color-text);
+}
+
+.mission__text:last-child {
+  margin-bottom: 0;
+}
+
+.mission__features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mission-feature {
+  background-color: #F7F7F9;
+  padding: 24px;
+  border-radius: 16px;
+  width: 100%;
+}
+
+.mission-feature:nth-child(4) {
+  margin-bottom: 24px;
+}
+
+.mission-feature__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.mission-feature__text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-light);
+}
+
+.mission-action {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.mission-action__button {
+  padding: 16px 32px;
+  font-size: 1.125rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .mission__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .mission__title {
+    font-size: 2rem;
+  }
+  
+  .mission__description {
+    margin-bottom: 40px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .mission {
+    padding: 60px 0;
+  }
+  
+  .mission-feature {
+    padding: 20px;
+  }
+  
+  .mission__title {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+  }
+  
+  .mission__text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .mission {
+    padding: 40px 0;
+  }
+  
+  .mission__grid {
+    gap: 30px;
+  }
+  
+  .mission-feature__title {
+    font-size: 1.125rem;
+  }
+  
+  .mission-feature__text {
+    font-size: 0.9rem;
+  }
+  
+  .mission-feature {
+    padding: 16px;
+  }
+}
+
+.mission__pool {
+  background-color: #E9F3F9;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 30px 0;
+  width: fit-content;
+  position: relative;
+}
+
+.mission__pool-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.mission__visual {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@media (max-width: 768px) {
+  .mission__pool {
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .mission__pool-text {
+    font-size: 1rem;
+  }
+  
+  .mission__visual {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mission__pool {
+    padding: 16px;
+    margin: 16px 0;
+    width: 100%;
+  }
+}
+
+/* Promo section */
+.promo {
+  padding: 80px 0;
+  background-color: transparent;
+}
+
+.promo__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+.promo__content {
+  max-width: 480px;
+  background-color: #f7f9fb;
+  padding: 30px;
+  border-radius: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.promo__title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.promo__text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-light);
+}
+
+.promo__image-wrapper {
+  position: relative;
+  border-radius: 150px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.promo__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .promo__title {
+    font-size: 1.75rem;
+  }
+  
+  .promo__grid {
+    gap: 30px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .promo {
+    padding: 60px 0;
+  }
+  
+  .promo__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .promo__content {
+    max-width: 100%;
+    padding: 24px;
+  }
+  
+  .promo__image-wrapper {
+    order: -1;
+  }
+}
+
+@media (max-width: 576px) {
+  .promo {
+    padding: 40px 0;
+  }
+  
+  .promo__content {
+    padding: 20px;
+  }
+  
+  .promo__title {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+}
+
+/* Gallery section */
+.gallery {
+  padding: 80px 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.gallery__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.gallery__slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery__wrapper {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.gallery__slide {
+  min-width: calc(25% - 15px);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.gallery__image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery__navigation {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.gallery__nav-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #222125;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-white);
+}
+
+.gallery__nav-button:hover {
+  background-color: #333333;
+}
+
+.gallery__nav-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .gallery__slide {
+    min-width: calc(33.333% - 14px);
+  }
+  
+  .gallery__title {
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .gallery {
+    padding: 60px 0;
+  }
+  
+  .gallery__slide {
+    min-width: calc(50% - 10px);
+  }
+  
+  .gallery__navigation {
+    display: none;
+  }
+  
+  .gallery__title {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery {
+    padding: 40px 0;
+  }
+  
+  .gallery__slide {
+    min-width: 85%;
+  }
+  
+  .gallery__title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* Benefits section */
+.benefits {
+  padding: 80px 0;
+  background-color: transparent;
+}
+
+.benefits__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--color-text);
+}
+
+.benefits__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 24px;
+  background-color: #f7f9fc;
+  border-radius: 30px;
+  padding: 40px;
+}
+
+.benefit {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.benefit__icon {
+  min-width: 40px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.benefit__text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Адаптивность для планшетов */
+@media (max-width: 1024px) {
+  .benefits__title {
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+  
+  .benefit {
+    padding: 20px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .benefits {
+    padding: 60px 0;
+  }
+  
+  .benefits__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 30px;
+  }
+  
+  .benefits__title {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 576px) {
+  .benefits {
+    padding: 40px 0;
+  }
+  
+  .benefits__title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .benefits__grid {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+  .benefit {
+    padding: 16px;
+  }
+  
+  .benefit__icon {
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+  }
+  
+  .benefit__text {
+    font-size: 0.9rem;
+  }
 } 
