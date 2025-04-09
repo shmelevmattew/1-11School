@@ -406,6 +406,125 @@ ul, ol {
   border-radius: 24px;
 }
 
+/* Features section */
+.features {
+  padding: 120px 0;
+  position: relative;
+  overflow: visible;
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
+}
+
+.feature {
+  position: relative;
+  padding: 40px;
+  border-radius: 24px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.feature--security {
+  background-color: #F7F7F9;
+  margin-top: -80px;
+  z-index: 2;
+}
+
+.feature--concept {
+  background-color: #FFF2EF;
+  padding-left: 50px;
+  margin-top: 80px;
+  margin-bottom: -80px;
+}
+
+.feature__content {
+  position: relative;
+  z-index: 2;
+}
+
+.feature__emoji {
+  position: absolute;
+  font-size: 1.75rem;
+  font-weight: normal;
+  font-family: monospace;
+  z-index: 2;
+}
+
+.feature--security .feature__emoji {
+  right: 40px;
+  top: 30px;
+}
+
+.feature--concept .feature__emoji {
+  right: 40px;
+  top: 30px;
+}
+
+.feature__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+.feature__text {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.feature--concept .feature__text {
+  max-width: 90%;
+}
+
+.feature__visuals {
+  position: relative;
+  margin-top: 20px;
+  min-height: 80px;
+}
+
+.feature__camera {
+  position: absolute;
+  right: 20px;
+  top: -100px;
+  transform: rotate(15deg);
+  z-index: 1;
+}
+
+.feature__icon {
+  position: absolute;
+}
+
+.feature__icon--heart {
+  bottom: -10px;
+  left: 20px;
+}
+
+.feature__icon--asterisk {
+  top: -130px;
+  right: 20px;
+}
+
+.feature--security .feature__title,
+.feature--security .feature__text {
+  max-width: 70%;
+}
+
+.feature--concept .feature__content {
+  max-width: 85%;
+}
+
+.feature--concept .feature__text {
+  font-size: 0.95rem;
+}
+
 /* Media queries for responsiveness */
 @media (max-width: 1024px) {
   .header__nav,
@@ -433,6 +552,19 @@ ul, ol {
   .hero__title {
     font-size: 2.5rem;
   }
+  
+  .feature__title {
+    max-width: 280px;
+  }
+
+  .feature--concept {
+    padding-left: 40px;
+  }
+  
+  .feature--security .feature__title,
+  .feature--security .feature__text {
+    max-width: 80%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -445,6 +577,67 @@ ul, ol {
   }
   
   .hero__info {
+    padding: 24px;
+  }
+  
+  .features__grid {
+    grid-template-columns: 1fr;
+    gap: 80px;
+  }
+  
+  .feature {
+    min-height: auto;
+    height: 320px;
+    padding: 24px;
+    width: 90%;
+  }
+  
+  .feature--security {
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: 0;
+  }
+  
+  .feature--concept {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .feature__camera {
+    right: 20px;
+    top: -90px;
+    transform: rotate(15deg) scale(0.9);
+  }
+  
+  .feature__icon--asterisk {
+    top: -100px;
+    right: 10px;
+    transform: scale(0.9);
+  }
+
+  .feature--concept {
+    padding-left: 24px;
+  }
+  
+  .feature--security .feature__title,
+  .feature--security .feature__text {
+    max-width: 85%;
+  }
+  
+  .feature--concept .feature__content {
+    max-width: 90%;
+  }
+
+  .feature__emoji {
+    font-size: 1.5rem;
+  }
+  
+  .feature--security .feature__emoji,
+  .feature--concept .feature__emoji {
+    right: 30px;
+    top: 20px;
   }
 }
 
@@ -463,5 +656,52 @@ ul, ol {
   
   .hero__text {
     font-size: 1rem;
+  }
+  
+  .feature {
+    padding: 20px;
+  }
+  
+  .feature__title {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+  }
+  
+  .feature__camera {
+    right: 10px;
+    top: -60px;
+    transform: rotate(15deg) scale(0.7);
+  }
+  
+  .feature__icon--heart {
+    bottom: -5px;
+    left: 10px;
+    transform: scale(0.8);
+  }
+  
+  .feature__icon--asterisk {
+    top: -70px;
+    right: 5px;
+    transform: scale(0.7);
+  }
+
+  .feature--security .feature__title,
+  .feature--security .feature__text,
+  .feature--concept .feature__content {
+    max-width: 100%;
+  }
+  
+  .feature--concept {
+    padding-left: 20px;
+  }
+
+  .feature__emoji {
+    font-size: 1.25rem;
+  }
+  
+  .feature--security .feature__emoji,
+  .feature--concept .feature__emoji {
+    right: 20px;
+    top: 15px;
   }
 } 
