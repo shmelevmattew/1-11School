@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Школа полного цикла 1-11 классы - качественное образование для вашего ребенка">
+    <title>Школа 1-11 | Полный цикл обучения</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container header__container">
+            <a href="/" class="logo header__logo">
+                <img src="src/images/logo.svg" alt="Школа 1-11" width="242" height="48" class="logo__image">
+            </a>
+            
+            <nav class="nav header__nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#about" class="nav__link">О школе</a></li>
+                    <li class="nav__item"><a href="#program" class="nav__link">Программа</a></li>
+                    <li class="nav__item"><a href="#teachers" class="nav__link">Преподаватели</a></li>
+                    <li class="nav__item"><a href="#prices" class="nav__link">Цены</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header__contacts">
+                <a href="tel:+7812407122" class="header__phone">+7 812 407 12 22</a>
+                <div class="header__social">
+                    <a href="#" class="header__social-link" aria-label="Telegram">
+                        <img src="src/images/tg.svg" alt="" class="header__social-icon" width="24" height="24" aria-hidden="true">
+                    </a>
+                    <a href="#" class="header__social-link" aria-label="WhatsApp">
+                        <img src="src/images/whatsapp.svg" alt="" class="header__social-icon" width="24" height="24" aria-hidden="true">
+                    </a>
+                    <a href="#" class="header__social-link" aria-label="ВКонтакте">
+                        <img src="src/images/vk.svg" alt="" class="header__social-icon" width="24" height="24" aria-hidden="true">
+                    </a>
+                </div>
+            </div>
+            
+            <button class="burger-menu" aria-label="Открыть меню" aria-expanded="false">
+                <img src="src/images/burger.svg" alt="" width="24" height="24" aria-hidden="true">
+            </button>
+        </div>
+    </header>
+    
+    <div class="mobile-menu">
+        <div class="mobile-menu__header">
+            <a href="/" class="logo mobile-menu__logo">
+                <img src="src/images/logo.svg" alt="Школа 1-11" width="242" height="48" class="logo__image">
+            </a>
+            <button class="mobile-menu__close" aria-label="Закрыть меню">
+                <img src="src/images/close.svg" alt="" width="24" height="24" aria-hidden="true">
+            </button>
+        </div>
+        
+        <nav class="mobile-menu__nav">
+            <ul class="mobile-menu__list">
+                <li class="mobile-menu__item"><a href="#about" class="mobile-menu__link">О школе</a></li>
+                <li class="mobile-menu__item"><a href="#program" class="mobile-menu__link">Программа</a></li>
+                <li class="mobile-menu__item"><a href="#teachers" class="mobile-menu__link">Преподаватели</a></li>
+                <li class="mobile-menu__item"><a href="#prices" class="mobile-menu__link">Цены</a></li>
+            </ul>
+        </nav>
+        
+        <div class="mobile-menu__footer">
+            <a href="tel:+7812407122" class="mobile-menu__phone">+7 812 407 12 22</a>
+            <div class="mobile-menu__social">
+                <a href="#" class="mobile-menu__social-link" aria-label="Telegram">
+                    <img src="src/images/tg.svg" alt="" width="48" height="48" aria-hidden="true">
+                </a>
+                <a href="#" class="mobile-menu__social-link" aria-label="WhatsApp">
+                    <img src="src/images/whatsapp.svg" alt="" width="48" height="48" aria-hidden="true">
+                </a>
+                <a href="#" class="mobile-menu__social-link" aria-label="ВКонтакте">
+                    <img src="src/images/vk.svg" alt="" width="48" height="48" aria-hidden="true">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <div class="hero__container">
+                <div class="hero__content">
+                    <h1 class="hero__title">Школа полного цикла 1–11 классы</h1>
+                    <div class="hero__emoji">
+                        <img src="src/images/emoji1.png" alt="" class="hero__emoji-image" width="80" height="80" aria-hidden="true">
+                        <img src="src/images/emoji2.png" alt="" class="hero__emoji-image" width="140" height="50" aria-hidden="true">
+                    </div>
+                    <div class="hero__info">
+                        <p class="hero__text">Открыт набор на 2025–2026 учебный год.</p>
+                        <p class="hero__text">Успейте подать заявку до 27 апреля</p>
+                    </div>
+                </div>
+                <div class="hero__image-container">
+                    <div class="hero__image-wrapper">
+                        <div class="hero__location">
+                            <svg class="hero__location-icon" width="20" height="20" aria-hidden="true">
+                                <use xlink:href="src/images/sprite.svg#location"></use>
+                            </svg>
+                            <span class="hero__location-text">п. Кузьмоловский, ЖК «Небо», ул. Светлая, д. 1</span>
+                        </div>
+                        <img src="src/images/school-building.png" alt="Здание школы 1-11" class="hero__image" width="580" height="400">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta">
+            <div class="container">
+                <div class="cta__buttons">
+                    <a href="#apply" class="button button--primary cta__button">Оставить заявку</a>
+                    <a href="#contact" class="button button--secondary cta__button">Написать нам</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="src/scripts/main.js" defer></script>
+</body>
+</html> 
