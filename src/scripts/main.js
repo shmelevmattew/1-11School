@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Kawaii emoji animation
     const kawaiiEmoji = document.querySelector('.feature__kawaii');
     if (kawaiiEmoji) {
-      const kawaiiFrames = ['(*^.^*)', '(*^_^*)', '(*^ω^*)', '(*^.^*)', '(*^‿^*)'];
+      const kawaiiFrames = ['(*^.^*)', '(*^_^*)', '(*^ω^*)', '(*^.^*)'];
       let kawaiiFrame = 0;
       
       setInterval(function() {
@@ -352,6 +352,30 @@ document.addEventListener('DOMContentLoaded', () => {
         coolEmoji.textContent = coolFrames[coolFrame];
         coolFrame = (coolFrame + 1) % coolFrames.length;
       }, 800);
+    }
+    
+    // Pricing top emoji animation
+    const pricingTopEmoji = document.querySelector('.pricing__emoji-top .pricing__emoji-image');
+    if (pricingTopEmoji) {
+      const pricingTopFrames = ['(ノ*°▽°*)', '(ノ*°ω°*)', '(ノ*°▽°*)', '(ノ*°∀°*)'];
+      let pricingTopFrame = 0;
+      
+      setInterval(function() {
+        pricingTopEmoji.textContent = pricingTopFrames[pricingTopFrame];
+        pricingTopFrame = (pricingTopFrame + 1) % pricingTopFrames.length;
+      }, 600);
+    }
+    
+    // Pricing bottom emoji animation
+    const pricingBottomEmoji = document.querySelector('.pricing__emoji-bottom .pricing__emoji-image');
+    if (pricingBottomEmoji) {
+      const pricingBottomFrames = ['ヽ(>∀<☆)ノ', 'ヽ(>ω<☆)ノ', 'ヽ(>∀<☆)ノ', 'ヽ(>▽<☆)ノ'];
+      let pricingBottomFrame = 0;
+      
+      setInterval(function() {
+        pricingBottomEmoji.textContent = pricingBottomFrames[pricingBottomFrame];
+        pricingBottomFrame = (pricingBottomFrame + 1) % pricingBottomFrames.length;
+      }, 700);
     }
   };
 
