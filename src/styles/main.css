@@ -474,6 +474,7 @@ ul, ol {
   font-size: 1.95rem;
   z-index: 3;
   box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  animation: pulse 3.2s ease-in-out infinite;
 }
 
 .feature__star {
@@ -490,7 +491,7 @@ ul, ol {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  animation: starRotate 8s linear infinite;
+  animation: spin 8s linear infinite;
 }
 
 .feature__kawaii {
@@ -502,6 +503,7 @@ ul, ol {
   font-size: 1.95rem;
   z-index: 3;
   color: #000000;
+  animation: wiggle 4s ease-in-out infinite;
 }
 
 @keyframes starRotate {
@@ -566,6 +568,7 @@ ul, ol {
   font-size: 60px;
   color: black;
   z-index: 3;
+  animation: floatUp 4.5s ease-in-out infinite;
 }
 
 .feature__icon--asterisk {
@@ -1061,6 +1064,7 @@ ul, ol {
   padding: 16px 24px;
   z-index: 2;
   border-radius: 0px;
+  animation: wiggle 3.5s ease-in-out infinite;
 }
 
 .promo__emoji--blue {
@@ -1072,10 +1076,12 @@ ul, ol {
   border-radius: 40px;
   font-size: 1.7rem;
   z-index: 1;
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
 .promo__emoji:hover {
-  transform: scale(1.1) rotate(0);
+  transform: scale(1.2) rotate(0);
+  animation-play-state: paused;
 }
 
 .promo__title {
@@ -1937,11 +1943,13 @@ ul, ol {
 
 .pricing__emoji-top {
   align-self: flex-start;
+  animation: shake 3s ease-in-out infinite;
 }
 
 .pricing__emoji-bottom {
   align-self: flex-end;
   background-color: #4cdd3c;
+  animation: wiggle 3.7s ease-in-out infinite;
 }
 
 .pricing__emoji-image {
@@ -2209,4 +2217,38 @@ ul, ol {
   .footer__address {
     font-size: 16px;
   }
+}
+
+/* Анимации для эмодзи */
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
 } 
