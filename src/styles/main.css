@@ -434,7 +434,7 @@ ul, ol {
 
 .feature--security {
   background-color: #F7F7F9;
-  margin-top: -80px;
+  margin-top: -120px;
   z-index: 2;
   overflow: visible;
 }
@@ -442,8 +442,8 @@ ul, ol {
 .feature--concept {
   background-color: #FFF2EF;
   padding-left: 50px;
-  margin-top: 80px;
-  margin-bottom: -80px;
+  margin-top: 120px;
+  margin-bottom: -120px;
 }
 
 .feature__content {
@@ -488,6 +488,17 @@ ul, ol {
   height: 100%;
   object-fit: contain;
   animation: starRotate 8s linear infinite;
+}
+
+.feature__kawaii {
+  position: absolute;
+  top: 20%;
+  right: -350px;
+  transform: rotate(7deg);
+  font-family: monospace;
+  font-size: 1.95rem;
+  z-index: 3;
+  color: #000000;
 }
 
 @keyframes starRotate {
@@ -545,8 +556,13 @@ ul, ol {
 }
 
 .feature__icon--heart {
-  bottom: -10px;
-  left: 20px;
+  position: absolute;
+  bottom: -210px;
+  left: 40%;
+  transform: rotate(-15deg);
+  font-size: 60px;
+  color: black;
+  z-index: 3;
 }
 
 .feature__icon--asterisk {
