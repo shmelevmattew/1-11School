@@ -418,6 +418,7 @@ ul, ol {
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   position: relative;
+  overflow: visible;
 }
 
 .feature {
@@ -428,13 +429,14 @@ ul, ol {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .feature--security {
   background-color: #F7F7F9;
   margin-top: -80px;
   z-index: 2;
+  overflow: visible;
 }
 
 .feature--concept {
@@ -455,6 +457,46 @@ ul, ol {
   font-weight: normal;
   font-family: monospace;
   z-index: 2;
+}
+
+.feature__cool-emoji {
+  position: absolute;
+  top: 40%;
+  left: 90%;
+  transform: translate(0%, -50%) rotate(-10deg);
+  background-color: #1E4688;
+  color: white;
+  padding: 12px 20px;
+  font-family: monospace;
+  font-size: 1.95rem;
+  z-index: 3;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.feature__star {
+  position: absolute;
+  top: 90%;
+  right: -40px;
+  transform: rotate(15deg);
+  width: 80px;
+  height: 80px;
+  z-index: 3;
+}
+
+.feature__star img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: starRotate 8s linear infinite;
+}
+
+@keyframes starRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .feature--security .feature__emoji {
