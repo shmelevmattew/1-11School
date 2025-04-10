@@ -645,14 +645,30 @@ ul, ol {
   
   .features__grid {
     grid-template-columns: 1fr;
-    gap: 80px;
+    gap: 20px;
   }
-  
+  .feature__kawaii {
+    right: -230px;
+  }
+
+  .feature__cool-emoji{
+    left: 55%;
+  }
+
+  .feature__star{
+    top: 90%;
+    right: -130px;
+  }
+  .feature__icon--heart{
+    bottom: -300%;
+    left: 0;
+  }
   .feature {
+  
     min-height: auto;
     height: 320px;
     padding: 24px;
-    width: 90%;
+    width: 70%;
   }
   
   .feature--security {
@@ -688,7 +704,13 @@ ul, ol {
   .feature--security .feature__text {
     max-width: 85%;
   }
-  
+  .feature__text {
+    position: absolute;
+    bottom: 0px;
+  }
+  .feature__content{
+    position: static;
+  }
   .feature--concept .feature__content {
     max-width: 90%;
   }
