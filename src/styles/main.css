@@ -854,8 +854,8 @@ ul, ol {
   bottom: 0px;
   left: 20px;
   font-family: monospace;
-  font-size: 56px;
-  color: #1E4688;
+  font-size: 2rem;
+  color: #000000;
   font-weight:600;
 }
 
