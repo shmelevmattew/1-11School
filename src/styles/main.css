@@ -771,6 +771,7 @@ ul, ol {
 .mission {
   padding: 80px 0;
   background-color: var(--color-white);
+  position: relative;
 }
 
 .mission__grid {
@@ -849,14 +850,53 @@ ul, ol {
   position: relative;
 }
 
-.mission__pool-emoji { 
+.mission__bubble-wrapper {
   position: absolute;
-  bottom: 0px;
-  left: 20px;
-  font-family: monospace;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+  margin-top: 30px;
+}
+
+.mission__pool-message {
+  text-align: center;
+  background-color: #f0f7ff;
+  padding: 12px 20px;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 300px;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+.mission__pool-message::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #f0f7ff;
+}
+
+.mission__pool-emoji {
+  text-align: center;
   font-size: 2rem;
-  color: #000000;
-  font-weight:600;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text);
+  z-index: 1;
+  white-space: nowrap;
 }
 
 /* Адаптивность для планшетов */
@@ -894,9 +934,17 @@ ul, ol {
     font-size: 1rem;
   }
   
+  .mission__bubble-wrapper {
+    height: 130px;
+  }
+  
+  .mission__pool-message {
+    font-size: 1rem;
+    max-width: 280px;
+  }
+  
   .mission__pool-emoji {
-    font-size: 1.25rem;
-    bottom: -40px;
+    font-size: 1.3rem;
   }
 }
 
