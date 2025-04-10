@@ -8,7 +8,7 @@
   --color-primary-dark: #c41e1e;
   --color-secondary: #f7f9fc;
   --color-text: #333333;
-  --color-text-light: #666666;
+  --color-text-light: #222125;
   --color-phone: #737277;
   --color-white: #ffffff;
   --container-width: 1200px;
@@ -1420,10 +1420,13 @@ ul, ol {
   margin-bottom: 50px;
   position: relative;
   max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .teachers__title {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   font-weight: 700;
   margin-bottom: 20px;
   color: var(--color-text);
@@ -1436,15 +1439,40 @@ ul, ol {
 .teachers__text {
   font-size: 1.125rem;
   line-height: 1.6;
+  width: 460px;
+  margin : 0 auto;
   color: var(--color-text-light);
 }
 
-.teachers__emoji {
+.teachers__emoji-left {
   position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  gap: 16px;
+  left: -200px;
+  top: 50%;
+  transform: translateY(-50%);
+  transform: rotate(5deg);
+  background-color: #ECC615;
+  color: black;
+  font-family: monospace;
+  font-size: 1.5rem;
+  padding: 12px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.teachers__emoji-right {
+  position: absolute;
+  right: -180px;
+  top: 20%;
+  transform: translateY(-50%);
+  background-color: #1E4688;
+  color: white;
+  transform: rotate(-8deg);
+  font-family: monospace;
+  font-size: 1.5rem;
+  padding: 12px 20px;
+  border-radius: 45px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
 .teachers__slider {
@@ -1562,10 +1590,16 @@ ul, ol {
     font-size: 2rem;
   }
   
-  .teachers__emoji {
-    position: relative;
-    margin-top: 20px;
-    justify-content: flex-start;
+  .teachers__emoji-left {
+    left: 10px;
+    font-size: 1.3rem;
+    padding: 10px 15px;
+  }
+  
+  .teachers__emoji-right {
+    right: 10px;
+    font-size: 1.3rem;
+    padding: 10px 15px;
   }
   
   .teacher {
@@ -1587,6 +1621,25 @@ ul, ol {
   
   .teachers__text {
     font-size: 1rem;
+  }
+  
+  .teachers__emoji-left, 
+  .teachers__emoji-right {
+    position: relative;
+    display: inline-block;
+    top: 0;
+    transform: none;
+    margin: 20px 10px 0;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+  }
+  
+  .teachers__emoji-left {
+    left: 0;
+  }
+  
+  .teachers__emoji-right {
+    right: 0;
   }
   
   .teacher {
