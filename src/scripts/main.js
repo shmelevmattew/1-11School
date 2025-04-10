@@ -304,11 +304,63 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTeacherPosition();
   };
 
+  // Emoji Animation
+  const setupEmojiAnimations = () => {
+    // Green emoji animation (waving hand)
+    const greenEmoji = document.querySelector('.promo__emoji--green');
+    if (greenEmoji) {
+      const frames = ['(￣▽￣)ノ', '(￣▽￣)/', '(￣▽￣)〆', '(￣▽￣)ノ', '(￣▽￣)〆'];
+      let currentFrame = 0;
+      
+      setInterval(function() {
+        greenEmoji.textContent = frames[currentFrame];
+        currentFrame = (currentFrame + 1) % frames.length;
+      }, 300);
+    }
+
+    // Blue emoji animation (blinking)
+    const blueEmoji = document.querySelector('.promo__emoji--blue');
+    if (blueEmoji) {
+      const blinkFrames = ['(✯◡✯)', '(✯ᴗ✯)', '(✯◡✯)'];
+      let blinkFrame = 0;
+      
+      setInterval(function() {
+        blueEmoji.textContent = blinkFrames[blinkFrame];
+        blinkFrame = (blinkFrame + 1) % blinkFrames.length;
+      }, 500);
+    }
+
+    // Kawaii emoji animation
+    const kawaiiEmoji = document.querySelector('.feature__kawaii');
+    if (kawaiiEmoji) {
+      const kawaiiFrames = ['(*^.^*)', '(*^_^*)', '(*^ω^*)', '(*^.^*)', '(*^‿^*)'];
+      let kawaiiFrame = 0;
+      
+      setInterval(function() {
+        kawaiiEmoji.textContent = kawaiiFrames[kawaiiFrame];
+        kawaiiFrame = (kawaiiFrame + 1) % kawaiiFrames.length;
+      }, 700);
+    }
+
+    // Cool emoji animation
+    const coolEmoji = document.querySelector('.feature__cool-emoji');
+    if (coolEmoji) {
+      const coolFrames = ['(⌐■_■)', '(⌐■ᴥ■)', '(⌐■_■)'];
+      let coolFrame = 0;
+      
+      setInterval(function() {
+        coolEmoji.textContent = coolFrames[coolFrame];
+        coolFrame = (coolFrame + 1) % coolFrames.length;
+      }, 800);
+    }
+  };
+
   // Initialize functionality
   setupSmoothScroll();
   setupMobileMenu();
   setupGallerySlider();
   setupTeachersSlider();
+  setupEmojiAnimations();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {

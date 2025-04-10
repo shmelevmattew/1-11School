@@ -1065,6 +1065,8 @@ ul, ol {
   z-index: 2;
   border-radius: 0px;
   animation: wiggle 3.5s ease-in-out infinite;
+  width: 195px;
+  text-align: center;
 }
 
 .promo__emoji--blue {
@@ -1072,6 +1074,8 @@ ul, ol {
   color: black;
   top: 180px;
   right: 174px;
+  width: 156px;
+  text-align: center;
   padding: 10px 24px;
   border-radius: 40px;
   font-size: 1.7rem;
