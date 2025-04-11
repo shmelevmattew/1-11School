@@ -1963,8 +1963,25 @@ ul, ol {
     left: auto;
   }
   .teacher {
-    min-width: 380px;
-    width: 380px;
+    min-width: 320px;
+    width: 320px;
+    height: 420px;
+  }
+  
+  .teacher__image-wrapper {
+    height: 250px;
+  }
+  
+  .teacher__info {
+    padding: 20px;
+  }
+  
+  .teacher__name {
+    font-size: 1.1rem;
+  }
+  
+  .teacher__quote {
+    font-size: 0.9rem;
   }
 }
 
@@ -2003,9 +2020,32 @@ ul, ol {
   }
   
   .teacher {
-    min-width: 340px;
-    width: 340px;
-    height: 460px;
+    min-width: 280px;
+    width: 280px;
+    height: 380px;
+  }
+  
+  .teacher__image-wrapper {
+    height: 220px;
+  }
+  
+  .teacher__info {
+    padding: 16px;
+  }
+  
+  .teacher__name {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  .teacher__position {
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+  }
+  
+  .teacher__quote {
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
   
   .teachers__navigation {
@@ -2027,21 +2067,32 @@ ul, ol {
   }
   
   .teacher {
-    min-width: 280px;
-    width: 280px;
-    height: 440px;
+    min-width: 240px;
+    width: 240px;
+    height: 340px;
   }
   
   .teacher__image-wrapper {
-    height: 250px;
+    height: 180px;
   }
   
   .teacher__info {
-    padding: 16px;
+    padding: 12px;
   }
   
   .teacher__name {
-    font-size: 1.125rem;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+  
+  .teacher__position {
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+  }
+  
+  .teacher__quote {
+    font-size: 0.8rem;
+    line-height: 1.3;
   }
 }
 

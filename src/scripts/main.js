@@ -246,19 +246,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalSlides = teachers.length;
     
     function getTeacherSlidesToShow() {
-      if (window.innerWidth <= 768) {
+      if (window.innerWidth <= 576) {
         return 1;
-      } else if (window.innerWidth <= 1024) {
+      } else if (window.innerWidth <= 768) {
         return 2;
+      } else if (window.innerWidth <= 1024) {
+        return 3;
       } else {
-        return 3; // Основных карточек всегда видно 3, но частично видны еще две
+        return 4;
       }
     }
     
     // Update slide position
     function updateTeacherPosition() {
       const slideWidth = teachers[0].offsetWidth;
-      const gap = 30; // gap between slides in px
+      const gap = 20; // уменьшаем отступ между слайдами
       const offset = currentIndex * (slideWidth + gap);
       teachersWrapper.style.transform = `translateX(-${offset}px)`;
     }
@@ -292,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentX = e.touches[0].clientX;
       const diff = startX - currentX;
       const slideWidth = teachers[0].offsetWidth;
-      const gap = 30;
+      const gap = 20;
       const currentOffset = currentIndex * (slideWidth + gap);
       
       // Apply resistance if at the edges
