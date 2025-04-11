@@ -345,10 +345,71 @@ ul, ol {
 }
 
 .hero__emoji {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 32px;
+  position: relative;
+  height: 120px;
+  width: 100%;
+
+}
+
+.hero__emoji-top, 
+.hero__emoji-bottom {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: center center;
+}
+
+.hero__emoji-top {
+  top: 40px;
+  left: 30%;
+  border-radius: 40px;
+  font-size: 2.3rem;
+  background-color: #177359;
+  transform: translateX(0%) rotate(-3deg);
+  animation: floatTop 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.hero__emoji-bottom {
+  bottom: -50px;
+  left: 65%;
+  font-size: 3rem;
+  background-color: #E9DED0;
+  transform: translateX(-50%) rotate(-5deg);
+  animation: floatBottom 3.5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.hero__emoji-text {
+
+  display: block;
+}
+
+.hero__emoji-top .hero__emoji-text {
+  color: white;
+}
+
+.hero__emoji-bottom .hero__emoji-text {
+  color: #333;
+}
+
+@keyframes floatTop {
+  0%, 100% { transform: translateX(-50%) rotate(-3deg) translateY(0); }
+  50% { transform: translateX(-50%) rotate(-4deg) translateY(-5px); }
+}
+
+@keyframes floatBottom {
+  0%, 100% { transform: translateX(-50%) rotate(-8deg) translateY(0); }
+  50% { transform: translateX(-50%) rotate(-7deg) translateY(-6px); }
+}
+
+.hero__emoji-top:hover, 
+.hero__emoji-bottom:hover {
+  transform: translateX(-50%) scale(1.05) rotate(0);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .hero__info {
@@ -356,6 +417,7 @@ ul, ol {
   padding: 24px;
   border-radius: 12px;
   color: var(--color-text);
+  z-index: 3;
 }
 
 .hero__text {
@@ -647,6 +709,14 @@ ul, ol {
   .hero__info {
     max-height: 480px;
   }
+  .hero__emoji-top {
+    top: 20px;
+    font-size: 2rem;
+  }
+  .hero__emoji-bottom {
+    bottom: 0px;
+    font-size: 2rem;
+  }
   
   .feature__title {
     max-width: 280px;
@@ -687,7 +757,19 @@ ul, ol {
   .hero__image-container {
     width: 100%;
     height: 400px;
+    overflow: hidden;
   }
+  .hero__emoji-top {
+    top: 20px;
+    left: calc(60% - 20px);
+    font-size: 1.8rem;
+  }
+  .hero__emoji-bottom {
+    bottom: -30px;
+    left: calc(75% - 20px);
+    font-size: 2.5rem;
+  }
+  
   
   .cta__buttons {
     grid-template-columns: 1fr;
@@ -1545,35 +1627,41 @@ ul, ol {
   color: var(--color-text-light);
 }
 
-.teachers__emoji-left {
+.teachers__emoji-left,
+.teachers__emoji-right {
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 10px;
   position: absolute;
-  left: -200px;
-  top: 50%;
-  transform: translateY(-50%);
-  transform: rotate(5deg);
-  background-color: #ECC615;
-  color: black;
-  font-family: monospace;
-  font-size: 1.5rem;
-  padding: 12px 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 1;
+}
+
+.teachers__emoji-left {
+  left: 0;
+  top: 20px;
+  background-color: #177359;
+  color: white;
+  transform: rotate(-5deg);
+  animation: tiltLeft 4s ease-in-out infinite;
 }
 
 .teachers__emoji-right {
-  position: absolute;
-  right: -180px;
-  top: 20%;
-  transform: translateY(-50%);
-  background-color: #1E4688;
-  color: white;
-  transform: rotate(-8deg);
-  font-family: monospace;
-  font-size: 1.5rem;
-  padding: 12px 20px;
-  border-radius: 45px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  right: 0;
+  bottom: 20px;
+  background-color: #E9DED0;
+  color: #333;
+  transform: rotate(5deg);
+  animation: tiltRight 4s ease-in-out infinite;
+}
+
+@keyframes tiltLeft {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(-2deg); }
+}
+
+@keyframes tiltRight {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(2deg); }
 }
 
 .teachers__slider {
@@ -1691,14 +1779,9 @@ ul, ol {
     font-size: 2rem;
   }
   
-  .teachers__emoji-left {
-    left: 10px;
-    font-size: 1.3rem;
-    padding: 10px 15px;
-  }
-  
+  .teachers__emoji-left,
   .teachers__emoji-right {
-    right: 10px;
+    left: 10px;
     font-size: 1.3rem;
     padding: 10px 15px;
   }

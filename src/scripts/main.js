@@ -379,6 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+
   // Initialize functionality
   setupSmoothScroll();
   setupMobileMenu();
