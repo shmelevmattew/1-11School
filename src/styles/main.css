@@ -1463,7 +1463,10 @@ ul, ol {
   }
   
   .promo__emoji--green {
-    left: 20px;
+    left: auto;
+    right: 25px;
+    font-size: 1.7rem;
+    top: 120px;
   }
   .promo__content{
     width: 100%;
@@ -1471,8 +1474,9 @@ ul, ol {
   }
   
   .promo__emoji--blue {
-    top: 88px;
-    right: 15px;
+    top: 160px;
+    right: calc(20% + 55px);
+    font-size: 1.7rem;
   }
 }
 
