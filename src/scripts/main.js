@@ -419,6 +419,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Gallery popup functionality
+  const setupGalleryPopup = () => {
+    const body = document.body;
+    
+    // Create popup elements
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+    
+    const popupImage = document.createElement('img');
+    popupImage.className = 'popup__image';
+    
+    const closeButton = document.createElement('button');
+    closeButton.className = 'popup__close';
+    closeButton.innerHTML = '×';
+    
+    popup.appendChild(popupImage);
+    popup.appendChild(closeButton);
+    body.appendChild(popup);
+    
+    // Add click handlers to gallery images
+    const galleryImages = document.querySelectorAll('.gallery__image');
+    galleryImages.forEach(image => {
+      image.style.cursor = 'pointer';
+      image.addEventListener('click', () => {
+        popupImage.src = image.src;
+        popup.classList.add('active');
+        body.classList.add('no-scroll');
+      });
+    });
+    
+    // Close popup on button click
+    closeButton.addEventListener('click', () => {
+      popup.classList.remove('active');
+      body.classList.remove('no-scroll');
+    });
+    
+    // Close popup on background click
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.classList.remove('active');
+        body.classList.remove('no-scroll');
+      }
+    });
+    
+    // Close popup on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('active')) {
+        popup.classList.remove('active');
+        body.classList.remove('no-scroll');
+      }
+    });
+  };
+
   // Initialize all functionality
   setupHeaderScroll();
   setupMobileMenu();
@@ -426,6 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupGallerySlider();
   setupTeachersSlider();
   setupEmojiAnimations();
+  setupGalleryPopup();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {
