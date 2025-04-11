@@ -1164,6 +1164,27 @@ ul, ol {
     right:100px;
     padding: 8px;
   }
+  .feature {
+    width: 100%;
+  }
+  .feature__cool-emoji{
+    left: -20px;
+    top: 54%;
+    font-size: 1.5rem;
+  }
+  .feature__star {
+    top: 117%;
+    right: 4px;
+    width: 50px;
+  }
+  .feature__icon--heart{
+    display: none;
+  }
+  .promo__content {
+    max-width: 100%;
+    padding: 24px;
+    max-height: 365px;
+  }
 }
 /* Адаптивность для планшетов */
 @media (max-width: 1024px) {
@@ -1418,11 +1439,6 @@ ul, ol {
     gap: 30px;
   }
   
-  .promo__content {
-    max-width: 100%;
-    padding: 24px;
-    max-height: 365px;
-  }
   
   .promo__image-wrapper {
     order: -1;
