@@ -1145,6 +1145,9 @@ ul, ol {
     padding: 12px;
     font-size: 1rem;
   }
+  .hero__content{
+    padding: 16px;
+  }
   .hero__text {
     font-size: 0.9rem;
     margin-bottom: 0px;
@@ -1184,6 +1187,19 @@ ul, ol {
     max-width: 100%;
     padding: 24px;
     max-height: 365px;
+  }
+  .promo__emoji--blue{
+    font-size: 1.2rem !important;
+    width: 110px !important;
+    top: 150px !important;
+  }
+  .promo__emoji--green{
+    font-size: 1.2rem !important;
+    width: 140px !important;
+    top: 110px !important;
+  }
+  .promo__text {
+    font-size: 14px !important;
   }
 
 }
