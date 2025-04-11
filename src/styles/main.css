@@ -36,7 +36,11 @@ body {
   flex-direction: column;
   overflow-x: hidden;
 }
-
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
 body.no-scroll {
   overflow: hidden;
 }
@@ -89,9 +93,8 @@ ul, ol {
 }
 
 .button--secondary {
-  background-color: transparent;
+  background-color: rgba(130,155,189,0.06);
   color: var(--color-text);
-  border: 1px solid var(--color-text);
 }
 
 .button--secondary:hover {
@@ -760,16 +763,24 @@ ul, ol {
     overflow: hidden;
   }
   .hero__emoji-top {
-    top: 20px;
-    left: calc(60% - 20px);
+    top: 30px;
+    left: auto;
+    right: 120px;
     font-size: 1.8rem;
+    transform: translateX(0) rotate(-3deg);
   }
   .hero__emoji-bottom {
     bottom: -30px;
-    left: calc(75% - 20px);
+    left: auto;
+    right: -80px;
     font-size: 2.5rem;
+    transform: translateX(0) rotate(-8deg);
   }
   
+  .hero__emoji-top:hover, 
+  .hero__emoji-bottom:hover {
+    transform: translateX(0) scale(1.05) rotate(0);
+  }
   
   .cta__buttons {
     grid-template-columns: 1fr;
@@ -1073,6 +1084,31 @@ ul, ol {
   white-space: nowrap;
 }
 
+@media (max-width:425px) {
+  .hero__info {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  .hero__text {
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+  }
+  .hero__emoji{
+    height: 80px;
+  } 
+  .hero__emoji-bottom{
+    font-size: 1.5rem;
+    bottom: -10px;
+    right: -20px;
+    padding: 8px;
+  }
+  .hero__emoji-top{
+    font-size: 1.2rem;
+    top: 10px;
+    right:100px;
+    padding: 8px;
+  }
+}
 /* Адаптивность для планшетов */
 @media (max-width: 1024px) {
   .mission__grid {
@@ -1785,7 +1821,9 @@ ul, ol {
     font-size: 1.3rem;
     padding: 10px 15px;
   }
-  
+  .teachers__emoji-right{
+    left: auto;
+  }
   .teacher {
     min-width: 380px;
     width: 380px;
