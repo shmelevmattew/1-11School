@@ -550,7 +550,7 @@ ul, ol {
   transform: translate(0%, -50%) rotate(-10deg);
   background-color: #1E4688;
   color: white;
-  padding: 12px 20px;
+  padding: 8px 17px;
   font-family: monospace;
   font-size: 1.95rem;
   z-index: 3;
@@ -799,7 +799,12 @@ ul, ol {
     gap: 20px;
   }
   .feature__kawaii {
+    top: 13%;
     right: -45%;
+    font-size: 1.65rem;
+  }
+  .feature--concept .feature__text{
+    font-size: 0.85rem;
   }
 
   .feature__cool-emoji{
@@ -809,7 +814,7 @@ ul, ol {
 
   .feature__star{
     top: 90%;
-    right: -130px;
+    right: -80px;
   }
   .feature__icon--heart{
     bottom: -250px;
