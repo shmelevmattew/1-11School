@@ -1116,11 +1116,6 @@ ul, ol {
 }
 /* Адаптивность для планшетов */
 @media (max-width: 1024px) {
-  .mission__grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
   .mission__title {
     font-size: 2rem;
   }
@@ -1134,6 +1129,11 @@ ul, ol {
 @media (max-width: 768px) {
   .mission {
     padding: 60px 0;
+  }
+  
+  .mission__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
   
   .mission-feature {
@@ -1150,16 +1150,31 @@ ul, ol {
   }
   
   .mission__bubble-wrapper {
-    height: 130px;
+    position: static;
+    height: auto;
+    width: 100%;
+    margin: 30px 0;
+    display: block;
   }
   
   .mission__pool-message {
-    font-size: 1rem;
-    max-width: 280px;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    max-width: 100%;
+    margin-bottom: 20px;
   }
   
   .mission__pool-emoji {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
     font-size: 1.3rem;
+    text-align: center;
+    display: block;
+    margin-top: 20px;
   }
 }
 
