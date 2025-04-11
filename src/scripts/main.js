@@ -1,4 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Add header scroll behavior
+  const setupHeaderScroll = () => {
+    const header = document.querySelector('.header');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    const updateHeader = () => {
+      const scrollY = window.scrollY;
+      const scrollDelta = scrollY - lastScrollY;
+
+      // Only hide header when scrolling down more than 10px and past 100px from top
+      if (scrollDelta > 10 && scrollY > 100) {
+        header.classList.add('header--hidden');
+      } 
+      // Show header when scrolling up or at top
+      else if (scrollDelta < -10 || scrollY <= 100) {
+        header.classList.remove('header--hidden');
+      }
+
+      lastScrollY = scrollY;
+      ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateHeader();
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Show header when reaching top or bottom of page
+    window.addEventListener('scrollend', () => {
+      if (window.scrollY <= 100 || window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+        header.classList.remove('header--hidden');
+      }
+    }, { passive: true });
+  };
+
   // Mobile menu toggle functionality
   const setupMobileMenu = () => {
     const burgerButton = document.querySelector('.burger-menu');
@@ -379,10 +419,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-
-  // Initialize functionality
-  setupSmoothScroll();
+  // Initialize all functionality
+  setupHeaderScroll();
   setupMobileMenu();
+  setupSmoothScroll();
   setupGallerySlider();
   setupTeachersSlider();
   setupEmojiAnimations();
