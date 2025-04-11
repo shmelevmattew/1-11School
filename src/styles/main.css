@@ -1052,10 +1052,16 @@ ul, ol {
   text-align: center;
   background-color: #f0f7ff;
   padding: 12px 20px;
-  border-radius: 20px;
+  border-radius: 150px/50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 0;
+  top: -42px;
   left: 50%;
+  height: 92px;
+  width: 500px;
   transform: translateX(-50%);
   max-width: 300px;
   font-size: 1.1rem;
@@ -1064,17 +1070,53 @@ ul, ol {
   z-index: 2;
 }
 
+.mission__pool-message::before,
+.mission__pool-message::after,
+.mission__pool-message > span::before {
+  content: '';
+  position: absolute;
+  background-color: #f0f7ff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Маленький овал */
+.mission__pool-message::before {
+  width: 20px;
+  height: 20px;
+  bottom: -45px;
+  left: 20%;
+}
+
+/* Средний овал */
+.mission__pool-message::after {
+  width: 30px;
+  height: 30px;
+  bottom: -22px;
+  left: 25%;
+}
+
+/* Самый маленький овал */
+.mission__pool-message > span::before {
+  width: 15px;
+  height: 15px;
+  bottom: -20px;
+  left: 35%;
+}
+
 .mission__pool-message::after {
   content: '';
   position: absolute;
-  bottom: -10px;
-  left: 50%;
+  bottom: -22px;
+  left: 30%;
+  width: 57px;
+  height: 23px;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #f0f7ff;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #f0f7ff;
 }
 
 .mission__pool-emoji {
