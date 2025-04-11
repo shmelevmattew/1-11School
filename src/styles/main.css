@@ -1185,6 +1185,7 @@ ul, ol {
     padding: 24px;
     max-height: 365px;
   }
+
 }
 /* Адаптивность для планшетов */
 @media (max-width: 1024px) {
@@ -1344,6 +1345,17 @@ ul, ol {
   position: relative;
 }
 
+.promo__spacer {
+  height: 150px;
+  visibility: hidden;
+}
+
+.promo__emoji-container {
+  position: relative;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
 .promo__emoji {
   position: absolute;
   padding: 10px 15px;
@@ -1451,12 +1463,15 @@ ul, ol {
   }
   
   .promo__emoji--green {
-    bottom: -15px;
     left: 20px;
+  }
+  .promo__content{
+    width: 100%;
+    max-width: max-content;
   }
   
   .promo__emoji--blue {
-    top: -12px;
+    top: 88px;
     right: 15px;
   }
 }
