@@ -1204,6 +1204,17 @@ ul, ol {
   .promo__text {
     font-size: 14px !important;
   }
+  .mission__pool-message {
+    right: 0 !important;
+    margin-right: auto;
+  }
+  .mission__pool-emoji {
+    font-size: 1.5rem !important;
+    left: 0px !important; 
+  }
+  .mission-action__button{
+    font-size: 1rem !important;
+  }
 
 }
 /* Адаптивность для планшетов */
@@ -1264,7 +1275,7 @@ ul, ol {
   .mission__pool-emoji {
     position: relative;
     bottom: auto;
-    left: -100px;
+    left: -30px;
     
     transform: none;
     font-size: 1.3rem;
