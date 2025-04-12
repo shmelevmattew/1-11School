@@ -1223,6 +1223,10 @@ ul, ol {
     height: 84px !important;
     width: 188px !important;
   }
+
+  .bottom-promo img{
+    height: 480px !important;
+  }
   .footer__emoji--happy {
     right: auto !important;
   }
@@ -2462,7 +2466,7 @@ ul, ol {
   background-color: white;
   padding: 10px 20px;
   border-radius: 12px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
@@ -2476,51 +2480,18 @@ ul, ol {
   padding: 10px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 2rem;
   z-index: 2;
 }
 
 @media (max-width: 768px) {
-  .pricing__emoji {
-    height: 120px;
-  }
   
-  .pricing__emoji-top {
-    top: 10px;
-    left: 20px;
-    padding: 8px 15px;
-    font-size: 1.1rem;
-  }
-  
-  .pricing__emoji-bottom {
-    bottom: 0;
-    right: 10px;
-    padding: 8px 15px;
-    font-size: 1.1rem;
-  }
 }
 
 @media (max-width: 576px) {
-  .pricing__emoji {
-    height: 100px;
-  }
-  
-  .pricing__emoji-top {
-    top: 5px;
-    left: 10px;
-    padding: 6px 12px;
-    font-size: 1rem;
-  }
-  
-  .pricing__emoji-bottom {
-    bottom: -5px;
-    right: 5px;
-    padding: 6px 12px;
-    font-size: 1rem;
-  }
 }
 
 .pricing__emoji-image {
-  font-size: 1.25rem;
   color: #333;
 }
 
@@ -2601,10 +2572,6 @@ ul, ol {
     padding: 8px 12px;
     border-radius: 8px;
   }
-  
-  .pricing__emoji-image {
-    font-size: 1rem;
-  }
 }
 
 /* Bottom promo section */
@@ -2613,7 +2580,10 @@ ul, ol {
   background-color: transparent;
   overflow: hidden;
 }
-
+.bottom-promo img{
+  height: 560px;
+  object-fit: cover;
+}
 .bottom-promo__image-wrapper {
   border-radius: 300px;
   overflow: hidden;
