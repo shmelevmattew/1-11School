@@ -1215,6 +1215,14 @@ ul, ol {
   .mission-action__button{
     font-size: 1rem !important;
   }
+  .pricing__card{
+    overflow: hidden;
+  }
+  .pricing__price-bubble {
+    left: 25px !important;
+    height: 84px !important;
+    width: 188px !important;
+  }
 
 }
 /* Адаптивность для планшетов */
