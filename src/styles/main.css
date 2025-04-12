@@ -2682,17 +2682,6 @@ ul, ol {
   background-color: var(--color-white);
   position: relative;
 }
-
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #e5e5e5;
-}
-
 .footer__content {
   display: flex;
   flex-direction: column;
