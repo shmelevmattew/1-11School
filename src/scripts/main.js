@@ -474,6 +474,95 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // Teachers popup functionality
+  const setupTeachersPopup = () => {
+    const body = document.body;
+    
+    // Create popup elements
+    const popup = document.createElement('div');
+    popup.className = 'teacher-popup';
+    
+    const popupContent = document.createElement('div');
+    popupContent.className = 'teacher-popup__content';
+    
+    const imageWrapper = document.createElement('div');
+    imageWrapper.className = 'teacher-popup__image-wrapper';
+    
+    const popupImage = document.createElement('img');
+    popupImage.className = 'teacher-popup__image';
+    
+    const popupInfo = document.createElement('div');
+    popupInfo.className = 'teacher-popup__info';
+    
+    const popupName = document.createElement('h3');
+    popupName.className = 'teacher-popup__name';
+    
+    const popupPosition = document.createElement('div');
+    popupPosition.className = 'teacher-popup__position';
+    
+    const popupQuote = document.createElement('div');
+    popupQuote.className = 'teacher-popup__quote';
+    
+    const closeButton = document.createElement('button');
+    closeButton.className = 'teacher-popup__close';
+    closeButton.innerHTML = '×';
+    
+    imageWrapper.appendChild(popupImage);
+    popupInfo.appendChild(popupName);
+    popupInfo.appendChild(popupPosition);
+    popupInfo.appendChild(popupQuote);
+    
+    popupContent.appendChild(imageWrapper);
+    popupContent.appendChild(popupInfo);
+    popupContent.appendChild(closeButton);
+    
+    popup.appendChild(popupContent);
+    body.appendChild(popup);
+    
+    // Add click handlers to teacher cards
+    const teacherCards = document.querySelectorAll('.teacher');
+    teacherCards.forEach(card => {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', () => {
+        const image = card.querySelector('.teacher__image');
+        const name = card.querySelector('.teacher__name');
+        const position = card.querySelector('.teacher__position');
+        const quote = card.querySelector('.teacher__quote');
+        
+        if (image && name && position && quote) {
+          popupImage.src = image.src;
+          popupName.textContent = name.textContent;
+          popupPosition.textContent = position.textContent;
+          popupQuote.textContent = quote.textContent;
+          popup.classList.add('active');
+          body.classList.add('no-scroll');
+        }
+      });
+    });
+    
+    // Close popup on button click
+    closeButton.addEventListener('click', () => {
+      popup.classList.remove('active');
+      body.classList.remove('no-scroll');
+    });
+    
+    // Close popup on background click
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.classList.remove('active');
+        body.classList.remove('no-scroll');
+      }
+    });
+    
+    // Close popup on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popup.classList.contains('active')) {
+        popup.classList.remove('active');
+        body.classList.remove('no-scroll');
+      }
+    });
+  };
+
   // Initialize all functionality
   setupHeaderScroll();
   setupMobileMenu();
@@ -482,6 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupTeachersSlider();
   setupEmojiAnimations();
   setupGalleryPopup();
+  setupTeachersPopup();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {
