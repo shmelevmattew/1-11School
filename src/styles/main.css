@@ -830,7 +830,7 @@ ul, ol {
 
   .feature__cool-emoji{
     left: 65%;
-    top: 50%;
+    top: 40%;
   }
 
   .feature__star{
@@ -1191,7 +1191,7 @@ ul, ol {
   }
   .feature__cool-emoji{
     left: -20px;
-    top: 54%;
+    top: 46%;
     font-size: 1.5rem;
   }
   .feature__star {
@@ -2793,19 +2793,25 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background-color: #222125;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
+.footer__social-link img{
+  width: 50px;
+  height: 50px;
+}
 .footer__social-link:hover {
   background-color: #333333;
+  transform: scale(1.1);
 }
 
 .footer__social-icon {
   filter: brightness(0) invert(1);
+  width: 28px;
+  height: 28px;
 }
 
 .footer__address {
@@ -2826,6 +2832,16 @@ ul, ol {
   
   .footer__phone-link {
     font-size: 26px;
+  }
+  
+  .footer__social-link {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .footer__social-icon {
+    width: 26px;
+    height: 26px;
   }
   
   .footer__emoji {
@@ -2895,6 +2911,16 @@ ul, ol {
   
   .footer__address {
     font-size: 16px;
+  }
+  
+  .footer__social-link {
+    width: 46px;
+    height: 46px;
+  }
+  
+  .footer__social-icon {
+    width: 24px;
+    height: 24px;
   }
 }
 
@@ -3414,10 +3440,12 @@ ul, ol {
 .hero__emoji.animate-on-scroll.animated,
 .feature__cool-emoji.animate-on-scroll.animated,
 .feature__kawaii.animate-on-scroll.animated {
-  transform: scale(1);
+  transform: scale(1) ;
   opacity: 1;
 }
-
+.feature__cool-emoji.animate-on-scroll.animated{
+  transform: rotate(-10deg) ;
+}
 /* Адаптивные стили для анимации на мобильных устройствах */
 @media (max-width: 768px) {
   .animate-on-scroll {
