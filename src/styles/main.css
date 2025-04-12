@@ -1744,13 +1744,34 @@ ul, ol {
 }
 
 .benefit__icon {
-  min-width: 40px;
-  width: 40px;
-  height: 40px;
+  min-width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
+  background-color: #f7f9fc;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit__icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.benefit__icon.animated {
+  animation: iconPulse 2s infinite ease-in-out;
+}
+
+@keyframes iconPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.benefit__icon img {
+  width: 56px;
+  height: 56px;
 }
 
 .benefit__text {
@@ -1810,9 +1831,13 @@ ul, ol {
   }
   
   .benefit__icon {
-    min-width: 32px;
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
+  }
+  
+  .benefit__icon img {
+    width: 48px;
+    height: 48px;
   }
   
   .benefit__text {
