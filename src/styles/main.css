@@ -1223,7 +1223,22 @@ ul, ol {
     height: 84px !important;
     width: 188px !important;
   }
-
+  .footer__emoji--happy {
+    right: auto !important;
+  }
+  .footer__emoji--eating{
+    left: auto !important;
+    right: 20px !important;
+    bottom: 54px !important;
+  }
+  .footer__emoji--sleeping {
+    top: 28px !important;
+    left: 1px !important;
+  }
+  .footer__emoji--cool {
+    bottom: 145px;
+    right: 9px;
+}
 }
 /* Адаптивность для планшетов */
 @media (max-width: 1024px) {
@@ -2829,7 +2844,6 @@ ul, ol {
   .footer__emoji {
     position: absolute;
     display: block;
-    transform: scale(1);
     transition: transform 0.3s ease;
   }
   
@@ -2863,8 +2877,8 @@ ul, ol {
   }
   
   .footer__emoji--happy {
-    top: 25px;
-    right: 30px;
+    top: 110px;
+    right: 40px;
     background-color: #ECC615;
     color: #333;
     padding: 10px 15px;
@@ -2872,7 +2886,7 @@ ul, ol {
   }
   
   .footer__emoji--cool {
-    bottom: 20px;
+    bottom: 130px;
     right: 20px;
     font-size: 1.5rem;
     background-color: transparent;
