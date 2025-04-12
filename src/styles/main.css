@@ -2344,6 +2344,7 @@ ul, ol {
   display: flex;
   flex-direction: column;
   position: relative;
+  justify-content: space-between;
 }
 
 .pricing__card--primary {
@@ -2432,29 +2433,75 @@ ul, ol {
 }
 
 .pricing__emoji {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  position: relative;
+  height: 150px;
+  width: 100%;
+  margin: 0;
 }
 
 .pricing__emoji-top {
-  align-self: flex-start;
+  position: absolute;
+  top: 20px;
+  right: 0px;
   animation: shake 3s ease-in-out infinite;
   background-color: white;
   padding: 10px 20px;
   border-radius: 12px;
+  font-size: 1.3rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
 }
 
 .pricing__emoji-bottom {
-  align-self: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
   background-color: #4cdd3c;
   animation: wiggle 3.7s ease-in-out infinite;
   padding: 10px 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .pricing__emoji {
+    height: 120px;
+  }
+  
+  .pricing__emoji-top {
+    top: 10px;
+    left: 20px;
+    padding: 8px 15px;
+    font-size: 1.1rem;
+  }
+  
+  .pricing__emoji-bottom {
+    bottom: 0;
+    right: 10px;
+    padding: 8px 15px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .pricing__emoji {
+    height: 100px;
+  }
+  
+  .pricing__emoji-top {
+    top: 5px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 1rem;
+  }
+  
+  .pricing__emoji-bottom {
+    bottom: -5px;
+    right: 5px;
+    padding: 6px 12px;
+    font-size: 1rem;
+  }
 }
 
 .pricing__emoji-image {
