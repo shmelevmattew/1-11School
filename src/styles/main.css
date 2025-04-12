@@ -1068,9 +1068,10 @@ ul, ol {
   align-items: center;
   position: absolute;
   top: -42px;
-  left: 50%;
+  left: 65%;
   height: 92px;
   width: 500px;
+  font-weight: 600;
   transform: translateX(-50%);
   max-width: 300px;
   font-size: 1.1rem;
@@ -1092,9 +1093,11 @@ ul, ol {
 /* Маленький овал */
 .mission__pool-message::before {
   width: 20px;
-  height: 20px;
+  height: 15px;
   bottom: -45px;
   left: 20%;
+  left: 32%;
+
 }
 
 /* Средний овал */
@@ -1117,7 +1120,7 @@ ul, ol {
   content: '';
   position: absolute;
   bottom: -22px;
-  left: 30%;
+  left: 41%;
   width: 57px;
   height: 23px;
   transform: translateX(-50%);
@@ -1250,20 +1253,25 @@ ul, ol {
     position: relative;
     top: auto;
     left: auto;
+    right: 20px;
     transform: none;
-    max-width: 100%;
     margin-bottom: 20px;
+    height: 65px;
+    max-width: 288px;
+    margin-left: auto;
   }
   
   .mission__pool-emoji {
     position: relative;
     bottom: auto;
-    left: auto;
+    left: -100px;
+    
     transform: none;
     font-size: 1.3rem;
     text-align: center;
     display: block;
-    margin-top: 20px;
+    margin-top: 65px;
+    font-size: 2rem;
   }
 }
 
