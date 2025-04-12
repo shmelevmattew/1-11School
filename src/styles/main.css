@@ -2679,11 +2679,23 @@ ul, ol {
   font-size: 1.75rem;
   padding: 10px;
   z-index: 2;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .footer__emoji:hover {
   transform: scale(1.15);
+}
+
+.footer__emoji.clicked {
+  animation: emoji-click 0.5s ease forwards;
+}
+
+@keyframes emoji-click {
+  0% { transform: scale(1.15); }
+  40% { transform: scale(0.8); }
+  70% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }
 
 .footer__emoji-container {
@@ -2712,41 +2724,46 @@ ul, ol {
 }
 
 .footer__emoji--sleeping {
-  top: -40px;
+  top: 80px;
+  transform: rotate(-4deg);
   left: 20px;
   background-color: transparent;
   font-size: 1.5rem;
 }
 
 .footer__emoji--eating {
-  bottom: -40px;
+  bottom: 80px;
   left: 30px;
   background-color: #177359;
   color: white;
   padding: 10px 15px;
   border-radius: 8px;
+  transform: rotate(-4deg);
 }
 
 .footer__emoji--happy {
-  top: -30px;
+  top: 60px;
   right: 30px;
   background-color: #ECC615;
   color: #333;
   padding: 10px 15px;
-  border-radius: 20px;
+  transform: rotate(12deg); 
+  border-radius: 0px;
 }
 
 .footer__emoji--cool {
-  bottom: -40px;
+  bottom: 135px;
   right: 20px;
   background-color: transparent;
   font-size: 1.5rem;
+  transform: rotate(-4deg);
 }
 
 .footer__title h2 {
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 20px;
+  width: 400px;
 }
 
 .footer__phone {

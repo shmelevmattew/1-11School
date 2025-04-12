@@ -748,26 +748,66 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (!emojiContainer) return;
     
+    // Начальные тексты для каждого типа эмодзи
+    const initialEmojis = {
+      'sleeping': '(＿ ＿*) Z z z',
+      'eating': '(っ˘ڡ˘ς)',
+      'happy': '(ノ*°▽°*)',
+      'cool': '(⌐■_■)'
+    };
+    
     const checkScreenSize = () => {
-        if (window.innerWidth <= 768) {
-            // Clear container first to prevent duplicates on resize
-            emojiContainer.innerHTML = '';
-            
-            // Clone original emojis to container on mobile
-            // but keep their classes for absolute positioning
-            footerEmojis.forEach(emoji => {
-                const clone = emoji.cloneNode(true);
-                // Оставляем position: absolute так как теперь нам это нужно
-                emojiContainer.appendChild(clone);
-                emoji.style.display = 'none';
-            });
-        } else {
-            // Show original emojis on desktop
-            emojiContainer.innerHTML = '';
-            footerEmojis.forEach(emoji => {
-                emoji.style.display = 'block';
-            });
-        }
+      if (window.innerWidth <= 768) {
+        // Clear container first to prevent duplicates on resize
+        emojiContainer.innerHTML = '';
+        
+        // Clone original emojis to container on mobile
+        footerEmojis.forEach(emoji => {
+          // Сохраняем оригинальный текст эмодзи
+          let emojiType = '';
+          if (emoji.classList.contains('footer__emoji--sleeping')) {
+            emojiType = 'sleeping';
+          } else if (emoji.classList.contains('footer__emoji--eating')) {
+            emojiType = 'eating';
+          } else if (emoji.classList.contains('footer__emoji--happy')) {
+            emojiType = 'happy';
+          } else if (emoji.classList.contains('footer__emoji--cool')) {
+            emojiType = 'cool';
+          }
+          
+          const clone = emoji.cloneNode(true);
+          // Восстанавливаем текст эмодзи, если он был изменен
+          if (emojiType && initialEmojis[emojiType] && (!emoji.textContent || emoji.textContent.trim() === '')) {
+            clone.textContent = initialEmojis[emojiType];
+          }
+          
+          emojiContainer.appendChild(clone);
+          emoji.style.display = 'none';
+        });
+      } else {
+        // Show original emojis on desktop
+        footerEmojis.forEach(emoji => {
+          // Восстанавливаем текст эмодзи, если он был изменен
+          let emojiType = '';
+          if (emoji.classList.contains('footer__emoji--sleeping')) {
+            emojiType = 'sleeping';
+          } else if (emoji.classList.contains('footer__emoji--eating')) {
+            emojiType = 'eating';
+          } else if (emoji.classList.contains('footer__emoji--happy')) {
+            emojiType = 'happy';
+          } else if (emoji.classList.contains('footer__emoji--cool')) {
+            emojiType = 'cool';
+          }
+          
+          if (emojiType && initialEmojis[emojiType] && (!emoji.textContent || emoji.textContent.trim() === '')) {
+            emoji.textContent = initialEmojis[emojiType];
+          }
+          
+          emoji.style.display = 'block';
+        });
+        
+        emojiContainer.innerHTML = '';
+      }
     };
     
     // Run on load and resize with debounce for better performance
@@ -775,9 +815,78 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let resizeTimeout;
     window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(checkScreenSize, 150);
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(checkScreenSize, 150);
     });
+  }
+
+  // Footer emoji click interaction
+  function setupFooterEmojiInteraction() {
+    // Альтернативные варианты эмодзи для каждого типа
+    const emojiVariants = {
+      'sleeping': ['(＿ ＿*) Z z z', '(￣o￣) zzZ', '(ᴗ˳ᴗ) z Z', '(-_-) zzZ', '(≧.≦) z z Z'],
+      'eating': ['(っ˘ڡ˘ς)', '(っ・ω・)っ', '(っ˘ڡ˘)っ', '(っ⌒‿⌒)っ', '(っ≧ω≦)っ'],
+      'happy': ['(ノ*°▽°*)', '(ノ￣ω￣)ノ', '(ノ・∀・)ノ', '(ノ^_^)ノ', '(ノ≧ω≦)ノ'],
+      'cool': ['(⌐■_■)', '(ᵔᴥᵔ)', '(•_•)>⌐■-■', '(˘⌣˘)⌐■-■', '(⌐■-■)']
+    };
+    
+    // Функция для добавления обработчиков кликов
+    function addClickHandlers() {
+      const footerEmojis = document.querySelectorAll('.footer__emoji');
+      footerEmojis.forEach(emoji => {
+        // Проверяем, не добавлен ли уже обработчик
+        if (!emoji.hasAttribute('data-click-handler')) {
+          emoji.setAttribute('data-click-handler', 'true');
+          
+          emoji.addEventListener('click', function() {
+            // Определяем тип эмодзи
+            let emojiType = '';
+            if (emoji.classList.contains('footer__emoji--sleeping')) {
+              emojiType = 'sleeping';
+            } else if (emoji.classList.contains('footer__emoji--eating')) {
+              emojiType = 'eating';
+            } else if (emoji.classList.contains('footer__emoji--happy')) {
+              emojiType = 'happy';
+            } else if (emoji.classList.contains('footer__emoji--cool')) {
+              emojiType = 'cool';
+            }
+            
+            if (emojiType && emojiVariants[emojiType]) {
+              // Получаем случайный вариант эмодзи, отличный от текущего
+              const currentText = emoji.textContent;
+              let variants = emojiVariants[emojiType].filter(variant => variant !== currentText);
+              if (variants.length === 0) {
+                variants = emojiVariants[emojiType]; // Если все варианты исключены, используем все
+              }
+              const randomEmoji = variants[Math.floor(Math.random() * variants.length)];
+              
+              // Добавляем класс для анимации и меняем текст
+              emoji.classList.add('clicked');
+              
+              // Удаляем класс после завершения анимации
+              setTimeout(() => {
+                emoji.textContent = randomEmoji;
+                
+                setTimeout(() => {
+                  emoji.classList.remove('clicked');
+                }, 500);
+              }, 200);
+            }
+          });
+        }
+      });
+    }
+    
+    // Добавляем обработчики при загрузке
+    addClickHandlers();
+    
+    // Перепроверяем после изменения размера окна, для работы с клонированными элементами
+    window.addEventListener('resize', function() {
+      setTimeout(addClickHandlers, 200);
+    });
+    
+    // Проверяем еще раз после небольшой задержки
+    setTimeout(addClickHandlers, 500);
   }
 
   // Initialize all functionality
@@ -793,6 +902,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize footer emoji layout
   handleFooterEmojiLayout();
+  
+  // Initialize footer emoji interaction
+  setupFooterEmojiInteraction();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {
