@@ -752,6 +752,18 @@ ul, ol {
   .feature--security .feature__text {
     max-width: 80%;
   }
+  .burger-menu img {
+    width: 40px;
+    height: 40px;
+  }
+  .mobile-menu__close img{
+    width: 40px;
+    height: 40px;
+  }
+  .header__logo img{
+    width: 222px;
+
+  }
 }
 
 @media (max-width: 768px) {
@@ -1144,6 +1156,10 @@ ul, ol {
 }
 
 @media (max-width:425px) {
+  .header__logo img{
+    width: 202px;
+
+  }
   .hero__info {
     padding: 12px;
     font-size: 1rem;
@@ -2582,13 +2598,14 @@ ul, ol {
 }
 .bottom-promo img{
   height: 560px;
+  width: 100%;
   object-fit: cover;
 }
 .bottom-promo__image-wrapper {
   border-radius: 300px;
   overflow: hidden;
-  max-width: 900px;
   margin: 0 auto;
+  min-width: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
