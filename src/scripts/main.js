@@ -741,18 +741,58 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(animateInitialElements, 100);
   };
 
+  // Footer emoji mobile layout
+  function handleFooterEmojiLayout() {
+    const footerEmojis = document.querySelectorAll('.footer__emoji:not(.footer__emoji-container .footer__emoji)');
+    const emojiContainer = document.querySelector('.footer__emoji-container');
+    
+    if (!emojiContainer) return;
+    
+    const checkScreenSize = () => {
+        if (window.innerWidth <= 768) {
+            // Clear container first to prevent duplicates on resize
+            emojiContainer.innerHTML = '';
+            
+            // Clone original emojis to container on mobile
+            // but keep their classes for absolute positioning
+            footerEmojis.forEach(emoji => {
+                const clone = emoji.cloneNode(true);
+                // Оставляем position: absolute так как теперь нам это нужно
+                emojiContainer.appendChild(clone);
+                emoji.style.display = 'none';
+            });
+        } else {
+            // Show original emojis on desktop
+            emojiContainer.innerHTML = '';
+            footerEmojis.forEach(emoji => {
+                emoji.style.display = 'block';
+            });
+        }
+    };
+    
+    // Run on load and resize with debounce for better performance
+    checkScreenSize();
+    
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(checkScreenSize, 150);
+    });
+  }
+
   // Initialize all functionality
   setupHeaderScroll();
   setupMobileMenu();
   setupSmoothScroll();
   setupGallerySlider();
   setupTeachersSlider();
-  setupEmojiAnimations();
   setupGalleryPopup();
   setupTeachersPopup();
-  
-  // Initialize scroll animations
   setupScrollAnimations();
+  setupEmojiAnimations();
+  
+  // Initialize footer emoji layout
+  handleFooterEmojiLayout();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {

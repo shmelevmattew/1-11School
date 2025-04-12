@@ -2671,6 +2671,76 @@ ul, ol {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
+}
+
+.footer__emoji {
+  position: absolute;
+  font-size: 1.75rem;
+  padding: 10px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.footer__emoji:hover {
+  transform: scale(1.15);
+}
+
+.footer__emoji-container {
+  display: none;
+  order: 5;
+}
+
+.footer__title {
+  order: 1;
+}
+
+.footer__phone {
+  order: 2;
+}
+
+.footer__social {
+  order: 3;
+}
+
+.footer__address {
+  order: 4;
+}
+
+.footer__copyright {
+  order: 6;
+}
+
+.footer__emoji--sleeping {
+  top: -40px;
+  left: 20px;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+.footer__emoji--eating {
+  bottom: -40px;
+  left: 30px;
+  background-color: #177359;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.footer__emoji--happy {
+  top: -30px;
+  right: 30px;
+  background-color: #ECC615;
+  color: #333;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.footer__emoji--cool {
+  bottom: -40px;
+  right: 20px;
+  background-color: transparent;
+  font-size: 1.5rem;
 }
 
 .footer__title h2 {
@@ -2737,6 +2807,58 @@ ul, ol {
   
   .footer__phone-link {
     font-size: 26px;
+  }
+  
+  .footer__emoji {
+    position: absolute;
+    display: block;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+  
+  .footer__emoji:hover {
+    transform: scale(1.2);
+  }
+  
+  .footer__emoji-container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 207px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .footer__emoji--sleeping {
+    top: 20px;
+    left: 20px;
+    font-size: 1.5rem;
+    background-color: transparent;
+  }
+  
+  .footer__emoji--eating {
+    bottom: 20px;
+    left: 30px;
+    background-color: #177359;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+  }
+  
+  .footer__emoji--happy {
+    top: 25px;
+    right: 30px;
+    background-color: #ECC615;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 20px;
+  }
+  
+  .footer__emoji--cool {
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    background-color: transparent;
   }
 }
 
