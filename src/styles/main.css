@@ -2911,4 +2911,271 @@ ul, ol {
     height: 36px;
     font-size: 20px;
   }
-} 
+}
+
+/* Scroll animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Different animations for different element types */
+.hero__content.animate-on-scroll {
+  transform: translateY(40px);
+  transition-delay: 0.1s;
+}
+
+.hero__image-container.animate-on-scroll {
+  transform: translateY(30px);
+  transition-delay: 0.3s;
+}
+
+.feature.animate-on-scroll {
+  transform: translateY(25px);
+  transition-delay: 0.2s;
+}
+
+.mission__content.animate-on-scroll {
+  transform: translateY(30px);
+  transition-delay: 0.1s;
+}
+
+.mission-feature.animate-on-scroll {
+  transform: translateY(20px);
+}
+
+.mission-feature:nth-child(1).animate-on-scroll {
+  transition-delay: 0.1s;
+}
+
+.mission-feature:nth-child(2).animate-on-scroll {
+  transition-delay: 0.2s;
+}
+
+.mission-feature:nth-child(3).animate-on-scroll {
+  transition-delay: 0.3s;
+}
+
+.mission-feature:nth-child(4).animate-on-scroll {
+  transition-delay: 0.4s;
+}
+
+.gallery__slide.animate-on-scroll,
+.teacher-card.animate-on-scroll,
+.prices__card.animate-on-scroll {
+  transform: translateY(20px) scale(0.97);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* Разные задержки для карточек в одном ряду */
+.gallery__slide:nth-child(1).animate-on-scroll,
+.teacher-card:nth-child(1).animate-on-scroll,
+.prices__card:nth-child(1).animate-on-scroll {
+  transition-delay: 0.1s;
+}
+
+.gallery__slide:nth-child(2).animate-on-scroll,
+.teacher-card:nth-child(2).animate-on-scroll,
+.prices__card:nth-child(2).animate-on-scroll {
+  transition-delay: 0.2s;
+}
+
+.gallery__slide:nth-child(3).animate-on-scroll,
+.teacher-card:nth-child(3).animate-on-scroll,
+.prices__card:nth-child(3).animate-on-scroll {
+  transition-delay: 0.3s;
+}
+
+.gallery__slide:nth-child(4).animate-on-scroll,
+.teacher-card:nth-child(4).animate-on-scroll,
+.prices__card:nth-child(4).animate-on-scroll {
+  transition-delay: 0.4s;
+}
+
+.cta__buttons.animate-on-scroll {
+  transform: translateY(15px);
+}
+
+.section-title.animate-on-scroll {
+  transform: translateY(20px);
+  transition-delay: 0.1s;
+}
+
+/* Анимации для боковых элементов */
+.animate-on-scroll.from-left {
+  transform: translateX(-30px);
+}
+
+.animate-on-scroll.from-right {
+  transform: translateX(30px);
+}
+
+.animate-on-scroll.from-left.animated,
+.animate-on-scroll.from-right.animated {
+  transform: translateX(0);
+}
+
+/* Анимация для сетки элементов */
+.grid-item.animate-on-scroll {
+  transform: scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.grid-item.animate-on-scroll.animated {
+  transform: scale(1);
+}
+
+/* Адаптивные стили для анимации на мобильных устройствах */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-on-scroll.from-left,
+  .animate-on-scroll.from-right {
+    transform: translateY(20px);
+  }
+
+  .animate-on-scroll.from-left.animated,
+  .animate-on-scroll.from-right.animated {
+    transform: translateY(0);
+  }
+}
+
+/* Отключаем анимацию для пользователей, которые предпочитают уменьшенное движение */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Анимация с эффектом поворота */
+.animate-on-scroll.rotate {
+  transform: translateY(30px) rotate(-3deg);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.rotate.animated {
+  transform: translateY(0) rotate(0);
+}
+
+/* Анимация с эффектом появления */
+.animate-on-scroll.fade-in {
+  transform: translateY(0);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.animate-on-scroll.fade-in.animated {
+  opacity: 1;
+}
+
+/* Анимация снизу вверх */
+.animate-on-scroll.from-bottom {
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate-on-scroll.from-bottom.animated {
+  transform: translateY(0);
+}
+
+/* Анимация для эмодзи */
+.hero__emoji.animate-on-scroll,
+.feature__cool-emoji.animate-on-scroll,
+.feature__kawaii.animate-on-scroll {
+  transform: scale(0.5);
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero__emoji.animate-on-scroll.animated,
+.feature__cool-emoji.animate-on-scroll.animated,
+.feature__kawaii.animate-on-scroll.animated {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Адаптивные стили для анимации на мобильных устройствах */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .animate-on-scroll.from-left,
+  .animate-on-scroll.from-right {
+    transform: translateY(20px);
+  }
+
+  .animate-on-scroll.from-left.animated,
+  .animate-on-scroll.from-right.animated {
+    transform: translateY(0);
+  }
+  
+  /* Уменьшаем задержки на мобильных устройствах для более быстрой анимации */
+  .mission-feature:nth-child(n).animate-on-scroll,
+  .gallery__slide:nth-child(n).animate-on-scroll,
+  .teacher-card:nth-child(n).animate-on-scroll,
+  .prices__card:nth-child(n).animate-on-scroll {
+    transition-delay: 0.1s;
+  }
+}
+
+/* Анимация для элементов "Что вас ждёт" */
+.benefit.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.benefit.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.benefit:nth-child(odd).animate-on-scroll {
+  transform: translateX(-20px);
+}
+
+.benefit:nth-child(even).animate-on-scroll {
+  transform: translateX(20px);
+}
+
+.benefit:nth-child(odd).animate-on-scroll.animated,
+.benefit:nth-child(even).animate-on-scroll.animated {
+  transform: translateX(0);
+}
+
+/* Анимация иконок в блоках "Что вас ждёт" */
+.benefit__icon.animate-on-scroll {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.benefit__icon.animate-on-scroll.animated {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .benefit:nth-child(odd).animate-on-scroll,
+  .benefit:nth-child(even).animate-on-scroll {
+    transform: translateY(20px);
+  }
+  
+  .benefit:nth-child(odd).animate-on-scroll.animated,
+  .benefit:nth-child(even).animate-on-scroll.animated {
+    transform: translateY(0);
+  }
+}

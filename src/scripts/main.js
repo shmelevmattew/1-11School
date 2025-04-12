@@ -563,6 +563,155 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // Scroll animations for elements
+  const setupScrollAnimations = () => {
+    // Общие элементы для вертикальной анимации
+    const animatedElements = document.querySelectorAll(
+      '.hero__content, .hero__image-container, .feature, .mission__content, .mission-feature, ' +
+      '.cta__buttons, .section-title, .gallery__slide, .teacher-card, ' + 
+      '.prices__card, .contact-form, .about-item, .program__content'
+    );
+    
+    // Находим элементы, которые нужно анимировать с левой стороны
+    const leftElements = document.querySelectorAll(
+      '.hero__content, .mission__content, .feature:nth-child(odd)'
+    );
+    
+    // Находим элементы, которые нужно анимировать с правой стороны
+    const rightElements = document.querySelectorAll(
+      '.hero__image-container, .feature:nth-child(even)'
+    );
+    
+    // Находим элементы сетки
+    const gridElements = document.querySelectorAll(
+      '.gallery__slide, .teacher-card, .prices__card'
+    );
+    
+    // Элементы с поворотом
+    const rotateElements = document.querySelectorAll(
+      '.feature__star'
+    );
+    
+    // Элементы с простым появлением
+    const fadeElements = document.querySelectorAll(
+      '.section-title, .contact-form'
+    );
+    
+    // Элементы, анимируемые снизу вверх
+    const bottomElements = document.querySelectorAll(
+      '.cta__buttons, .mission-action'
+    );
+    
+    // Элементы эмодзи
+    const emojiElements = document.querySelectorAll(
+      '.hero__emoji, .feature__cool-emoji, .feature__kawaii'
+    );
+    
+    // Элементы для раздела "Что вас ждёт"
+    const benefitElements = document.querySelectorAll('.benefit');
+    const benefitIcons = document.querySelectorAll('.benefit__icon');
+
+    // Options for the Intersection Observer
+    const observerOptions = {
+      root: null, // viewport
+      rootMargin: '0px',
+      threshold: 0.15 // element is considered visible when 15% is visible
+    };
+
+    const animateElement = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+          // Once animated, no need to observe anymore
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    // Create observer
+    const observer = new IntersectionObserver(animateElement, observerOptions);
+
+    // Observe each element with standard animation
+    animatedElements.forEach(element => {
+      // Проверяем, не добавлен ли уже специальный класс анимации
+      if (!element.classList.contains('from-left') && 
+          !element.classList.contains('from-right') &&
+          !element.classList.contains('rotate') &&
+          !element.classList.contains('fade-in') &&
+          !element.classList.contains('from-bottom')) {
+        element.classList.add('animate-on-scroll');
+      }
+      observer.observe(element);
+    });
+    
+    // Добавляем классы для горизонтальной анимации (слева)
+    leftElements.forEach(element => {
+      element.classList.add('animate-on-scroll', 'from-left');
+      observer.observe(element);
+    });
+    
+    // Добавляем классы для горизонтальной анимации (справа)
+    rightElements.forEach(element => {
+      element.classList.add('animate-on-scroll', 'from-right');
+      observer.observe(element);
+    });
+    
+    // Добавляем классы для элементов сетки
+    gridElements.forEach(element => {
+      element.classList.add('animate-on-scroll', 'grid-item');
+      observer.observe(element);
+    });
+    
+    // Добавляем анимацию поворота
+    rotateElements.forEach(element => {
+      element.classList.add('animate-on-scroll', 'rotate');
+      observer.observe(element);
+    });
+    
+    // Добавляем простое появление
+    fadeElements.forEach(element => {
+      element.classList.add('animate-on-scroll', 'fade-in');
+      observer.observe(element);
+    });
+    
+    // Добавляем анимацию снизу вверх
+    bottomElements.forEach(element => {
+      element.classList.add('animate-on-scroll', 'from-bottom');
+      observer.observe(element);
+    });
+    
+    // Добавляем анимацию для эмодзи
+    emojiElements.forEach(element => {
+      element.classList.add('animate-on-scroll');
+      observer.observe(element);
+    });
+    
+    // Добавляем анимацию для элементов "Что вас ждёт" с задержкой
+    benefitElements.forEach((element, index) => {
+      element.classList.add('animate-on-scroll');
+      element.style.transitionDelay = `${0.1 + index * 0.05}s`;
+      observer.observe(element);
+    });
+    
+    // Добавляем анимацию для иконок в блоках "Что вас ждёт"
+    benefitIcons.forEach((icon, index) => {
+      icon.classList.add('animate-on-scroll');
+      icon.style.transitionDelay = `${0.2 + index * 0.05}s`;
+      observer.observe(icon);
+    });
+    
+    // Установим начальное состояние для элементов, которые видны при загрузке
+    setTimeout(() => {
+      const preloadElements = document.querySelectorAll('.animate-on-scroll');
+      preloadElements.forEach(element => {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          element.classList.add('animated');
+        }
+      });
+    }, 100);
+  };
+
   // Initialize all functionality
   setupHeaderScroll();
   setupMobileMenu();
@@ -572,6 +721,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEmojiAnimations();
   setupGalleryPopup();
   setupTeachersPopup();
+  
+  // Initialize scroll animations
+  setupScrollAnimations();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {
