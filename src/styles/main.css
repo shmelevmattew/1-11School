@@ -1788,7 +1788,7 @@ ul, ol {
 .teachers .container {
   max-width: var(--container-width);
   margin: 0 auto;
-  overflow: hidden;
+  overflow: visible;
   padding: 0 20px;
 }
 
@@ -1816,35 +1816,48 @@ ul, ol {
   font-size: 1.125rem;
   line-height: 1.6;
   width: 460px;
-  margin : 0 auto;
+  max-width: 100%;
+  margin: 0 auto;
   color: var(--color-text-light);
+  text-wrap: balance;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .teachers__emoji-left,
 .teachers__emoji-right {
-  font-size: 2rem;
-  padding: 10px 15px;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 1;
+  /* Стили перенесены в отдельные селекторы ниже */
 }
 
 .teachers__emoji-left {
-  left: 0;
-  top: 20px;
-  background-color: #177359;
-  color: white;
+  position: absolute;
+  left: -120px;
+  bottom: auto;
+  top: 40%;
+  background-color: #ECC615;
+  color: #333;
   transform: rotate(-5deg);
   animation: tiltLeft 4s ease-in-out infinite;
+  z-index: 1;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 0px;
 }
 
 .teachers__emoji-right {
-  right: 0;
-  bottom: 20px;
-  background-color: #E9DED0;
-  color: #333;
+  position: absolute;
+  right: -120px;
+  top: 30px;
+  bottom: auto;
+  background-color: #1E4688;
+  color: white;
   transform: rotate(5deg);
   animation: tiltRight 4s ease-in-out infinite;
+  z-index: 1;
+  font-size: 2rem;
+  padding: 10px 15px;
+  border-radius: 40px;
 }
 
 @keyframes tiltLeft {
@@ -1974,13 +1987,23 @@ ul, ol {
   
   .teachers__emoji-left,
   .teachers__emoji-right {
-    left: 10px;
-    font-size: 1.3rem;
-    padding: 10px 15px;
+    /* Стили перенесены в отдельные селекторы ниже */
   }
-  .teachers__emoji-right{
-    left: auto;
+  
+  .teachers__emoji-left {
+    left: 0px;
+    top: 75%;
+    font-size: 1.5rem;
+    padding: 8px 12px;
   }
+  
+  .teachers__emoji-right {
+    right: -5px;
+    top: 100px;
+    font-size: 1.5rem;
+    padding: 8px 12px;
+  }
+  
   .teacher {
     min-width: 320px;
     width: 320px;
@@ -2017,25 +2040,37 @@ ul, ol {
   
   .teachers__text {
     font-size: 1rem;
+    width: auto;
+    padding: 0 15px;
+    overflow-wrap: break-word;
   }
   
   .teachers__emoji-left, 
   .teachers__emoji-right {
-    position: relative;
-    display: inline-block;
-    top: 0;
-    transform: none;
-    margin: 20px 10px 0;
+    position: absolute;
+    z-index: 2;
     font-size: 1.2rem;
     padding: 8px 12px;
   }
   
   .teachers__emoji-left {
-    left: 0;
+    left: -40px;
+    top: 100%;
+    font-size: 2rem;
+    padding: 6px 10px;
+    z-index: 0;
   }
   
   .teachers__emoji-right {
-    right: 0;
+    right: -40px;
+    top: 100%;
+    font-size: 2rem;
+    padding: 6px 10px;
+    z-index: 0;
+  }
+  
+  .teachers__slider {
+    overflow: visible;
   }
   
   .teacher {
@@ -2085,6 +2120,17 @@ ul, ol {
     font-size: 1.5rem;
   }
   
+  .teachers__emoji-left {
+    font-size: 1.5rem;
+  }
+  
+  .teachers__emoji-right {
+    font-size: 1.5rem;
+  }
+  .teachers__text{
+    font-size: 0.8rem;
+    text-wrap: balance;
+  }
   .teacher {
     min-width: 240px;
     width: 240px;
@@ -2317,6 +2363,7 @@ ul, ol {
   line-height: 1.6;
   color: var(--color-text-light);
   margin-top: auto;
+  margin-top: 10px;
 }
 
 .pricing__card--secondary .pricing__description {
@@ -2324,8 +2371,9 @@ ul, ol {
 }
 
 .pricing__price-bubble {
-  width: 180px;
-  height: 180px;
+  width: 256px;
+  height: 127px;
+  position: relative;
   background-color: #e52f2f;
   border-radius: 50%;
   display: flex;
@@ -2334,9 +2382,35 @@ ul, ol {
   justify-content: center;
   color: var(--color-white);
   position: relative;
-  margin-top: 20px;
   margin-bottom: 30px;
+  margin-left: auto;
 }
+
+/* Маленький овал */
+.pricing__price-bubble::before {
+  width: 26px;
+  height: 12px;
+  bottom: -30px;
+  left: 92%;
+
+}
+.pricing__price-bubble::before,
+.pricing__price-bubble::after,
+.pricing__price-bubble > span::before {
+  content: '';
+  position: absolute;
+  background-color: #e52f2f;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+/* Самый маленький овал */
+.pricing__price-bubble > span::before {
+  width: 56px;
+  height: 26px;
+  bottom: -14px;
+  left: 76%;
+}
+
 
 .pricing__price {
   font-size: 1.75rem;
@@ -2396,12 +2470,6 @@ ul, ol {
   .pricing__title {
     font-size: 1.5rem;
   }
-  
-  .pricing__price-bubble {
-    width: 160px;
-    height: 160px;
-  }
-  
   .pricing__price {
     font-size: 1.5rem;
   }
@@ -2438,13 +2506,6 @@ ul, ol {
   .pricing__title {
     font-size: 1.25rem;
     margin-bottom: 16px;
-  }
-  
-  .pricing__price-bubble {
-    width: 140px;
-    height: 140px;
-    margin-top: 10px;
-    margin-bottom: 20px;
   }
   
   .pricing__price {
@@ -2918,11 +2979,68 @@ ul, ol {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+  pointer-events: none; /* Отключаем события мыши для невидимых элементов */
 }
 
 .animate-on-scroll.animated {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto; /* Возвращаем события мыши */
+}
+
+/* Стили для изначально видимых элементов - более быстрая анимация */
+.animate-on-scroll[style*="transition-delay"].animated {
+  transition-duration: 0.5s;
+}
+
+/* Разные задержки для блоков benefit, чтобы они появлялись последовательно */
+.benefit:nth-child(1).animate-on-scroll {
+  transition-delay: 50ms !important;
+}
+
+.benefit:nth-child(2).animate-on-scroll {
+  transition-delay: 100ms !important;
+}
+
+.benefit:nth-child(3).animate-on-scroll {
+  transition-delay: 150ms !important;
+}
+
+.benefit:nth-child(4).animate-on-scroll {
+  transition-delay: 200ms !important;
+}
+
+.benefit:nth-child(5).animate-on-scroll {
+  transition-delay: 250ms !important;
+}
+
+.benefit:nth-child(6).animate-on-scroll {
+  transition-delay: 300ms !important;
+}
+
+.benefit:nth-child(7).animate-on-scroll {
+  transition-delay: 350ms !important;
+}
+
+.benefit:nth-child(8).animate-on-scroll {
+  transition-delay: 400ms !important;
+}
+
+.benefit:nth-child(9).animate-on-scroll {
+  transition-delay: 450ms !important;
+}
+
+.benefit:nth-child(10).animate-on-scroll {
+  transition-delay: 500ms !important;
+}
+
+.benefit:nth-child(11).animate-on-scroll {
+  transition-delay: 550ms !important;
+}
+
+.benefit:nth-child(12).animate-on-scroll {
+  transition-delay: 600ms !important;
 }
 
 /* Different animations for different element types */
@@ -3178,4 +3296,166 @@ ul, ol {
   .benefit:nth-child(even).animate-on-scroll.animated {
     transform: translateY(0);
   }
+}
+
+/* Ускоренная анимация для изначально видимых элементов */
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0.6s;
+}
+
+/* Задержка между анимациями разных элементов на экране */
+.benefit.animate-on-scroll.animated,
+.mission-feature.animate-on-scroll.animated,
+.gallery__slide.animate-on-scroll.animated {
+  transition-property: opacity, transform;
+  transition-timing-function: ease;
+}
+
+/* Базовые стили анимации */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+  pointer-events: none; /* Отключаем события мыши для невидимых элементов */
+}
+
+/* Подготовка элементов к анимации */
+.animate-on-scroll.ready {
+  transition-delay: 0s !important;
+  transition-duration: 0.4s !important;
+}
+
+/* При появлении элемента */
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Возвращаем события мыши */
+}
+
+/* Анимация исходно видимых элементов после загрузки страницы */
+.animate-on-scroll.ready.animated {
+  transition-duration: 0.4s !important;
+}
+
+/* Разные задержки для блоков benefit */
+.benefit:nth-child(1).animate-on-scroll {
+  transition-delay: 50ms;
+}
+
+.benefit:nth-child(2).animate-on-scroll {
+  transition-delay: 100ms;
+}
+
+.benefit:nth-child(3).animate-on-scroll {
+  transition-delay: 150ms;
+}
+
+.benefit:nth-child(4).animate-on-scroll {
+  transition-delay: 200ms;
+}
+
+.benefit:nth-child(5).animate-on-scroll {
+  transition-delay: 250ms;
+}
+
+.benefit:nth-child(6).animate-on-scroll {
+  transition-delay: 300ms;
+}
+
+.benefit:nth-child(7).animate-on-scroll {
+  transition-delay: 350ms;
+}
+
+.benefit:nth-child(8).animate-on-scroll {
+  transition-delay: 400ms;
+}
+
+.benefit:nth-child(9).animate-on-scroll {
+  transition-delay: 450ms;
+}
+
+.benefit:nth-child(10).animate-on-scroll {
+  transition-delay: 500ms;
+}
+
+.benefit:nth-child(11).animate-on-scroll {
+  transition-delay: 550ms;
+}
+
+.benefit:nth-child(12).animate-on-scroll {
+  transition-delay: 600ms;
+}
+
+/* Анимация при видимости элементов */
+.benefit__icon.animate-on-scroll {
+  transition-delay: 100ms;
+}
+
+/* Анимация для элементов "Что вас ждёт" */
+.benefit.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.benefit.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.benefit:nth-child(odd).animate-on-scroll {
+  transform: translateX(-20px);
+}
+
+.benefit:nth-child(even).animate-on-scroll {
+  transform: translateX(20px);
+}
+
+.benefit:nth-child(odd).animate-on-scroll.animated,
+.benefit:nth-child(even).animate-on-scroll.animated {
+  transform: translateX(0);
+}
+
+/* Анимация иконок в блоках "Что вас ждёт" */
+.benefit__icon.animate-on-scroll {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.benefit__icon.animate-on-scroll.animated {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 768px) {
+  .benefit:nth-child(odd).animate-on-scroll,
+  .benefit:nth-child(even).animate-on-scroll {
+    transform: translateY(20px);
+  }
+  
+  .benefit:nth-child(odd).animate-on-scroll.animated,
+  .benefit:nth-child(even).animate-on-scroll.animated {
+    transform: translateY(0);
+  }
+}
+
+/* Мгновенная анимация для элементов, которые видны при загрузке */
+.animate-on-scroll.no-delay {
+  transition-delay: 0ms !important;
+  transition-duration: 0.4s !important;
+}
+
+/* Анимация для элементов "Что вас ждёт" */
+.benefit.animate-on-scroll.no-delay {
+  transition-delay: 0ms !important;
+  transition-duration: 0.3s !important;
+}
+
+.benefit__icon.animate-on-scroll.no-delay {
+  transition-delay: 50ms !important;
+  transition-duration: 0.3s !important;
 }

@@ -615,7 +615,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
       root: null, // viewport
       rootMargin: '0px',
-      threshold: 0.15 // element is considered visible when 15% is visible
+      threshold: 0.1 // element is considered visible when 10% is visible
     };
 
     const animateElement = (entries, observer) => {
@@ -687,29 +687,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Добавляем анимацию для элементов "Что вас ждёт" с задержкой
-    benefitElements.forEach((element, index) => {
+    benefitElements.forEach((element) => {
       element.classList.add('animate-on-scroll');
-      element.style.transitionDelay = `${0.1 + index * 0.05}s`;
       observer.observe(element);
     });
     
     // Добавляем анимацию для иконок в блоках "Что вас ждёт"
     benefitIcons.forEach((icon, index) => {
       icon.classList.add('animate-on-scroll');
-      icon.style.transitionDelay = `${0.2 + index * 0.05}s`;
       observer.observe(icon);
     });
     
-    // Установим начальное состояние для элементов, которые видны при загрузке
-    setTimeout(() => {
+    // Функция для мгновенной анимации всех начально видимых элементов при загрузке
+    const animateInitialElements = () => {
+      // Отключаем наблюдатель временно, чтобы он не мешал анимировать элементы
+      observer.disconnect();
+
       const preloadElements = document.querySelectorAll('.animate-on-scroll');
-      preloadElements.forEach(element => {
+      
+      // Анимируем все видимые элементы с минимальной задержкой
+      preloadElements.forEach((element) => {
         const rect = element.getBoundingClientRect();
+        // Проверяем, видим ли элемент в текущем viewport
         if (rect.top < window.innerHeight && rect.bottom > 0) {
+          // Обходим transition-delay через добавление класса no-delay
+          element.classList.add('no-delay');
+          // Запускаем анимацию
           element.classList.add('animated');
         }
       });
-    }, 100);
+      
+      // Восстанавливаем наблюдатель для элементов, которые не были анимированы
+      preloadElements.forEach((element) => {
+        if (!element.classList.contains('animated')) {
+          observer.observe(element);
+        }
+      });
+    };
+
+    // Запускаем анимацию сразу при загрузке DOM
+    animateInitialElements();
+    
+    // И для надежности также после полной загрузки страницы 
+    if (document.readyState === 'complete') {
+      // Если страница уже загружена
+      animateInitialElements();
+    } else {
+      // Запускаем снова после загрузки страницы
+      window.addEventListener('load', animateInitialElements);
+    }
+    
+    // Также проверяем еще раз спустя небольшое время
+    setTimeout(animateInitialElements, 100);
   };
 
   // Initialize all functionality
