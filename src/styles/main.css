@@ -1979,9 +1979,8 @@ ul, ol {
   height: 480px;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
-  background-color: var(--color-white);
+  background-color: rgba(130, 155, 189, 0.06);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
