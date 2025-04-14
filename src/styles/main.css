@@ -3781,6 +3781,7 @@ ul, ol {
 }
 
 .modal__field {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -3793,6 +3794,7 @@ ul, ol {
 
 .modal__input,
 .modal__textarea {
+  
   padding: 14px 16px;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -3800,11 +3802,23 @@ ul, ol {
   transition: border-color 0.2s ease;
 }
 
-.modal__input:focus,
-.modal__textarea:focus {
-  border-color: #4cdd3c;
-  outline: none;
+.modal-label{
+  position: absolute;
+  pointer-events: none;
+  left: 15px;
+  right: 15px;
+  opacity: 0.7;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 40px;
+  transition: .3s;
 }
+.modal__input:focus~.modal-label,
+  .modal__input:not(:focus):valid~.modal-label {
+    top: -10px;
+    font-size: 10px;
+  }
 
 .modal__textarea {
   resize: vertical;
