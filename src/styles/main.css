@@ -1596,30 +1596,31 @@ ul, ol {
 .gallery__slider {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .gallery__wrapper {
   display: flex;
   transition: transform 0.5s ease;
-  gap: 20px;
-  padding: 0 20px;
+  gap: 30px;
+  width: 100%;
 }
 
 .gallery__slide {
-  min-width: 280px;
-  width: 280px;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  height: 280px;
+  min-width: 400px;
+  width: 400px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
 }
 
 .gallery__image {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.3s ease;
 }
 
 .gallery__navigation {
@@ -1655,42 +1656,56 @@ ul, ol {
 /* Адаптивность для планшетов */
 @media (max-width: 1024px) {
   .gallery__slide {
-    min-width: 240px;
-    width: 240px;
+    min-width: 320px;
+    width: 320px;
+    height: 240px;
   }
   
   .gallery__image {
-    height: 180px;
+    height: 100%;
   }
   
   .gallery__title {
-    font-size: 2rem;
-    margin-bottom: 32px;
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .teacher {
+    min-width: 340px;
+    width: 340px;
+    height: 460px;
   }
 }
 
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
   .gallery {
-    padding: 60px 0;
+    padding: 50px 0;
   }
   
   .gallery__slide {
-    min-width: 200px;
-    width: 200px;
+    min-width: 280px;
+    width: 280px;
+    height: 200px;
   }
   
   .gallery__image {
-    height: 150px;
+    height: 100%;
   }
   
   .gallery__navigation {
-    display: none;
+    margin-top: 20px;
   }
   
   .gallery__title {
-    font-size: 1.75rem;
-    margin-bottom: 24px;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .teacher {
+    min-width: 280px;
+    width: 280px;
+    height: 440px;
   }
 }
 
@@ -1700,17 +1715,19 @@ ul, ol {
   }
   
   .gallery__slide {
-    min-width: 180px;
-    width: 180px;
+    min-width: 260px;
+    width: 260px;
+    height: 200px;
   }
   
   .gallery__image {
-    height: 135px;
+    height: 100%;
   }
   
   .gallery__title {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    font-size: 26px;
+    margin-bottom: 16px;
+    line-height: 1.2;
   }
 }
 
@@ -1944,7 +1961,7 @@ ul, ol {
 .teachers__slider {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   padding: 10px 0;
 }
 
@@ -1959,16 +1976,13 @@ ul, ol {
 .teacher {
   min-width: 380px;
   width: 380px;
+  height: 480px;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
   flex-shrink: 0;
   background-color: var(--color-white);
   transition: transform 0.3s ease, opacity 0.3s ease;
-  height: 480px;
-  display: flex;
-  flex-direction: column;
-  margin-right: 0;
 }
 
 .teacher__image-wrapper {
@@ -2188,24 +2202,26 @@ ul, ol {
   }
   
   .teachers__title {
-    font-size: 1.5rem;
+    font-size: 26px;
+    margin-bottom: 15px;
   }
   
   .teachers__emoji-left {
-    font-size: 1.5rem;
+    display: none;
   }
   
   .teachers__emoji-right {
-    font-size: 1.5rem;
+    display: none;
   }
+  
   .teachers__text{
-    font-size: 0.8rem;
-    text-wrap: balance;
+    font-size: 16px;
   }
+  
   .teacher {
-    min-width: 240px;
-    width: 240px;
-    height: 340px;
+    min-width: 260px;
+    width: 260px;
+    height: 440px;
   }
   
   .teacher__image-wrapper {
@@ -2213,22 +2229,22 @@ ul, ol {
   }
   
   .teacher__info {
-    padding: 12px;
+    padding: 15px;
   }
   
   .teacher__name {
-    font-size: 0.95rem;
-    margin-bottom: 4px;
+    font-size: 18px;
+    margin-bottom: 5px;
   }
   
   .teacher__position {
-    font-size: 0.75rem;
-    margin-bottom: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
   }
   
   .teacher__quote {
-    font-size: 0.8rem;
-    line-height: 1.3;
+    font-size: 14px;
+    line-height: 1.4;
   }
 }
 
