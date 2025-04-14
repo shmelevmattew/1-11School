@@ -1674,6 +1674,8 @@ ul, ol {
     min-width: 340px;
     width: 340px;
     height: 460px;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -1706,6 +1708,12 @@ ul, ol {
     min-width: 280px;
     width: 280px;
     height: 440px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .teacher__image-wrapper {
+    height: 220px;
   }
 }
 
@@ -1982,12 +1990,15 @@ ul, ol {
   flex-shrink: 0;
   background-color: rgba(130, 155, 189, 0.06);
   transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .teacher__image-wrapper {
-  height: 300px;
+  height: 240px;
   overflow: hidden;
   flex-shrink: 0;
+  border-radius: 24px;
 }
 
 .teacher__image {
@@ -2001,18 +2012,19 @@ ul, ol {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .teacher__name {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
   margin-bottom: 8px;
   color: var(--color-text);
 }
 
 .teacher__position {
-  font-size: 0.875rem;
-  color: var(--color-text-light);
+  font-size: 16px;
+  color: rgba(34,33,37,0.62);
   margin-bottom: 16px;
 }
 
@@ -2021,6 +2033,7 @@ ul, ol {
   line-height: 1.5;
   color: var(--color-text);
   font-style: italic;
+  margin-top: auto;
 }
 
 .teachers__navigation {
@@ -2161,6 +2174,8 @@ ul, ol {
     min-width: 280px;
     width: 280px;
     height: 380px;
+    display: flex;
+    flex-direction: column;
   }
   
   .teacher__image-wrapper {
@@ -2169,6 +2184,9 @@ ul, ol {
   
   .teacher__info {
     padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   
   .teacher__name {
@@ -2221,6 +2239,8 @@ ul, ol {
     min-width: 260px;
     width: 260px;
     height: 440px;
+    display: flex;
+    flex-direction: column;
   }
   
   .teacher__image-wrapper {
@@ -2229,6 +2249,13 @@ ul, ol {
   
   .teacher__info {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .teacher__name {
+    font-size: 18px;
   }
   
   .teacher__name {
