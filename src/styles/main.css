@@ -159,19 +159,9 @@ ul, ol {
 }
 
 .nav__link:hover {
-  color: var(--color-primary);
+  color:black;
 }
 
-.nav__link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  transition: width 0.2s ease;
-}
 
 .nav__link:hover::after {
   width: 100%;
@@ -186,7 +176,7 @@ ul, ol {
 
 .header__phone {
   font-weight: 500;
-  font-size: 1.125rem;
+  font-size: 14px;
   color: var(--color-phone);
   transition: color 0.2s ease;
   margin-left: 5px;
@@ -194,7 +184,7 @@ ul, ol {
 }
 
 .header__phone:hover {
-  color: var(--color-primary);
+  color: black;
 }
 
 .header__social {
