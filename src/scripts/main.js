@@ -348,77 +348,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Emoji Animation
   const setupEmojiAnimations = () => {
-    // Green emoji animation (waving hand)
-    const greenEmoji = document.querySelector('.promo__emoji--green');
-    if (greenEmoji) {
-      const frames = ['(￣▽￣)ノ', '(￣▽￣)/', '(￣▽￣)〆', '(￣▽￣)ノ', '(￣▽￣)〆'];
-      let currentFrame = 0;
-      
-      setInterval(function() {
-        greenEmoji.textContent = frames[currentFrame];
-        currentFrame = (currentFrame + 1) % frames.length;
-      }, 300);
-    }
-
-    // Blue emoji animation (blinking)
-    const blueEmoji = document.querySelector('.promo__emoji--blue');
-    if (blueEmoji) {
-      const blinkFrames = ['(✯◡✯)', '(✯ᴗ✯)', '(✯◡✯)'];
-      let blinkFrame = 0;
-      
-      setInterval(function() {
-        blueEmoji.textContent = blinkFrames[blinkFrame];
-        blinkFrame = (blinkFrame + 1) % blinkFrames.length;
-      }, 500);
-    }
-
-    // Kawaii emoji animation
-    const kawaiiEmoji = document.querySelector('.feature__kawaii');
-    if (kawaiiEmoji) {
-      const kawaiiFrames = ['(*^.^*)', '(*^_^*)', '(*^ω^*)', '(*^.^*)'];
-      let kawaiiFrame = 0;
-      
-      setInterval(function() {
-        kawaiiEmoji.textContent = kawaiiFrames[kawaiiFrame];
-        kawaiiFrame = (kawaiiFrame + 1) % kawaiiFrames.length;
-      }, 700);
-    }
-
-    // Cool emoji animation
-    const coolEmoji = document.querySelector('.feature__cool-emoji');
-    if (coolEmoji) {
-      const coolFrames = ['(⌐■_■)', '(⌐■ᴥ■)', '(⌐■_■)'];
-      let coolFrame = 0;
-      
-      setInterval(function() {
-        coolEmoji.textContent = coolFrames[coolFrame];
-        coolFrame = (coolFrame + 1) % coolFrames.length;
-      }, 800);
-    }
-    
-    // Pricing top emoji animation
-    const pricingTopEmoji = document.querySelector('.pricing__emoji-top .pricing__emoji-image');
-    if (pricingTopEmoji) {
-      const pricingTopFrames = ['(ノ*°▽°*)', '(ノ*°ω°*)', '(ノ*°▽°*)', '(ノ*°∀°*)'];
-      let pricingTopFrame = 0;
-      
-      setInterval(function() {
-        pricingTopEmoji.textContent = pricingTopFrames[pricingTopFrame];
-        pricingTopFrame = (pricingTopFrame + 1) % pricingTopFrames.length;
-      }, 600);
-    }
-    
-    // Pricing bottom emoji animation
-    const pricingBottomEmoji = document.querySelector('.pricing__emoji-bottom .pricing__emoji-image');
-    if (pricingBottomEmoji) {
-      const pricingBottomFrames = ['ヽ(>∀<☆)ノ', 'ヽ(>ω<☆)ノ', 'ヽ(>∀<☆)ノ', 'ヽ(>▽<☆)ノ'];
-      let pricingBottomFrame = 0;
-      
-      setInterval(function() {
-        pricingBottomEmoji.textContent = pricingBottomFrames[pricingBottomFrame];
-        pricingBottomFrame = (pricingBottomFrame + 1) % pricingBottomFrames.length;
-      }, 700);
-    }
+    // This function is deliberately emptied to remove all emoji animations
+    // No animations will be applied to emojis
   };
 
   // Gallery popup functionality
@@ -822,71 +753,167 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Footer emoji click interaction
   function setupFooterEmojiInteraction() {
-    // Альтернативные варианты эмодзи для каждого типа
-    const emojiVariants = {
-      'sleeping': ['(＿ ＿*) Z z z', '(￣o￣) zzZ', '(ᴗ˳ᴗ) z Z', '(-_-) zzZ', '(≧.≦) z z Z'],
-      'eating': ['(っ˘ڡ˘ς)', '(っ・ω・)っ', '(っ˘ڡ˘)っ', '(っ⌒‿⌒)っ', '(っ≧ω≦)っ'],
-      'happy': ['(ノ*°▽°*)', '(ノ￣ω￣)ノ', '(ノ・∀・)ノ', '(ノ^_^)ノ', '(ノ≧ω≦)ノ'],
-      'cool': ['(⌐■_■)', '(ᵔᴥᵔ)', '(•_•)>⌐■-■', '(˘⌣˘)⌐■-■', '(⌐■-■)']
-    };
+    // Emoji click interaction disabled
+    // Function left empty to prevent emoji changes on click
+  }
+
+  // Modal functionality
+  function setupModalWindow() {
+    const modal = document.getElementById('applicationModal');
+    const modalContent = modal.querySelector('.modal__content');
+    const closeButton = modal.querySelector('.modal__close');
+    const form = document.getElementById('applicationForm');
+    const formElements = form.querySelector('.modal__form');
+    const successMessage = modal.querySelector('.modal__success');
     
-    // Функция для добавления обработчиков кликов
-    function addClickHandlers() {
-      const footerEmojis = document.querySelectorAll('.footer__emoji');
-      footerEmojis.forEach(emoji => {
-        // Проверяем, не добавлен ли уже обработчик
-        if (!emoji.hasAttribute('data-click-handler')) {
-          emoji.setAttribute('data-click-handler', 'true');
+    // Кнопки для открытия модального окна
+    const applyButtons = document.querySelectorAll('[href="#apply"]');
+    const tourButtons = document.querySelectorAll('[href="#tour"]');
+    
+    // Настройка маски для телефона
+    const phoneInput = document.getElementById('phoneInput');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 0) {
+          if (value[0] === '7' || value[0] === '8') {
+            value = value.substring(1);
+          }
           
-          emoji.addEventListener('click', function() {
-            // Определяем тип эмодзи
-            let emojiType = '';
-            if (emoji.classList.contains('footer__emoji--sleeping')) {
-              emojiType = 'sleeping';
-            } else if (emoji.classList.contains('footer__emoji--eating')) {
-              emojiType = 'eating';
-            } else if (emoji.classList.contains('footer__emoji--happy')) {
-              emojiType = 'happy';
-            } else if (emoji.classList.contains('footer__emoji--cool')) {
-              emojiType = 'cool';
-            }
-            
-            if (emojiType && emojiVariants[emojiType]) {
-              // Получаем случайный вариант эмодзи, отличный от текущего
-              const currentText = emoji.textContent;
-              let variants = emojiVariants[emojiType].filter(variant => variant !== currentText);
-              if (variants.length === 0) {
-                variants = emojiVariants[emojiType]; // Если все варианты исключены, используем все
-              }
-              const randomEmoji = variants[Math.floor(Math.random() * variants.length)];
-              
-              // Добавляем класс для анимации и меняем текст
-              emoji.classList.add('clicked');
-              
-              // Удаляем класс после завершения анимации
-              setTimeout(() => {
-                emoji.textContent = randomEmoji;
-                
-                setTimeout(() => {
-                  emoji.classList.remove('clicked');
-                }, 500);
-              }, 200);
-            }
-          });
+          let formattedValue = '+7';
+          
+          if (value.length > 0) {
+            formattedValue += ' (' + value.substring(0, 3);
+          }
+          
+          if (value.length > 3) {
+            formattedValue += ') ' + value.substring(3, 6);
+          }
+          
+          if (value.length > 6) {
+            formattedValue += '-' + value.substring(6, 8);
+          }
+          
+          if (value.length > 8) {
+            formattedValue += '-' + value.substring(8, 10);
+          }
+          
+          e.target.value = formattedValue;
         }
       });
     }
     
-    // Добавляем обработчики при загрузке
-    addClickHandlers();
+    // Открытие модального окна
+    function openModal(type) {
+      document.body.classList.add('no-scroll');
+      modal.classList.add('active');
+      
+      // Меняем заголовок в зависимости от типа формы
+      const title = modal.querySelector('.modal__title');
+      if (type === 'tour') {
+        title.textContent = 'Записаться на экскурсию';
+        // Предзаполняем сообщение
+        document.getElementById('messageInput').value = 'Хочу записаться на экскурсию.';
+      } else {
+        title.textContent = 'Оставить заявку';
+        document.getElementById('messageInput').value = '';
+      }
+    }
     
-    // Перепроверяем после изменения размера окна, для работы с клонированными элементами
-    window.addEventListener('resize', function() {
-      setTimeout(addClickHandlers, 200);
+    // Закрытие модального окна
+    function closeModal() {
+      document.body.classList.remove('no-scroll');
+      modal.classList.remove('active');
+      setTimeout(() => {
+        form.reset();
+        successMessage.style.display = 'none';
+        formElements.style.display = 'flex';
+      }, 300);
+    }
+    
+    // Обработчики событий для кнопок
+    applyButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal('apply');
+      });
     });
     
-    // Проверяем еще раз после небольшой задержки
-    setTimeout(addClickHandlers, 500);
+    tourButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal('tour');
+      });
+    });
+    
+    // Закрытие по клику на крестик
+    closeButton.addEventListener('click', closeModal);
+    
+    // Закрытие по клику вне модального окна
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+    
+    // Предотвращение закрытия при клике на контент
+    modalContent.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+    
+    // Обработка отправки формы
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const formDataObj = {};
+      formData.forEach((value, key) => {
+        formDataObj[key] = value;
+      });
+      
+      try {
+        // Определяем базовый URL в зависимости от окружения
+        const baseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+          ? `http://${window.location.hostname}:3000` // Локальный сервер
+          : ''; // Если на продакшене, используем относительный URL
+        
+        // Показываем индикатор загрузки
+        const submitButton = form.querySelector('.modal__submit');
+        const originalButtonText = submitButton.textContent;
+        submitButton.textContent = 'Отправка...';
+        submitButton.disabled = true;
+        
+        // Отправка данных на сервер
+        const response = await fetch(`${baseUrl}/api/submit-application`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formDataObj)
+        });
+        
+        // Возвращаем кнопку в исходное состояние
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+          // Показываем сообщение об успехе
+          formElements.style.display = 'none';
+          successMessage.style.display = 'block';
+          
+          // Закрываем модальное окно через 3 секунды
+          setTimeout(closeModal, 3000);
+        } else {
+          console.error('Ошибка при отправке формы:', result);
+          alert(result.error || 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
+        }
+      } catch (error) {
+        console.error('Ошибка отправки данных:', error);
+        alert('Не удалось отправить заявку. Пожалуйста, проверьте соединение с интернетом и попробуйте еще раз.');
+      }
+    });
   }
 
   // Initialize all functionality
@@ -898,13 +925,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setupGalleryPopup();
   setupTeachersPopup();
   setupScrollAnimations();
-  setupEmojiAnimations();
+  // setupEmojiAnimations(); // Disabled emoji animations
   
   // Initialize footer emoji layout
   handleFooterEmojiLayout();
   
   // Initialize footer emoji interaction
-  setupFooterEmojiInteraction();
+  // setupFooterEmojiInteraction(); // Disabled emoji interactions
+  
+  // Initialize modal window
+  setupModalWindow();
+  
+  // Initialize parallax effects
+  setupParallaxEffects();
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {
@@ -931,5 +964,78 @@ document.addEventListener('DOMContentLoaded', () => {
   // Form validation (for future implementation)
   const setupFormValidation = () => {
     // This will be implemented when application forms are added
+  };
+
+  // Initialize parallax effects
+  const setupParallaxEffects = () => {
+    // Initialize Rellax for elements with rellax class
+    const rellaxElements = document.querySelectorAll('.hero__emoji, .feature__star, .feature__kawaii, .feature__icon, .promo__emoji, .mission__bubble-wrapper, .mission__pool-emoji');
+    
+    // Add rellax class to these elements
+    rellaxElements.forEach(element => {
+      element.classList.add('rellax');
+      
+      // Set different speeds for different elements
+      if (element.classList.contains('hero__emoji')) {
+        element.setAttribute('data-rellax-speed', '3');
+      } else if (element.classList.contains('feature__star')) {
+        element.setAttribute('data-rellax-speed', '-2');
+      } else if (element.classList.contains('feature__kawaii')) {
+        element.setAttribute('data-rellax-speed', '2');
+      } else if (element.classList.contains('feature__icon')) {
+        element.setAttribute('data-rellax-speed', '1');
+      } else if (element.classList.contains('promo__emoji')) {
+        element.setAttribute('data-rellax-speed', '3');
+      } else if (element.classList.contains('mission__bubble-wrapper')) {
+        element.setAttribute('data-rellax-speed', '1');
+      } else if (element.classList.contains('mission__pool-emoji')) {
+        element.setAttribute('data-rellax-speed', '2');
+      }
+    });
+    
+    // Initialize Rellax
+    const rellax = new Rellax('.rellax', {
+      center: true,
+      wrapper: null,
+      round: true,
+      vertical: true,
+      horizontal: false
+    });
+
+    // Setup Parallax.js scene for hero background
+    const heroImageContainer = document.querySelector('.hero__image-container');
+    if (heroImageContainer) {
+      heroImageContainer.setAttribute('data-depth', '0.2');
+      new Parallax(heroImageContainer);
+    }
+
+    // Setup Parallax.js for mission section
+    const missionVisual = document.querySelector('.mission__visual');
+    if (missionVisual) {
+      missionVisual.setAttribute('data-depth', '0.3');
+      new Parallax(missionVisual);
+    }
+
+    // Setup Parallax.js for promo image
+    const promoImageWrapper = document.querySelector('.promo__image-wrapper');
+    if (promoImageWrapper) {
+      promoImageWrapper.setAttribute('data-depth', '0.1');
+      new Parallax(promoImageWrapper);
+    }
+
+    // Create parallax scene for gallery images
+    const gallerySlides = document.querySelectorAll('.gallery__slide');
+    gallerySlides.forEach(slide => {
+      slide.classList.add('parallax-container');
+      slide.setAttribute('data-depth', '0.2');
+      new Parallax(slide);
+    });
+
+    // Add window resize handler to refresh parallax
+    window.addEventListener('resize', () => {
+      if (rellax) {
+        rellax.refresh();
+      }
+    });
   };
 }); 
