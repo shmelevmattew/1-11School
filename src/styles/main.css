@@ -2636,6 +2636,7 @@ ul, ol {
   margin: 0 auto;
   min-width: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .bottom-promo__image {
@@ -2644,7 +2645,101 @@ ul, ol {
   display: block;
 }
 
-/* Адаптивность для планшетов */
+/* Animated lines styles */
+.bottom-promo__lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 210%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.bottom-promo__line {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 1 
+;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-promo__line img {
+  position: absolute;
+  width: 180%;
+  height: auto;
+  left: -40%;
+}
+
+.bottom-promo__line--1 {
+  top: 30%;
+  transform: rotate(-5deg);
+}
+
+.bottom-promo__line--1 img {
+  animation: lineMove1 10s ease-in-out infinite;
+}
+
+.bottom-promo__line--2 {
+  top: -10%;
+  transform: rotate(12deg);
+}
+
+.bottom-promo__line--2 img {
+  animation: lineMove1 10s ease-in-out infinite;
+}
+
+.bottom-promo__line--3 {
+  top: -80%;
+  transform: rotate(-24deg);
+}
+
+.bottom-promo__line--3 img {
+  animation: lineMove1 10s ease-in-out infinite;
+
+}
+
+@keyframes lineMove1 {
+  0% {
+    transform: translateX(0%);
+  }
+  50%{
+    transform: translateX(40%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes lineMove2 {
+  0% {
+    transform: translateX(0%);
+  }
+  50%{
+    transform: translateX(40%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes lineMove3 {
+  0% {
+    transform: translateX(0%);
+  }
+  50%{
+    transform: translateX(40%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive adjustments for animated lines */
 @media (max-width: 1024px) {
   .bottom-promo {
     padding: 50px 0;
