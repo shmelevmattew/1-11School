@@ -331,7 +331,24 @@ ul, ol {
   flex-direction: column;
   justify-content: space-between;
 }
-
+.hero__emoji-img{
+  position: absolute;
+  right: 10%;
+  top: 16px;
+  animation: floatUp 3s ease-in-out infinite;
+}
+@media (max-width: 1024px) {
+  .hero__emoji-img{
+    right: 10px;
+    top: 0;
+  }
+}
+@media (max-width: 425px) {
+  .hero__emoji-img{
+    width: 245px;
+    right: 10px;
+  }
+}
 .hero__image-container {
   flex: 0 0 calc(50% - 12px);
   width: calc(50% - 12px);
@@ -407,10 +424,6 @@ ul, ol {
   color: #333;
 }
 
-@keyframes floatTop {
-  0%, 100% { transform: translateX(-50%) rotate(-3deg) translateY(0); }
-  50% { transform: translateX(-50%) rotate(-4deg) translateY(-5px); }
-}
 
 @keyframes floatBottom {
   0%, 100% { transform: translateX(-50%) rotate(-8deg) translateY(0); }
@@ -3095,7 +3108,7 @@ ul, ol {
 /* Анимации для эмодзи */
 @keyframes floatUp {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-5px); }
 }
 
 @keyframes pulse {
