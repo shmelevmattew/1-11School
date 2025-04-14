@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let startX;
     let currentX;
-    const slidesToShow = getSlidesToShow();
+    let slidesToShow = getSlidesToShow();
     const totalSlides = slides.length;
     
     function getSlidesToShow() {
@@ -133,16 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (window.innerWidth <= 768) {
         return 2;
       } else if (window.innerWidth <= 1024) {
-        return 3;
+        return 2;
       } else {
-        return 4;
+        return 3;
       }
     }
     
     // Update slide position
     function updateSlidePosition() {
       const slideWidth = slides[0].offsetWidth;
-      const gap = 20; // gap between slides in px
+      const gap = 30; // match the CSS gap value
       const offset = currentIndex * (slideWidth + gap);
       galleryWrapper.style.transform = `translateX(-${offset}px)`;
     }
@@ -160,6 +160,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentIndex < totalSlides - slidesToShow) {
           currentIndex++;
           updateSlidePosition();
+        } else {
+          // Return to first slide when reaching the end
+          currentIndex = 0;
+          updateSlidePosition();
         }
       });
     }
@@ -176,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentX = e.touches[0].clientX;
       const diff = startX - currentX;
       const slideWidth = slides[0].offsetWidth;
-      const gap = 20;
+      const gap = 30;
       const currentOffset = currentIndex * (slideWidth + gap);
       
       // Apply resistance if at the edges
@@ -216,9 +220,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
       const newSlidesToShow = getSlidesToShow();
       if (slidesToShow !== newSlidesToShow) {
+        slidesToShow = newSlidesToShow;
         // Reset position if needed
-        if (currentIndex > totalSlides - newSlidesToShow) {
-          currentIndex = Math.max(0, totalSlides - newSlidesToShow);
+        if (currentIndex > totalSlides - slidesToShow) {
+          currentIndex = Math.max(0, totalSlides - slidesToShow);
         }
         updateSlidePosition();
       }
@@ -242,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0;
     let startX;
     let currentX;
-    const slidesToShow = getTeacherSlidesToShow();
+    let slidesToShow = getTeacherSlidesToShow();
     const totalSlides = teachers.length;
     
     function getTeacherSlidesToShow() {
@@ -251,16 +256,16 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (window.innerWidth <= 768) {
         return 2;
       } else if (window.innerWidth <= 1024) {
-        return 3;
+        return 2;
       } else {
-        return 4;
+        return 3;
       }
     }
     
     // Update slide position
     function updateTeacherPosition() {
       const slideWidth = teachers[0].offsetWidth;
-      const gap = 20; // уменьшаем отступ между слайдами
+      const gap = 30; // match the CSS gap value in teachers__wrapper
       const offset = currentIndex * (slideWidth + gap);
       teachersWrapper.style.transform = `translateX(-${offset}px)`;
     }
@@ -278,6 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentIndex < totalSlides - slidesToShow) {
           currentIndex++;
           updateTeacherPosition();
+        } else {
+          // Return to first slide when reaching the end
+          currentIndex = 0;
+          updateTeacherPosition();
         }
       });
     }
@@ -294,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentX = e.touches[0].clientX;
       const diff = startX - currentX;
       const slideWidth = teachers[0].offsetWidth;
-      const gap = 20;
+      const gap = 30;
       const currentOffset = currentIndex * (slideWidth + gap);
       
       // Apply resistance if at the edges
@@ -334,9 +343,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
       const newSlidesToShow = getTeacherSlidesToShow();
       if (slidesToShow !== newSlidesToShow) {
+        slidesToShow = newSlidesToShow;
         // Reset position if needed
-        if (currentIndex > totalSlides - newSlidesToShow) {
-          currentIndex = Math.max(0, totalSlides - newSlidesToShow);
+        if (currentIndex > totalSlides - slidesToShow) {
+          currentIndex = Math.max(0, totalSlides - slidesToShow);
         }
         updateTeacherPosition();
       }
