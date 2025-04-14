@@ -1107,7 +1107,7 @@ ul, ol {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: -42px;
+  top: -55px;
   left: 65%;
   height: 92px;
   width: 500px;
@@ -1179,7 +1179,7 @@ ul, ol {
   width: auto;
   white-space: nowrap;
   display: inline-block;
-  width: 474px;
+  width: 100%;
 }
 
 .mission__pool-emoji img {
@@ -1267,7 +1267,7 @@ ul, ol {
     left: 0px !important; 
   }
   .mission__pool-emoji img {
-    max-height: 45px;
+
   }
   .mission-action__button{
     font-size: 1rem !important;
@@ -1301,7 +1301,7 @@ ul, ol {
 /* Адаптивность для планшетов */
 @media (max-width: 1024px) {
   .mission__title {
-    font-size: 2rem;
+
   }
   
   .mission__description {
@@ -1325,7 +1325,7 @@ ul, ol {
   }
   
   .mission__title {
-    font-size: 1.75rem;
+
     margin-bottom: 24px;
   }
   
@@ -1358,8 +1358,8 @@ ul, ol {
   .mission__pool-emoji {
     position: relative;
     bottom: auto;
-    left: -30px;
-    
+    max-width: 553px;
+    width: 100%;
     transform: none;
     font-size: 1.3rem;
     text-align: center;
@@ -2791,6 +2791,10 @@ ul, ol {
   }
   .bottom-promo__line--3{
     top: -692px;
+  }
+  .mission__title {
+    font-size: 32px;
+    margin-bottom: 24px;
   }
 }
 
