@@ -2780,10 +2780,9 @@ ul, ol {
 }
 
 .footer__title h2 {
-  font-size: 36px;
+  font-size: 56px;
   font-weight: 700;
   margin-bottom: 20px;
-  width: 400px;
 }
 
 .footer__phone {
@@ -2791,7 +2790,7 @@ ul, ol {
 }
 
 .footer__phone-link {
-  font-size: 32px;
+  font-size:56px;
   font-weight: 700;
   color: #ff5722;
   transition: color 0.2s ease;
