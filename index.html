@@ -83,7 +83,7 @@
     </div>
 
     <main>
-        <section class="hero" id = "about">
+        <section class="hero">
             <div class="hero__container">
                 <div class="hero__content">
                     <h1 class="hero__title">Школа полного  <br> цикла 1–11 классы</h1>
@@ -117,7 +117,7 @@
             </div>
         </section>
         
-        <section class="features">
+        <section class="features" id = "about">
             <div class="container">
                 <div class="features__grid">
                     <div class="feature feature--security">
@@ -151,7 +151,7 @@
             </div>
         </section>
         
-        <section class="mission" id = "">
+        <section class="mission">
             <div class="container">
                 <div class="mission__grid">
                     <div class="mission__content">
@@ -580,19 +580,18 @@
             <button class="modal__close" aria-label="Закрыть">
                 <img src="src/images/close.svg" alt="" width="24" height="24" aria-hidden="true">
             </button>
-            <h2 class="modal__title">Оставить заявку</h2>
+            <h2 class="modal__title">Оставьте заявку, c Вами свяжется наш специалист</h2>
             <form class="modal__form" id="applicationForm">
                 <div class="modal__field">
-                    <label for="nameInput" class="modal__label">Имя</label>
-                    <input type="text" id="nameInput" name="name" class="modal__input" placeholder="Введите ваше имя" required>
+                    <input type="text" id="nameInput" name="name" class="modal__input" required>
+                    <label class="modal-label">Имя</label>
                 </div>
                 <div class="modal__field">
-                    <label for="phoneInput" class="modal__label">Телефон</label>
-                    <input type="tel" id="phoneInput" name="phone" class="modal__input" placeholder="+7 (___) ___-__-__" required>
+                    <input type="tel" id="phoneInput" name="phone" class="modal__input" required>
+                    <label class="modal-label">Номер телефона</label>
                 </div>
                 <div class="modal__field">
-                    <label for="messageInput" class="modal__label">Сообщение</label>
-                    <textarea id="messageInput" name="message" class="modal__textarea" placeholder="Напишите ваше сообщение" rows="4"></textarea>
+                    <textarea id="messageInput" name="message" class="modal__textarea" placeholder="Сообщение" rows="4"></textarea>
                 </div>
                 <button type="submit" class="button button--primary modal__submit">Отправить</button>
             </form>

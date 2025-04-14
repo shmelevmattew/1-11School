@@ -766,7 +766,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Emoji click interaction disabled
     // Function left empty to prevent emoji changes on click
   }
-
+  document.querySelector('input[type="tel"]').addEventListener('input', function(e) {
+    e.target.value = e.target.value.replace(/\D+/g, "");
+  });
   // Modal functionality
   function setupModalWindow() {
     const modal = document.getElementById('applicationModal');
@@ -782,6 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Настройка маски для телефона
     const phoneInput = document.getElementById('phoneInput');
+    
     if (phoneInput) {
       phoneInput.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
@@ -818,16 +821,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.add('no-scroll');
       modal.classList.add('active');
       
-      // Меняем заголовок в зависимости от типа формы
-      const title = modal.querySelector('.modal__title');
-      if (type === 'tour') {
-        title.textContent = 'Записаться на экскурсию';
-        // Предзаполняем сообщение
-        document.getElementById('messageInput').value = 'Хочу записаться на экскурсию.';
-      } else {
-        title.textContent = 'Оставить заявку';
-        document.getElementById('messageInput').value = '';
-      }
     }
     
     // Закрытие модального окна
