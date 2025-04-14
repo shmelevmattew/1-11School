@@ -86,7 +86,7 @@
         <section class="hero">
             <div class="hero__container">
                 <div class="hero__content">
-                    <h1 class="hero__title">Школа полного цикла 1–11 классы</h1>
+                    <h1 class="hero__title">Школа полного  <br> цикла 1–11 классы</h1>
                     <div class="hero__emoji">
                         <div class="hero__emoji-top">
                             <span class="hero__emoji-text">(o˘◡˘o)</span>
@@ -567,5 +567,35 @@
     </footer>
 
     <script src="src/scripts/main.js" defer></script>
+    
+    <!-- Модальное окно для заявки -->
+    <div class="modal" id="applicationModal">
+        <div class="modal__content">
+            <button class="modal__close" aria-label="Закрыть">
+                <img src="src/images/close.svg" alt="" width="24" height="24" aria-hidden="true">
+            </button>
+            <h2 class="modal__title">Оставить заявку</h2>
+            <form class="modal__form" id="applicationForm">
+                <div class="modal__field">
+                    <label for="nameInput" class="modal__label">Имя</label>
+                    <input type="text" id="nameInput" name="name" class="modal__input" placeholder="Введите ваше имя" required>
+                </div>
+                <div class="modal__field">
+                    <label for="phoneInput" class="modal__label">Телефон</label>
+                    <input type="tel" id="phoneInput" name="phone" class="modal__input" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="modal__field">
+                    <label for="messageInput" class="modal__label">Сообщение</label>
+                    <textarea id="messageInput" name="message" class="modal__textarea" placeholder="Напишите ваше сообщение" rows="4"></textarea>
+                </div>
+                <button type="submit" class="button button--primary modal__submit">Отправить</button>
+            </form>
+            <div class="modal__success" style="display: none;">
+                <div class="modal__success-icon">✓</div>
+                <h3 class="modal__success-title">Спасибо за заявку!</h3>
+                <p class="modal__success-text">Мы свяжемся с вами в ближайшее время.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html> 
