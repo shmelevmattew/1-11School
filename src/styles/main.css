@@ -1174,11 +1174,18 @@ ul, ol {
   font-size: 2rem;
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
   color: var(--color-text);
   z-index: 1;
+  width: auto;
   white-space: nowrap;
+  display: inline-block;
+  width: 474px;
+}
+
+.mission__pool-emoji img {
+  display: block;
+  width: auto;
+  height: auto;
 }
 
 @media (max-width:425px) {
@@ -1258,6 +1265,9 @@ ul, ol {
   .mission__pool-emoji {
     font-size: 1.5rem !important;
     left: 0px !important; 
+  }
+  .mission__pool-emoji img {
+    max-height: 45px;
   }
   .mission-action__button{
     font-size: 1rem !important;
