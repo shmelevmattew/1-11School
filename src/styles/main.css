@@ -670,11 +670,7 @@ ul, ol {
   }
 }
 
-@media (max-width: 768px) {
-  .feature__text br {
-    display: block; /* Show <br> tags at 768px and below */
-  }
-}
+
 .feature__icon--heart {
   position: absolute;
   bottom: -210px;
@@ -1591,7 +1587,7 @@ ul, ol {
 }
 
 .gallery__title {
-  font-size: 2.5rem;
+  font-size: 56px;
   font-weight: 700;
   margin-bottom: 40px;
   text-align: center;
@@ -1726,7 +1722,7 @@ ul, ol {
 }
 
 .benefits__title {
-  font-size: 2.5rem;
+  font-size: 56px;
   font-weight: 700;
   margin-bottom: 40px;
   text-align: center;
@@ -1750,7 +1746,6 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .benefit__icon {
@@ -1766,7 +1761,6 @@ ul, ol {
 
 .benefit__icon:hover {
   transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .benefit__icon.animated {
@@ -1785,10 +1779,10 @@ ul, ol {
 }
 
 .benefit__text {
-  font-size: 1rem;
+  font-size: 20px;
   line-height: 1.5;
   color: var(--color-text);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* Адаптивность для планшетов */
@@ -1880,7 +1874,7 @@ ul, ol {
 }
 
 .teachers__title {
-  font-size: 2.7rem;
+  font-size: 56px;
   font-weight: 700;
   margin-bottom: 20px;
   color: var(--color-text);
