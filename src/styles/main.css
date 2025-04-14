@@ -172,6 +172,7 @@ ul, ol {
   display: flex;
   align-items: center;
   gap: 24px;
+  margin-left: 24px;
 }
 
 .header__phone {
@@ -429,8 +430,9 @@ ul, ol {
 }
 
 .hero__text {
-  font-size: 1.25rem;
-  margin-bottom: 8px;
+  font-size: 19px;
+  line-height: 28px;
+  color: #222125;
 }
 
 .hero__text:last-child {
@@ -473,7 +475,7 @@ ul, ol {
 
 /* CTA Section */
 .cta {
-  padding: 32px 0;
+  padding: 0 0 96px 0;
   background-color: transparent;
 }
 
@@ -739,9 +741,6 @@ ul, ol {
     font-size: 0.8rem;
     white-space: no-wrap;
     margin-right: 20px;
-  }
-  .hero__text {
-    font-size: 0.9rem;
   }
   
   .feature--security .feature__title,
