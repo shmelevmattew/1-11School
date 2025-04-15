@@ -4193,3 +4193,54 @@ ul, ol {
   }
   
 }
+
+.footer__stickers {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.footer__stickers-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .footer__stickers {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    order: 5;
+  }
+
+  .footer__stickers-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 425px) {
+  .footer__stickers {
+    margin-bottom: 20px;
+  }
+
+  .footer__stickers-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Remove old emoji styles since we're not using them anymore */
+.footer__emoji,
+.footer__emoji--sleeping,
+.footer__emoji--eating,
+.footer__emoji--happy,
+.footer__emoji--cool,
+.footer__emoji-container {
+  display: none;
+}

@@ -544,14 +544,12 @@
     <footer class="footer">
         <div class="container">
             <div class="footer__content">
-                <div class="footer__emoji footer__emoji--sleeping">(＿ ＿*) Z z z</div>
-                <div class="footer__emoji footer__emoji--eating">(っ˘ڡ˘ς)</div>
-                <div class="footer__emoji footer__emoji--happy">(ノ*°▽°*)</div>
-                <div class="footer__emoji footer__emoji--cool"><img src="src/images/cool.png" alt="cool emoji" aria-hidden="true"></div>
-                
-                <div class="footer__emoji-container">
-                    <!-- Контейнер для эмодзи на мобильном -->
-                </div>
+                <picture class="footer__stickers">
+                    <source media="(min-width: 769px)" srcset="src/images/footer-desktop.png">
+                    <source media="(min-width: 426px) and (max-width: 768px)" srcset="src/images/footer-mobile.png">
+                    <source media="(max-width: 425px)" srcset="src/images/footer-425.png">
+                    <img src="src/images/footer-desktop.png" alt="Footer stickers" class="footer__stickers-image">
+                </picture>
                 
                 <div class="footer__title">
                     <h2>Звоните, если <br>остались вопросы</h2>
@@ -573,6 +571,7 @@
                 <div class="footer__address">
                     <p>п. Кузьмоловский, ЖК «Небо», ул. Светлая, д. 1</p>
                 </div>
+                
                 <div class="footer__copyright">
                     <p>design by Clonker</p>
                 </div>
