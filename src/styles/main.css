@@ -832,7 +832,7 @@ ul, ol {
   }
   
   .cta__buttons {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   
   .hero__title {
@@ -869,6 +869,10 @@ ul, ol {
     bottom: -250px;
     left: 0;
   }
+  .features{
+    padding: 0px;
+  }
+
   .feature {
   
     min-height: auto;
@@ -936,7 +940,11 @@ ul, ol {
     top: 20px;
   }
 }
-
+@media (max-width:425px) {
+  .cta__buttons {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 576px) {
   .hero__content, 
   .hero__image-container {
@@ -1068,6 +1076,9 @@ ul, ol {
   flex-direction: column;
   gap: 24px;
 }
+.mission-feature:nth-child(4){
+  margin-bottom: 0px;
+}
 
 .mission-feature {
   background-color: #F7F7F9;
@@ -1077,9 +1088,6 @@ ul, ol {
   height: 240px;
 }
 
-.mission-feature:nth-child(4) {
-  margin-bottom: 24px;
-}
 
 .mission-feature__title {
   font-size: 1.25rem;
@@ -1343,8 +1351,11 @@ ul, ol {
   .mission__grid {
     grid-template-columns: 1fr;
     gap: 40px;
+    margin-top: 0px;
   }
-  
+  .mission{
+    padding-bottom: 0px;
+  }
   .mission-feature {
     padding: 20px;
   }
@@ -1572,7 +1583,6 @@ ul, ol {
   position: relative;
   border-radius: 150px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   height: 100%;
 }
 
@@ -1753,7 +1763,7 @@ ul, ol {
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
   .gallery {
-    padding: 50px 0;
+    padding: 0 0 50px 0;
   }
   
   .gallery__slide {
@@ -1896,7 +1906,7 @@ ul, ol {
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
   .benefits {
-    padding: 60px 0;
+    padding: 60px 0 0 0;
   }
   
   .benefits__grid {
@@ -2442,7 +2452,7 @@ ul, ol {
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
   .team {
-    padding: 60px 0;
+    padding: 0;
   }
   
   .team__title {
@@ -2887,7 +2897,7 @@ ul, ol {
   }
   
   .bottom-promo__image-wrapper {
-    border-radius: 200px;
+    border-radius: 400px;
     max-width: 800px;
   }
 }
@@ -2899,7 +2909,7 @@ ul, ol {
   }
   
   .bottom-promo__image-wrapper {
-    border-radius: 150px;
+    border-radius: 400px;
     max-width: 600px;
   }
 }
@@ -2910,7 +2920,7 @@ ul, ol {
   }
   
   .bottom-promo__image-wrapper {
-    border-radius: 100px;
+    border-radius: 400px;
     max-width: 100%;
   }
 }
