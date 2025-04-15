@@ -274,21 +274,20 @@ ul, ol {
 }
 
 .mobile-menu__link {
-  font-size: 1.25rem;
-  font-weight: 500;
+  font-size: 32px;
+  font-weight: 700;
   display: block;
   padding: 8px 0;
 }
 
 .mobile-menu__footer {
   padding: 24px;
-  border-top: 1px solid var(--color-secondary);
 }
 
 .mobile-menu__phone {
-  font-size: 1.5rem;
+  font-size: 32px;
   font-weight: 700;
-  color: var(--color-phone);
+  color: #FF0000;
   display: block;
   margin-bottom: 24px;
 }
@@ -1139,7 +1138,7 @@ ul, ol {
   max-width: 300px;
   font-size: 1.1rem;
   color: var(--color-text);
-  z-index: 2;
+  z-index: 10;
 }
 
 .mission__pool-message::before,
@@ -3080,21 +3079,19 @@ ul, ol {
 
 @media (max-width: 768px) {
   .footer__title h2 {
-    font-size: 28px;
+    font-size: 48px;
   }
   
   .footer__phone-link {
-    font-size: 26px;
-  }
-  
-  .footer__social-link {
-    width: 50px;
-    height: 50px;
+    font-size: 48px;
   }
   
   .footer__social-icon {
     width: 26px;
     height: 26px;
+  }
+  .footer__address{
+    font-size: 20px;
   }
   
   .footer__emoji {
@@ -3155,14 +3152,15 @@ ul, ol {
   }
   
   .footer__title h2 {
-    font-size: 24px;
+    font-size: 32px;
   }
   
   .footer__phone-link {
-    font-size: 22px;
+    font-size: 32px;
   }
   
   .footer__address {
+    width: 300px;
     font-size: 16px;
   }
   
