@@ -2369,11 +2369,18 @@ ul, ol {
 
 .team__photos {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   gap: 20px;
-  overflow-x: auto;
+  overflow-x: hidden;
   padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  cursor: grab;
+}
+
+.team__photos:active {
+  cursor: grabbing;
 }
 
 .team__photo {

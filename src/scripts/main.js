@@ -1009,3 +1009,97 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 }); 
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Инициализация бесконечной прокрутки для team__photos
+  const container = document.querySelector('.team__photos');
+  if (!container) return;
+
+  // Создаем обертку для фотографий
+  const wrapper = document.createElement('div');
+  wrapper.style.display = 'flex';
+  wrapper.style.gap = '20px';
+  wrapper.style.transition = 'none'; // Убираем transition для более плавной анимации
+  
+  // Перемещаем все фотографии в обертку
+  const photos = Array.from(container.children);
+  photos.forEach(photo => wrapper.appendChild(photo));
+  
+  // Клонируем фотографии для бесконечной прокрутки (создаем два набора)
+  photos.forEach(photo => {
+    const clone = photo.cloneNode(true);
+    wrapper.appendChild(clone);
+  });
+  
+  // Добавляем обертку в контейнер
+  container.appendChild(wrapper);
+  
+  // Устанавливаем начальные стили для контейнера
+  container.style.overflow = 'hidden';
+  
+  let scrollPosition = 0;
+  const speed = 0.5; // Уменьшаем скорость для более плавного эффекта
+  let animationFrameId = null;
+  let isPaused = false;
+  let firstSetWidth = 0;
+
+  // Вычисляем ширину одного набора фотографий после загрузки всех изображений
+  Promise.all(Array.from(container.getElementsByTagName('img'))
+    .filter(img => !img.complete)
+    .map(img => new Promise(resolve => {
+      img.onload = img.onerror = resolve;
+    })))
+    .then(() => {
+      firstSetWidth = photos.reduce((width, photo) => {
+        return width + photo.offsetWidth + 20; // 20px - это gap
+      }, 0);
+      
+      // Запускаем анимацию только после загрузки всех изображений
+      animate();
+    });
+
+  function animate() {
+    if (!isPaused) {
+      scrollPosition -= speed;
+      
+      // Если прокрутили на ширину первого набора фотографий, начинаем сначала
+      if (Math.abs(scrollPosition) >= firstSetWidth) {
+        scrollPosition = 0;
+      }
+
+      wrapper.style.transform = `translateX(${scrollPosition}px)`;
+    }
+    animationFrameId = requestAnimationFrame(animate);
+  }
+
+  // Обработчики событий для паузы при наведении
+  container.addEventListener('mouseenter', () => {
+    isPaused = true;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    isPaused = false;
+  });
+
+  // Обработчик изменения размера окна
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      firstSetWidth = photos.reduce((width, photo) => {
+        return width + photo.offsetWidth + 20;
+      }, 0);
+      
+      // Сбрасываем позицию прокрутки при изменении размера окна
+      scrollPosition = 0;
+      wrapper.style.transform = `translateX(${scrollPosition}px)`;
+    }, 250);
+  });
+
+  // Очистка при размонтировании
+  return () => {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+    }
+  };
+}); 
