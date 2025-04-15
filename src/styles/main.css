@@ -1266,8 +1266,11 @@ ul, ol {
   .promo__content {
     max-width: 100%;
     padding: 24px;
-    max-height: 365px;
+    max-height: 500px;
   }
+  .promo__emoji-image {
+    max-width: 226px !important;
+}
   .promo__emoji--blue{
     font-size: 1.2rem !important;
     width: 110px !important;
@@ -1470,12 +1473,11 @@ ul, ol {
 .promo__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px;
+  gap: 24px;
   align-items: stretch;
 }
 
 .promo__content {
-  max-width: 480px;
   background-color: #f7f9fb;
   padding: 30px;
   border-radius: 24px;
@@ -1498,13 +1500,25 @@ ul, ol {
 }
 
 .promo__emoji {
-  position: absolute;
-  padding: 10px 15px;
-  border-radius: 12px;
-  font-family: monospace;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.promo__emoji-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+/* Remove old emoji styles since we're not using them anymore */
+.promo__emoji--green,
+.promo__emoji--blue {
+  display: none;
 }
 
 .promo__emoji--green {
