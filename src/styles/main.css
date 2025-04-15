@@ -2756,7 +2756,7 @@ ul, ol {
 }
 
 .bottom-promo__line--1 img {
-  animation: lineMove1 10s ease-in-out infinite;
+  animation: lineMove1 20s ease-in-out infinite;
 }
 
 .bottom-promo__line--2 {
@@ -2765,7 +2765,7 @@ ul, ol {
 }
 
 .bottom-promo__line--2 img {
-  animation: lineMove1 10s ease-in-out infinite;
+  animation: lineMove1 20s ease-in-out infinite;
 }
 
 .bottom-promo__line--3 {
@@ -2774,8 +2774,16 @@ ul, ol {
 }
 
 .bottom-promo__line--3 img {
-  animation: lineMove1 10s ease-in-out infinite;
+  animation: lineMove1 20s ease-in-out infinite;
 
+}
+.feature__heart-img{
+  height: 42px;
+  width: auto;
+}
+.feature__kawaii-img{
+  height: 40px;
+  width: auto;
 }
 @media (max-width: 768px) {
   .bottom-promo__line--2{
