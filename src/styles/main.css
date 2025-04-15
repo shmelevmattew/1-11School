@@ -1009,18 +1009,22 @@ ul, ol {
 
 /* Mission section */
 .mission {
-  padding: 80px 0;
-  background-color: var(--color-white);
   position: relative;
+  overflow: hidden;
 }
 
 .mission__grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 120px;
 }
 
 .mission__title {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(0);
+  will-change: transform;
   font-size: 55px;
   font-weight: 700;
   margin-bottom:24px;
@@ -1028,6 +1032,10 @@ ul, ol {
 }
 
 .mission__description {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(0);
+  will-change: transform;
   margin-bottom: 50px;
 }
 
@@ -4082,5 +4090,36 @@ ul, ol {
     width: 60px;
     height: 60px;
     font-size: 28px;
+  }
+}
+
+.mission__content {
+  position: relative;
+  z-index: 2;
+}
+
+.mission__parallax {
+  position: relative;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.mission__title {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.mission__description {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .mission__parallax {
+    transform: none !important;
   }
 }

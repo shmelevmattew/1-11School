@@ -971,75 +971,41 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Initialize parallax effects
-  const setupParallaxEffects = () => {
-    // Initialize Rellax for elements with rellax class
-    const rellaxElements = document.querySelectorAll('.hero__emoji, .feature__star, .feature__kawaii, .feature__icon, .promo__emoji, .mission__bubble-wrapper, .mission__pool-emoji');
+  function setupParallaxEffects() {
+    const missionSection = document.querySelector('.mission');
+    const missionTitle = document.querySelector('.mission__title');
+    const missionDescription = document.querySelector('.mission__description');
+
+    if (!missionSection || !missionTitle || !missionDescription) return;
+
+    // Add parallax class to elements
+    missionTitle.classList.add('mission__parallax');
+    missionDescription.classList.add('mission__parallax');
+
+    let ticking = false;
     
-    // Add rellax class to these elements
-    rellaxElements.forEach(element => {
-      element.classList.add('rellax');
-      
-      // Set different speeds for different elements
-      if (element.classList.contains('hero__emoji')) {
-        element.setAttribute('data-rellax-speed', '3');
-      } else if (element.classList.contains('feature__star')) {
-        element.setAttribute('data-rellax-speed', '-2');
-      } else if (element.classList.contains('feature__kawaii')) {
-        element.setAttribute('data-rellax-speed', '2');
-      } else if (element.classList.contains('feature__icon')) {
-        element.setAttribute('data-rellax-speed', '1');
-      } else if (element.classList.contains('promo__emoji')) {
-        element.setAttribute('data-rellax-speed', '3');
-      } else if (element.classList.contains('mission__bubble-wrapper')) {
-        element.setAttribute('data-rellax-speed', '1');
-      } else if (element.classList.contains('mission__pool-emoji')) {
-        element.setAttribute('data-rellax-speed', '2');
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.pageYOffset;
+          const sectionTop = missionSection.offsetTop;
+          const sectionHeight = missionSection.offsetHeight;
+          const windowHeight = window.innerHeight;
+          
+          // Start parallax only after the section is fully visible
+          if (scrolled >= sectionTop && scrolled <= sectionTop + sectionHeight - 700) {
+            const startPoint = sectionTop;
+            const relativeScroll = (scrolled - startPoint) * 0.15;
+            
+            missionTitle.style.transform = `translateY(${relativeScroll * 7}px)`;
+            missionDescription.style.transform = `translateY(${relativeScroll * 7}px)`;
+          }
+          
+          ticking = false;
+        });
+        
+        ticking = true;
       }
     });
-    
-    // Initialize Rellax
-    const rellax = new Rellax('.rellax', {
-      center: true,
-      wrapper: null,
-      round: true,
-      vertical: true,
-      horizontal: false
-    });
-
-    // Setup Parallax.js scene for hero background
-    const heroImageContainer = document.querySelector('.hero__image-container');
-    if (heroImageContainer) {
-      heroImageContainer.setAttribute('data-depth', '0.2');
-      new Parallax(heroImageContainer);
-    }
-
-    // Setup Parallax.js for mission section
-    const missionVisual = document.querySelector('.mission__visual');
-    if (missionVisual) {
-      missionVisual.setAttribute('data-depth', '0.3');
-      new Parallax(missionVisual);
-    }
-
-    // Setup Parallax.js for promo image
-    const promoImageWrapper = document.querySelector('.promo__image-wrapper');
-    if (promoImageWrapper) {
-      promoImageWrapper.setAttribute('data-depth', '0.1');
-      new Parallax(promoImageWrapper);
-    }
-
-    // Create parallax scene for gallery images
-    const gallerySlides = document.querySelectorAll('.gallery__slide');
-    gallerySlides.forEach(slide => {
-      slide.classList.add('parallax-container');
-      slide.setAttribute('data-depth', '0.2');
-      new Parallax(slide);
-    });
-
-    // Add window resize handler to refresh parallax
-    window.addEventListener('resize', () => {
-      if (rellax) {
-        rellax.refresh();
-      }
-    });
-  };
+  }
 }); 
