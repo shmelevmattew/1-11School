@@ -1019,7 +1019,22 @@ ul, ol {
   gap: 24px;
   margin-top: 120px;
 }
-
+.teachers__background-image{
+  position:absolute;
+  right: 0px;
+}
+@media (max-width:768px) {
+  .teachers__background-image{
+    top:20px;
+    left: 0px;
+  }
+  .mobile{
+    display: block;
+  }
+  .desktop{
+    display: none;
+  }
+}
 .mission__title {
   position: relative;
   z-index: 2;
@@ -1920,11 +1935,32 @@ ul, ol {
 .teachers {
   padding: 80px 0;
   background-color: var(--color-white);
-  overflow: hidden;
+  overflow: visible;
   position: relative;
+  width: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.teachers::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/teachers_stickers.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .teachers .container {
+  position: relative;
+  z-index: 2;
   max-width: var(--container-width);
   margin: 0 auto;
   overflow: visible;
@@ -1938,6 +1974,12 @@ ul, ol {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+/* Remove emoji styles */
+.teachers__emoji-left,
+.teachers__emoji-right {
+  display: none;
 }
 
 .teachers__title {
@@ -1962,51 +2004,6 @@ ul, ol {
   word-wrap: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
-}
-
-.teachers__emoji-left,
-.teachers__emoji-right {
-  /* Стили перенесены в отдельные селекторы ниже */
-}
-
-.teachers__emoji-left {
-  position: absolute;
-  left: -120px;
-  bottom: auto;
-  top: 40%;
-  background-color: #ECC615;
-  color: #333;
-  transform: rotate(-5deg);
-  animation: tiltLeft 4s ease-in-out infinite;
-  z-index: 1;
-  font-size: 2rem;
-  padding: 10px 15px;
-  border-radius: 0px;
-}
-
-.teachers__emoji-right {
-  position: absolute;
-  right: -120px;
-  top: 30px;
-  bottom: auto;
-  background-color: #1E4688;
-  color: white;
-  transform: rotate(5deg);
-  animation: tiltRight 4s ease-in-out infinite;
-  z-index: 1;
-  font-size: 2rem;
-  padding: 10px 15px;
-  border-radius: 40px;
-}
-
-@keyframes tiltLeft {
-  0%, 100% { transform: rotate(-5deg); }
-  50% { transform: rotate(-2deg); }
-}
-
-@keyframes tiltRight {
-  0%, 100% { transform: rotate(5deg); }
-  50% { transform: rotate(2deg); }
 }
 
 .teachers__slider {
@@ -2183,6 +2180,7 @@ ul, ol {
     width: auto;
     padding: 0 15px;
     overflow-wrap: break-word;
+    margin-bottom: 20px;
   }
   
   .teachers__emoji-left, 
@@ -4122,4 +4120,44 @@ ul, ol {
   .mission__parallax {
     transform: none !important;
   }
+}
+
+.teachers__background-image.mobile {
+  display: none;
+}
+
+.teachers__background-image.desktop {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .teachers__background-image.mobile {
+    display: block;
+    top: 117px;
+  }
+  
+  .teachers__background-image.desktop {
+    display: none;
+  }
+}
+@media (max-width: 550px) {
+  .teachers__background-image.mobile {
+    display: block;
+    top: 147px;
+  }
+  
+}
+@media (max-width: 425px) {
+  .teachers__background-image.mobile {
+    display: block;
+    top: 167px;
+  }
+  
+}
+@media (max-width: 424px) {
+  .teachers__background-image.mobile {
+    display: block;
+    top: 187px;
+  }
+  
 }
