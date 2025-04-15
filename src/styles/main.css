@@ -2590,19 +2590,26 @@ ul, ol {
   height: 150px;
   width: 100%;
   margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.pricing__emoji-top {
-  position: absolute;
-  top: 20px;
-  right: 0px;
-  animation: shake 3s ease-in-out infinite;
-  background-color: white;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-size: 1.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+.pricing__emoji-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 150px;
+  object-fit: contain;
+}
+@media (max-width:425px) {
+  .pricing__emoji-image{
+    max-width: 192px;
+  }
+}
+/* Remove old emoji styles since we're not using them anymore */
+.pricing__emoji-top,
+.pricing__emoji-bottom {
+  display: none;
 }
 
 .pricing__emoji-bottom {
@@ -2707,7 +2714,11 @@ ul, ol {
     border-radius: 8px;
   }
 }
-
+@media (max-width:425px) {
+  .pricing__description {
+    font-size: 0.8rem;
+  }
+}
 /* Bottom promo section */
 .bottom-promo {
   padding: 60px 0;
