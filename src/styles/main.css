@@ -4026,6 +4026,15 @@ ul, ol {
 
 .modal__success {
   text-align: center;
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .modal__success-icon {

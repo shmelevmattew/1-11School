@@ -833,7 +833,10 @@ document.addEventListener('DOMContentLoaded', () => {
         formElements.style.display = 'flex';
       }, 300);
     }
-    
+    function successMessagee() {
+      modalContent.style.display = 'none';
+      successMessage.style.display = 'block';
+    }
     // Обработчики событий для кнопок
     applyButtons.forEach(button => {
       button.addEventListener('click', (e) => {
@@ -899,22 +902,20 @@ document.addEventListener('DOMContentLoaded', () => {
         submitButton.textContent = originalButtonText;
         submitButton.disabled = false;
         
-        const result = await response.json();
-        
         if (response.ok) {
           // Показываем сообщение об успехе
-          formElements.style.display = 'none';
-          successMessage.style.display = 'block';
+      
+          successMessagee()
           
           // Закрываем модальное окно через 3 секунды
           setTimeout(closeModal, 3000);
         } else {
-          console.error('Ошибка при отправке формы:', result);
-          alert(result.error || 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
+          console.error('Ошибка при отправке формы:');
+          alert( 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
         }
       } catch (error) {
         console.error('Ошибка отправки данных:', error);
-        alert('Не удалось отправить заявку. Пожалуйста, проверьте соединение с интернетом и попробуйте еще раз.');
+        alert('Не удалось отправить заявку. Пожалуйста, проверьте соединение с интернетом и попробуйте еще раз.', error);
       }
     });
   }
