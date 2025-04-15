@@ -774,9 +774,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('applicationModal');
     const modalContent = modal.querySelector('.modal__content');
     const closeButton = modal.querySelector('.modal__close');
+    const closeButton2 = modal.querySelector('.modal__success-close');
     const form = document.getElementById('applicationForm');
     const formElements = form.querySelector('.modal__form');
     const successMessage = modal.querySelector('.modal__success');
+    const errorMessage = modal.querySelector('.modal__error');
     
     // Кнопки для открытия модального окна
     const applyButtons = document.querySelectorAll('[href="#apply"]');
@@ -837,6 +839,10 @@ document.addEventListener('DOMContentLoaded', () => {
       modalContent.style.display = 'none';
       successMessage.style.display = 'block';
     }
+    function errorMessagee() {
+      modalContent.style.display = 'none';
+      errorMessage.style.display = 'block';
+    }
     // Обработчики событий для кнопок
     applyButtons.forEach(button => {
       button.addEventListener('click', (e) => {
@@ -854,7 +860,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Закрытие по клику на крестик
     closeButton.addEventListener('click', closeModal);
-    
+    closeButton2.addEventListener('click', closeModal);
     // Закрытие по клику вне модального окна
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -905,17 +911,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok) {
           // Показываем сообщение об успехе
       
-          successMessagee()
+          successMessagee();
           
           // Закрываем модальное окно через 3 секунды
           setTimeout(closeModal, 3000);
         } else {
           console.error('Ошибка при отправке формы:');
-          alert( 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.');
+          errorMessagee();
+
         }
       } catch (error) {
         console.error('Ошибка отправки данных:', error);
-        alert('Не удалось отправить заявку. Пожалуйста, проверьте соединение с интернетом и попробуйте еще раз.', error);
+        errorMessagee();
+      
       }
     });
   }
