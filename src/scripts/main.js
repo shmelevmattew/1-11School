@@ -920,6 +920,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Copy to clipboard and toast functionality
+  const setupCopyToClipboard = () => {
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    document.body.appendChild(toast);
+
+    // Function to show toast
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    };
+
+    // Function to copy text to clipboard
+    const copyToClipboard = async (text, successMessage) => {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(successMessage);
+      } catch (err) {
+        showToast('Не удалось скопировать');
+      }
+    };
+
+    // Setup phone copy
+    const phoneLink = document.querySelector('.footer__phone-link');
+    if (phoneLink) {
+      phoneLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const phoneNumber = phoneLink.textContent.trim();
+        copyToClipboard(phoneNumber, 'Номер скопирован');
+      });
+    }
+
+    // Setup address copy
+    const address = document.querySelector('.footer__address');
+    if (address) {
+      address.addEventListener('click', () => {
+        const addressText = address.textContent.trim();
+        copyToClipboard(addressText, 'Адрес скопирован');
+      });
+    }
+  };
+
   // Initialize all functionality
   setupHeaderScroll();
   setupMobileMenu();
@@ -1008,6 +1054,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Initialize copy to clipboard functionality
+  setupCopyToClipboard();
 }); 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -1035,7 +1084,7 @@ document.addEventListener('DOMContentLoaded', () => {
   container.appendChild(wrapper);
   
   // Устанавливаем начальные стили для контейнера
-  container.style.overflow = 'hidden';
+  container.style.overflowX = 'hidden';
   
   let scrollPosition = 0;
   const speed = 0.5; // Уменьшаем скорость для более плавного эффекта
