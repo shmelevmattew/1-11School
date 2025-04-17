@@ -4058,10 +4058,10 @@ ul, ol {
 
 .modal__field.focused .modal-label,
 .modal__input:not(:placeholder-shown) + .modal-label {
-  top: -10px;
+  top: 7px;
   left: 10px;
-  font-size: 12px;
-  background-color: white;
+  font-size: 10px;
+  background-color: transparent;
   padding: 0 6px;
 }
 
