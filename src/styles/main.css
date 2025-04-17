@@ -4400,9 +4400,10 @@ ul, ol {
   }
 
   .modal__title {
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 20px;
     padding-right: 40px;
+    width: 270px;
   }
 
   .modal__field {
@@ -4428,7 +4429,7 @@ ul, ol {
     max-width: 100%;
     min-height: 0px;
     border-radius: 24px 24px 0 0;
-    padding: 20px 20px 24px;
+    padding: 20px 20 24px;
   }
   .teacher-popup__info-block{
     gap:16px;
