@@ -3378,6 +3378,7 @@ ul, ol {
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--color-text);
+  margin-top: auto;
 
 }
 
@@ -3429,7 +3430,6 @@ ul, ol {
 @media (max-width: 480px) {
   .teacher-popup__content {
     padding: 16px;
-    min-height: 220px;
   }
 
   .teacher-popup__image-wrapper {
@@ -3449,6 +3449,7 @@ ul, ol {
   .teacher-popup__quote {
     font-size: 1rem;
     line-height: 1.4;
+    margin-top: 0px;
   }
 
   .teacher-popup__close {
