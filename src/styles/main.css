@@ -3371,8 +3371,8 @@ ul, ol {
 
 .teacher-popup__close {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: -40px;
+  right: -20px;
   width: 40px;
   height: 40px;
   background-color: #222125;
@@ -3410,34 +3410,14 @@ ul, ol {
     margin-right: 20px;
   }
 
-  .teacher-popup__close {
-    position: fixed;
-    top: 30px;
-    right: 30px;
-  }
 }
 
 @media (max-width: 768px) {
-  .teacher-popup__content {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: 100%;
-    border-radius: 24px 24px 0 0;
-    padding: 20px;
-    transform: translateY(100%);
-    min-height: 250px;
-  }
 
   .teacher-popup.active .teacher-popup__content {
     transform: translateY(0);
   }
 
-  .teacher-popup__close {
-    top: -50px;
-    right: 10px;
-  }
 }
 
 @media (max-width: 480px) {
