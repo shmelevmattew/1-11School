@@ -306,6 +306,8 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background-color: #222125;
+  border-radius: 50%;
 }
 
 /* Hero section */
