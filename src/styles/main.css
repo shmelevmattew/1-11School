@@ -4018,7 +4018,7 @@ ul, ol {
 
 .modal__field {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .modal__input,
@@ -4086,10 +4086,6 @@ ul, ol {
   resize: vertical;
 }
 
-/* Make sure the error message doesn't overlap with the next field */
-.modal__field {
-  margin-bottom: 30px;
-}
 
 .modal__field:last-of-type {
   margin-bottom: 20px;
