@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const distance = targetPosition - startPosition;
         
         // Настройки анимации
-        const duration = 2000; // Увеличиваем длительность до 2 секунд
+        const duration = 1; // Увеличиваем длительность до 2 секунд
         const startTime = performance.now();
         
         function easeInOutQuart(t) {
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
           window.scrollTo({
             top: currentPosition,
-            behavior: 'auto' // Используем auto чтобы избежать конфликта с CSS scroll-behavior
+            behavior: 'smooth', // Используем auto чтобы избежать конфликта с CSS scroll-behavior
           });
           
           if (progress < 1) {
@@ -1224,7 +1224,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
           // Start parallax only after the section is fully visible
           if (scrolled >= sectionTop && scrolled <= sectionTop + sectionHeight - 700) {
-            const startPoint = sectionTop + 10;
+            const startPoint = sectionTop + 20;
             const relativeScroll = (scrolled - startPoint) * 0.15;
             
             missionTitle.style.transform = `translateY(${relativeScroll * 7}px)`;
