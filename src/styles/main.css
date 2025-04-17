@@ -3430,6 +3430,7 @@ ul, ol {
 @media (max-width: 480px) {
   .teacher-popup__content {
     padding: 16px;
+
   }
 
   .teacher-popup__image-wrapper {
@@ -4425,9 +4426,9 @@ ul, ol {
     left: 0;
     width: 100%;
     max-width: 100%;
-    min-height: 360px;
+    min-height: 0px;
     border-radius: 24px 24px 0 0;
-    padding: 20px;
+    padding: 20px 20px 24px;
   }
   .teacher-popup__info-block{
     gap:16px;
