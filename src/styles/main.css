@@ -265,7 +265,7 @@ ul, ol {
 }
 
 .mobile-menu__close {
-  background: #222125;
+  background-color: white;
   border: none;
   cursor: pointer;
   padding: 8px;
