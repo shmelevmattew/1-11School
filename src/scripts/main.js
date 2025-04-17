@@ -1220,7 +1220,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
           // Start parallax only after the section is fully visible
           if (scrolled >= sectionTop && scrolled <= sectionTop + sectionHeight - 700) {
-            const startPoint = sectionTop;
+            const startPoint = sectionTop + 10;
             const relativeScroll = (scrolled - startPoint) * 0.15;
             
             missionTitle.style.transform = `translateY(${relativeScroll * 7}px)`;
