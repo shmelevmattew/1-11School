@@ -262,7 +262,7 @@ ul, ol {
 }
 
 .mobile-menu__close {
-  background: transparent;
+  background: #222125;
   border: none;
   cursor: pointer;
   padding: 8px;
@@ -3997,8 +3997,8 @@ ul, ol {
 
 .modal__close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: -40px;
+  right: -20px;
   background: none;
   border: none;
   cursor: pointer;
@@ -4007,17 +4007,23 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #222125;
   border-radius: 50%;
   transition: background-color 0.2s ease;
 }
-
+@media (max-width:425px) {
+  .modal__close{
+    top: 16px;
+    right: 16px;
+  }
+}
 .modal__close:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
 .modal__close img {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 }
 
 .modal__title {
@@ -4404,21 +4410,22 @@ ul, ol {
   }
 
   .modal__close {
-    top: -50px;
-    right: 10px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
     background-color: #222125;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 36px;
+    height: 36px;
   }
 
   .modal__close img {
-    filter: brightness(0) invert(1);
+    filter: none;
   }
 
   .modal__title {
     font-size: 20px;
     margin-bottom: 20px;
+    padding-right: 40px;
   }
 
   .modal__field {
@@ -4433,5 +4440,33 @@ ul, ol {
   .modal__submit {
     font-size: 14px;
     padding: 12px;
+  }
+
+  /* Стили для модального окна учителя */
+  .teacher-popup__content {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 24px 24px 0 0;
+    padding: 20px;
+  }
+
+  .teacher-popup__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .teacher-popup__image-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+
+  .teacher-popup__name {
+    padding-right: 40px;
   }
 }
