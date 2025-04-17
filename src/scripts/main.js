@@ -774,11 +774,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('applicationModal');
     const modalContent = modal.querySelector('.modal__content');
     const closeButton = modal.querySelector('.modal__close');
-    const closeButton2 = modal.querySelector('.modal__success-close');
     const form = document.getElementById('applicationForm');
     const formElements = form.querySelector('.modal__form');
     const successMessage = modal.querySelector('.modal__success');
     const errorMessage = modal.querySelector('.modal__error');
+    const submitButton = form.querySelector('.modal__submit');
+    const errorCloseButton = errorMessage.querySelector('.modal__success-close');
+    const successCloseButton = successMessage.querySelector('.modal__success-close');
     
     // Кнопки для открытия модального окна
     const applyButtons = document.querySelectorAll('[href="#apply"]');
@@ -822,27 +824,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function openModal(type) {
       document.body.classList.add('no-scroll');
       modal.classList.add('active');
-      
+      // Reset form and hide messages when opening modal
+      form.reset();
+      modalContent.style.display = 'block';
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+      submitButton.textContent = 'Отправить';
+      submitButton.disabled = false;
     }
     
     // Закрытие модального окна
     function closeModal() {
       document.body.classList.remove('no-scroll');
       modal.classList.remove('active');
+      // Reset everything when closing
       setTimeout(() => {
         form.reset();
+        modalContent.style.display = 'block';
         successMessage.style.display = 'none';
-        formElements.style.display = 'flex';
+        errorMessage.style.display = 'none';
+        submitButton.textContent = 'Отправить';
+        submitButton.disabled = false;
       }, 300);
     }
-    function successMessagee() {
-      modalContent.style.display = 'none';
-      successMessage.style.display = 'block';
-    }
-    function errorMessagee() {
-      modalContent.style.display = 'none';
-      errorMessage.style.display = 'block';
-    }
+
     // Обработчики событий для кнопок
     applyButtons.forEach(button => {
       button.addEventListener('click', (e) => {
@@ -860,7 +865,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Закрытие по клику на крестик
     closeButton.addEventListener('click', closeModal);
-    closeButton2.addEventListener('click', closeModal);
+    
+    // Закрытие по клику на кнопку закрытия в сообщении об ошибке
+    errorCloseButton.addEventListener('click', closeModal);
+    
+    // Закрытие по клику на кнопку закрытия в сообщении об успехе
+    successCloseButton.addEventListener('click', closeModal);
+    
     // Закрытие по клику вне модального окна
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
@@ -890,8 +901,6 @@ document.addEventListener('DOMContentLoaded', () => {
           : ''; // Если на продакшене, используем относительный URL
         
         // Показываем индикатор загрузки
-        const submitButton = form.querySelector('.modal__submit');
-        const originalButtonText = submitButton.textContent;
         submitButton.textContent = 'Отправка...';
         submitButton.disabled = true;
         
@@ -904,26 +913,25 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify(formDataObj)
         });
         
-        // Возвращаем кнопку в исходное состояние
-        submitButton.textContent = originalButtonText;
-        submitButton.disabled = false;
-        
         if (response.ok) {
-          // Показываем сообщение об успехе
-      
-          successMessagee();
+          modalContent.style.display = 'none';
+          successMessage.style.display = 'block';
+          errorMessage.style.display = 'none';
           
           // Закрываем модальное окно через 3 секунды
           setTimeout(closeModal, 3000);
         } else {
-          console.error('Ошибка при отправке формы:');
-          errorMessagee();
-
+          submitButton.textContent = 'Отправить';
+          submitButton.disabled = false;
+          modalContent.style.display = 'none';
+          errorMessage.style.display = 'block';
         }
       } catch (error) {
         console.error('Ошибка отправки данных:', error);
-        errorMessagee();
-      
+        submitButton.textContent = 'Отправить';
+        submitButton.disabled = false;
+        modalContent.style.display = 'none';
+        errorMessage.style.display = 'block';
       }
     });
   }
