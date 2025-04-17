@@ -3970,7 +3970,7 @@ ul, ol {
   width: 100%;
   max-width: 500px;
   border-radius: 20px;
-  padding: 40px;
+  padding:32px;
   position: relative;
   transform: translateY(20px);
   transition: transform 0.3s ease;
