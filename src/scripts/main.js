@@ -786,8 +786,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const applyButtons = document.querySelectorAll('[href="#apply"]');
     const tourButtons = document.querySelectorAll('[href="#tour"]');
     
-    // Настройка маски для телефона
+    // Настройка маски и валидации для телефона
     const phoneInput = document.getElementById('phoneInput');
+    const nameInput = document.getElementById('nameInput');
+    const messageInput = document.getElementById('messageInput');
+    
+    // Функция валидации телефона
+    function isValidPhone(phone) {
+      // Проверяем, что номер соответствует формату +7 (XXX) XXX-XX-XX
+      const phonePattern = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/;
+      return phonePattern.test(phone);
+    }
+
+    // Функция валидации имени
+    function isValidName(name) {
+      return name.trim().length >= 2; // Минимум 2 символа
+    }
+
+    // Функция показа ошибки поля
+    function showFieldError(input, message) {
+      const field = input.closest('.modal__field');
+      let errorDiv = field.querySelector('.field-error');
+      
+      if (!errorDiv) {
+        errorDiv = document.createElement('div');
+        errorDiv.className = 'field-error';
+        field.appendChild(errorDiv);
+      }
+      
+      errorDiv.textContent = message;
+      input.classList.add('error');
+    }
+
+    // Функция скрытия ошибки поля
+    function hideFieldError(input) {
+      const field = input.closest('.modal__field');
+      const errorDiv = field.querySelector('.field-error');
+      if (errorDiv) {
+        errorDiv.remove();
+      }
+      input.classList.remove('error');
+    }
     
     if (phoneInput) {
       phoneInput.addEventListener('input', function(e) {
@@ -817,7 +856,47 @@ document.addEventListener('DOMContentLoaded', () => {
           
           e.target.value = formattedValue;
         }
+
+        // Валидация при вводе
+        if (e.target.value.length > 0) {
+          if (!isValidPhone(e.target.value)) {
+            showFieldError(e.target, 'Введите полный номер телефона');
+          } else {
+            hideFieldError(e.target);
+          }
+        }
       });
+    }
+
+    // Валидация имени при вводе
+    if (nameInput) {
+      nameInput.addEventListener('input', function(e) {
+        if (e.target.value.length > 0) {
+          if (!isValidName(e.target.value)) {
+            showFieldError(e.target, 'Имя должно содержать минимум 2 символа');
+          } else {
+            hideFieldError(e.target);
+          }
+        }
+      });
+    }
+
+    // Обработка фокуса для текстового поля сообщения
+    if (messageInput) {
+      messageInput.addEventListener('focus', function() {
+        this.closest('.modal__field').classList.add('focused');
+      });
+
+      messageInput.addEventListener('blur', function() {
+        if (!this.value) {
+          this.closest('.modal__field').classList.remove('focused');
+        }
+      });
+
+      // Если есть значение при загрузке
+      if (messageInput.value) {
+        messageInput.closest('.modal__field').classList.add('focused');
+      }
     }
     
     // Открытие модального окна
@@ -831,6 +910,10 @@ document.addEventListener('DOMContentLoaded', () => {
       errorMessage.style.display = 'none';
       submitButton.textContent = 'Отправить';
       submitButton.disabled = false;
+
+      // Очищаем все ошибки
+      form.querySelectorAll('.field-error').forEach(error => error.remove());
+      form.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
     }
     
     // Закрытие модального окна
@@ -845,6 +928,9 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.style.display = 'none';
         submitButton.textContent = 'Отправить';
         submitButton.disabled = false;
+        // Очищаем все ошибки
+        form.querySelectorAll('.field-error').forEach(error => error.remove());
+        form.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
       }, 300);
     }
 
@@ -887,6 +973,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Обработка отправки формы
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      
+      // Очищаем предыдущие ошибки
+      form.querySelectorAll('.field-error').forEach(error => error.remove());
+      form.querySelectorAll('.error').forEach(field => field.classList.remove('error'));
+
+      // Валидация перед отправкой
+      let hasErrors = false;
+
+      if (!isValidName(nameInput.value)) {
+        showFieldError(nameInput, 'Имя должно содержать минимум 2 символа');
+        hasErrors = true;
+      }
+
+      if (!isValidPhone(phoneInput.value)) {
+        showFieldError(phoneInput, 'Введите корректный номер телефона');
+        hasErrors = true;
+      }
+
+      if (hasErrors) {
+        return;
+      }
       
       const formData = new FormData(form);
       const formDataObj = {};

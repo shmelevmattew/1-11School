@@ -679,15 +679,16 @@
             <h2 class="modal__title">Оставьте заявку, c&nbsp;Вами свяжется наш специалист</h2>
             <form class="modal__form" id="applicationForm">
                 <div class="modal__field">
-                    <input type="text" id="nameInput" name="name" class="modal__input" required>
-                    <label class="modal-label">Имя</label>
+                    <input type="text" id="nameInput" name="name" class="modal__input" placeholder=" " required>
+                    <label class="modal-label" for="nameInput">Имя</label>
                 </div>
                 <div class="modal__field">
-                    <input type="tel" id="phoneInput" name="phone" class="modal__input" required>
-                    <label class="modal-label">Номер телефона</label>
+                    <input type="tel" id="phoneInput" name="phone" class="modal__input" placeholder=" " required>
+                    <label class="modal-label" for="phoneInput">Номер телефона</label>
                 </div>
                 <div class="modal__field">
-                    <textarea id="messageInput" name="message" class="modal__textarea" placeholder="Сообщение" rows="4"></textarea>
+                    <textarea id="messageInput" name="message" class="modal__textarea" placeholder=" " rows="4"></textarea>
+                    <label class="modal-label" for="messageInput">Сообщение</label>
                 </div>
                 <button type="submit" class="button button--primary modal__submit">Отправить</button>
             </form>

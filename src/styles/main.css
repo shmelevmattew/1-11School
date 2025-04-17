@@ -4038,51 +4038,82 @@ ul, ol {
 }
 
 .modal__field {
-  border:0;
   position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal__label {
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: #666;
+  margin-bottom: 20px;
 }
 
 .modal__input,
 .modal__textarea {
-  border:0px;
+  width: 100%;
+  border: 0;
   padding: 14px 16px;
   border-radius: 10px;
   font-size: 16px;
   background-color: #829BBD0F;
   outline: none;
+  font-family: var(--font-family);
+  transition: all 0.3s ease;
 }
 
-.modal-label{
+.modal__input.error,
+.modal__textarea.error {
+  border: 1px solid #ff4b4b;
+  background-color: rgba(255, 75, 75, 0.05);
+}
+
+.field-error {
+  color: #ff4b4b;
+  font-size: 12px;
+  margin-top: 4px;
   position: absolute;
-  pointer-events: none;
-  left: 15px;
-  right: 15px;
-  opacity: 0.7;
-  top: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  line-height: 40px;
-  transition: .3s;
+  bottom: -20px;
+  left: 0;
 }
 
-.modal__input:focus~.modal-label,
-  .modal__input:not(:focus):valid~.modal-label {
-    border:0;
-    top: -10px;
-    font-size: 10px;
-  }
+.modal__field .modal-label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #666;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.modal__field.focused .modal-label,
+.modal__input:not(:placeholder-shown) + .modal-label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  background-color: white;
+  padding: 0 6px;
+}
+
+/* Special handling for textarea field */
+.modal__field textarea ~ .modal-label {
+  top: 14px;
+  transform: none;
+}
+
+.modal__field.focused textarea ~ .modal-label,
+.modal__textarea:not(:placeholder-shown) + .modal-label {
+  top: -10px;
+  transform: none;
+}
 
 .modal__textarea {
-  resize: vertical;
   min-height: 100px;
+  resize: vertical;
+}
+
+/* Make sure the error message doesn't overlap with the next field */
+.modal__field {
+  margin-bottom: 30px;
+}
+
+.modal__field:last-of-type {
+  margin-bottom: 20px;
 }
 
 .modal__submit {
