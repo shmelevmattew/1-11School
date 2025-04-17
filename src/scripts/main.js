@@ -452,17 +452,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupContent = document.createElement('div');
     popupContent.className = 'teacher-popup__content';
     
-    const teacherInfoBlock = document.createElement('div');
-    teacherInfoBlock.className = 'teacher-popup__info-block';
-    
     const imageWrapper = document.createElement('div');
     imageWrapper.className = 'teacher-popup__image-wrapper';
     
     const popupImage = document.createElement('img');
     popupImage.className = 'teacher-popup__image';
     
-    const teacherDetails = document.createElement('div');
-    teacherDetails.className = 'teacher-popup__details';
+    const popupInfo = document.createElement('div');
+    popupInfo.className = 'teacher-popup__info';
     
     const popupName = document.createElement('h3');
     popupName.className = 'teacher-popup__name';
@@ -475,16 +472,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const closeButton = document.createElement('button');
     closeButton.className = 'teacher-popup__close';
-    closeButton.innerHTML = '×';
+    closeButton.innerHTML = '<img src="src/images/close.svg" alt="" width="16" height="16" aria-hidden="true">';
     
     imageWrapper.appendChild(popupImage);
-    teacherDetails.appendChild(popupName);
-    teacherDetails.appendChild(popupPosition);
-    teacherInfoBlock.appendChild(imageWrapper);
-    teacherInfoBlock.appendChild(teacherDetails);
+    popupInfo.appendChild(popupName);
+    popupInfo.appendChild(popupPosition);
+    popupInfo.appendChild(popupQuote);
     
-    popupContent.appendChild(teacherInfoBlock);
-    popupContent.appendChild(popupQuote);
+    popupContent.appendChild(imageWrapper);
+    popupContent.appendChild(popupInfo);
     popupContent.appendChild(closeButton);
     
     popup.appendChild(popupContent);
