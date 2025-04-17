@@ -3075,15 +3075,11 @@ ul, ol {
   height: 56px;
   border-radius: 50%;
   background-color: #222125;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease;
 }
-.footer__social-link img{
-  width: 50px;
-  height: 50px;
-}
+
 .footer__social-link:hover {
   background-color: #333333;
-  transform: scale(1.1);
 }
 
 .footer__social-icon {
