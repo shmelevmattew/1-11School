@@ -3394,11 +3394,6 @@ ul, ol {
   z-index: 1001;
 }
 
-.teacher-popup__close:hover {
-  transform: rotate(90deg);
-  background-color: #333333;
-}
-
 @media (min-width: 769px) {
 
   .teacher-popup__image-wrapper {
@@ -3998,10 +3993,6 @@ ul, ol {
     right: 16px;
   }
 }
-.modal__close:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-}
-
 .modal__close img {
   width: 16px;
   height: 16px;
@@ -4320,7 +4311,7 @@ ul, ol {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(34, 33, 37, 1);
   color: white;
   padding: 12px 24px;
   border-radius: 50px;
