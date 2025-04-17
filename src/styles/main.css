@@ -4009,7 +4009,7 @@ ul, ol {
 .modal__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  
 }
 
 .modal__field {
