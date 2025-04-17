@@ -204,7 +204,7 @@ ul, ol {
 }
 
 .header__social-link:hover {
-  background-color: #e8edf5;
+  color: #000000;
 }
 
 .header__social-icon {
@@ -216,6 +216,11 @@ ul, ol {
 
 .header__social-link:hover .header__social-icon {
   fill: var(--color-primary);
+}
+
+.header__social-link:hover rect {
+  fill: black !important;
+  fill-opacity: 1;
 }
 
 /* Burger menu */
