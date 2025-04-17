@@ -2444,8 +2444,6 @@ ul, ol {
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex-shrink: 0;
 }
 

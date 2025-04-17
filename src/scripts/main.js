@@ -1089,12 +1089,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Setup features grid parallax
+  const setupFeaturesParallax = () => {
+    const features = document.querySelectorAll('.feature');
+    
+    const handleParallax = () => {
+      features.forEach(feature => {
+        const rect = feature.getBoundingClientRect();
+        const isVisible = (rect.top < window.innerHeight && rect.bottom > 0);
+        
+        if (isVisible) {
+          const scrolled = window.scrollY;
+          const speed = 0.05; // Very subtle effect
+          const yPos = -(scrolled * speed);
+          feature.style.transform = `translateY(${yPos}px)`;
+        }
+      });
+    };
+
+    // Add smooth transition
+    features.forEach(feature => {
+      feature.style.transition = 'transform 0.1s ease-out';
+    });
+
+    window.addEventListener('scroll', () => {
+      window.requestAnimationFrame(handleParallax);
+    }, { passive: true });
+  };
+
   // Initialize all functionality
   setupHeaderScroll();
   setupMobileMenu();
   setupSmoothScroll();
   setupGallerySlider();
   setupTeachersSlider();
+  setupFeaturesParallax();
   setupGalleryPopup();
   setupTeachersPopup();
   setupScrollAnimations();
