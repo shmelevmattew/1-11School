@@ -958,6 +958,10 @@ ul, ol {
   .cta__buttons {
     grid-template-columns: 1fr;
   }
+  .hero__location {
+    font-size: 0.6rem;
+
+  }
 }
 @media (max-width: 576px) {
   .hero__content, 
@@ -2447,9 +2451,6 @@ ul, ol {
   flex-shrink: 0;
 }
 
-.team__photo:hover {
-  transform: translateY(-5px);
-}
 .team__photo-img {
   width: 100%;
   height: 100%;

@@ -94,18 +94,46 @@ document.addEventListener('DOMContentLoaded', () => {
     
     links.forEach(link => {
       link.addEventListener('click', (e) => {
+        e.preventDefault();
         const href = link.getAttribute('href');
         
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
+        if (href === '#') return;
+        
+        const targetElement = document.querySelector(href);
+        if (!targetElement) return;
+        
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        
+        // Настройки анимации
+        const duration = 2000; // Увеличиваем длительность до 2 секунд
+        const startTime = performance.now();
+        
+        function easeInOutQuart(t) {
+          return t < 0.5 
+            ? 8 * t * t * t * t 
+            : 1 - Math.pow(-2 * t + 2, 4) / 2;
+        }
+        
+        function scrollAnimation(currentTime) {
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
           
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth'
-            });
+          const easedProgress = easeInOutQuart(progress);
+          const currentPosition = startPosition + distance * easedProgress;
+          
+          window.scrollTo({
+            top: currentPosition,
+            behavior: 'auto' // Используем auto чтобы избежать конфликта с CSS scroll-behavior
+          });
+          
+          if (progress < 1) {
+            requestAnimationFrame(scrollAnimation);
           }
         }
+        
+        requestAnimationFrame(scrollAnimation);
       });
     });
   };
@@ -1273,16 +1301,7 @@ document.addEventListener('DOMContentLoaded', () => {
     animationFrameId = requestAnimationFrame(animate);
   }
 
-  // Обработчики событий для паузы при наведении
-  container.addEventListener('mouseenter', () => {
-    isPaused = true;
-  });
 
-  container.addEventListener('mouseleave', () => {
-    isPaused = false;
-  });
-
-  // Обработчик изменения размера окна
   let resizeTimeout;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimeout);
@@ -1290,14 +1309,12 @@ document.addEventListener('DOMContentLoaded', () => {
       firstSetWidth = photos.reduce((width, photo) => {
         return width + photo.offsetWidth + 20;
       }, 0);
-      
-      // Сбрасываем позицию прокрутки при изменении размера окна
+
       scrollPosition = 0;
       wrapper.style.transform = `translateX(${scrollPosition}px)`;
     }, 250);
   });
 
-  // Очистка при размонтировании
   return () => {
     if (animationFrameId) {
       cancelAnimationFrame(animationFrameId);
