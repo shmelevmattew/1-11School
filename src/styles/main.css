@@ -1705,9 +1705,7 @@ ul, ol {
   overflow: visible;
 }
 @media (max-width:425px) {
-  .gallery__wrapper {
-    overflow-x: scroll;
-  }
+
 }
 .gallery__wrapper {
   display: flex;
@@ -3334,6 +3332,7 @@ ul, ol {
   width: 90%;
   max-width: 500px;
   display: flex;
+  flex-direction: column;
   gap: 24px;
   transform: scale(0.95);
   opacity: 0;
@@ -3341,18 +3340,21 @@ ul, ol {
   height: auto;
   min-height: 400px;
 }
-
+.teacher-popup__info-block{
+  display: flex;
+}
 .teacher-popup.active .teacher-popup__content {
   transform: scale(1);
   opacity: 1;
 }
 
 .teacher-popup__image-wrapper {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
+  margin-right: 24px;
 }
 
 .teacher-popup__image {
@@ -3376,7 +3378,7 @@ ul, ol {
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--color-text);
-  margin-top: auto;
+
 }
 
 .teacher-popup__close {
@@ -3398,13 +3400,14 @@ ul, ol {
   z-index: 1001;
 }
 
-@media (min-width: 769px) {
+@media (max-width: 769px) {
 
   .teacher-popup__image-wrapper {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-right: 24px;
+    margin-right: 16px;
+   
   }
 
   .teacher-popup__info {
@@ -3420,7 +3423,9 @@ ul, ol {
   }
 
 }
-
+.teacher-popup__position{
+  color: rgba(34,33,37,0.62);
+}
 @media (max-width: 480px) {
   .teacher-popup__content {
     padding: 16px;
@@ -3433,7 +3438,7 @@ ul, ol {
   }
 
   .teacher-popup__name {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .teacher-popup__position {
@@ -3442,7 +3447,7 @@ ul, ol {
   }
 
   .teacher-popup__quote {
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.4;
   }
 
@@ -4419,8 +4424,12 @@ ul, ol {
     left: 0;
     width: 100%;
     max-width: 100%;
+    min-height: 360px;
     border-radius: 24px 24px 0 0;
     padding: 20px;
+  }
+  .teacher-popup__info-block{
+    gap:16px;
   }
 
   .teacher-popup__close {
