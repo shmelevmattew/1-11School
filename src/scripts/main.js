@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollY = window.scrollY;
     let ticking = false;
 
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateHeader();
+        });
+        ticking = true;
+      }
+    }, { passive: true });
     const updateHeader = () => {
       const scrollY = window.scrollY;
       const scrollDelta = scrollY - lastScrollY;
@@ -21,16 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
       lastScrollY = scrollY;
       ticking = false;
     };
-
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          updateHeader();
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-
     // Show header when reaching top or bottom of page
     window.addEventListener('scrollend', () => {
       if (window.scrollY <= 100 || window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
@@ -818,7 +816,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneInput = document.getElementById('phoneInput');
     const nameInput = document.getElementById('nameInput');
     const messageInput = document.getElementById('messageInput');
-    
+
     // Функция валидации телефона
     function isValidPhone(phone) {
       // Проверяем, что номер соответствует формату +7 (XXX) XXX-XX-XX
@@ -856,6 +854,30 @@ document.addEventListener('DOMContentLoaded', () => {
       input.classList.remove('error');
     }
     
+    // Добавляем обработчики фокуса для всех полей ввода
+    const inputs = form.querySelectorAll('.modal__input, .modal__textarea');
+    inputs.forEach(input => {
+      const field = input.closest('.modal__field');
+      
+      // При фокусе добавляем класс
+      input.addEventListener('focus', () => {
+        field.classList.add('focused');
+      });
+      
+      // При потере фокуса проверяем, есть ли значение
+      input.addEventListener('blur', () => {
+        if (!input.value) {
+          field.classList.remove('focused');
+        }
+      });
+      
+      // Если есть значение при загрузке
+      if (input.value) {
+        field.classList.add('focused');
+      }
+    });
+
+    // Обработка телефонного номера
     if (phoneInput) {
       phoneInput.addEventListener('input', function(e) {
         let value = e.target.value.replace(/\D/g, '');
@@ -909,24 +931,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Обработка фокуса для текстового поля сообщения
-    if (messageInput) {
-      messageInput.addEventListener('focus', function() {
-        this.closest('.modal__field').classList.add('focused');
-      });
-
-      messageInput.addEventListener('blur', function() {
-        if (!this.value) {
-          this.closest('.modal__field').classList.remove('focused');
-        }
-      });
-
-      // Если есть значение при загрузке
-      if (messageInput.value) {
-        messageInput.closest('.modal__field').classList.add('focused');
-      }
-    }
-    
     // Открытие модального окна
     function openModal(type) {
       document.body.classList.add('no-scroll');

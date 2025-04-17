@@ -1704,7 +1704,11 @@ ul, ol {
   width: 100%;
   overflow: visible;
 }
-
+@media (max-width:425px) {
+  .gallery__wrapper {
+    overflow-x: scroll;
+  }
+}
 .gallery__wrapper {
   display: flex;
   transition: transform 0.5s ease;
