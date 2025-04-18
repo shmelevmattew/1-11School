@@ -2589,7 +2589,7 @@ ul, ol {
 }
 
 .pricing__card--secondary .pricing__description {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(255, 255, 255,1);
 }
 
 .pricing__price-bubble {
