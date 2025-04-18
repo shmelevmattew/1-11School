@@ -2591,7 +2591,10 @@ ul, ol {
 .pricing__card--secondary .pricing__description {
   color: rgb(255, 255, 255,1);
 }
-
+.feature__heart-img {
+  width: 100%;
+  height: auto;
+}
 .pricing__price-bubble {
   width: 256px;
   height: 127px;
