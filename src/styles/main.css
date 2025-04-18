@@ -2595,6 +2595,11 @@ ul, ol {
   width: 100%;
   height: auto;
 }
+@media (max-width:425px) {
+  .teacher-popup__details{
+    margin-right: 30px;
+  }
+}
 .pricing__price-bubble {
   width: 256px;
   height: 127px;
