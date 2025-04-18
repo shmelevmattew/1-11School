@@ -495,7 +495,9 @@ ul, ol {
   font-size: 0.875rem;
   z-index: 2;
 }
-
+.hero__location-text{
+  font-weight: 500;
+}
 .hero__location-icon {
   fill: var(--color-text-light);
 }
