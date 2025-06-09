@@ -3140,7 +3140,9 @@ ul, ol {
   font-size: 14px;
   color: #999;
 }
-
+.footer__copyright a {
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .footer__title h2 {
     font-size: 48px;
