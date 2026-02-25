@@ -1,6 +1,6 @@
 {
   "heroTitleHtml": "Школа полного  <br> цикла 1–11 классы",
-  "heroInfoLine1": "Открыт набор на 2025–2026 учебный год.",
+  "heroInfoLine1": "Открыт набор в&nbsp;1-8 классы&nbsp;на&nbsp;2026–2027 учебный год.",
   "heroInfoLine2": "Количество мест ограничено",
   "ctaPrimaryText": "Записаться на экскурсию",
   "ctaSecondaryText": "Написать нам",
@@ -65,6 +65,11 @@
     "src/images/gallery12.webp",
     "src/images/gallery14.webp",
     "src/images/gallery15.webp",
-    "src/images/gallery16.webp"
+    "src/images/gallery16.webp",
+    "src/images/gallery-admin/gallery-1772014422588-453302.webp",
+    "src/images/gallery-admin/gallery-1772014422595-306704.webp",
+    "src/images/gallery-admin/gallery-1772014422601-279646.webp",
+    "src/images/gallery-admin/gallery-1772014422605-755657.webp",
+    "src/images/gallery-admin/gallery-1772014422611-94578.webp"
   ]
 }

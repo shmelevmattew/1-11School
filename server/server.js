@@ -76,7 +76,7 @@ const EDITABLE_FIELDS = [
 ];
 const DEFAULT_SITE_CONTENT = {
   heroTitleHtml: 'Школа полного  <br> цикла 1–11 классы',
-  heroInfoLine1: 'Открыт набор на 2025–2026 учебный год.',
+  heroInfoLine1: 'Открыт набор в&nbsp;1-8 классы&nbsp;на&nbsp;2026–2027 учебный год.',
   heroInfoLine2: 'Количество мест ограничено',
   ctaPrimaryText: 'Записаться на экскурсию',
   ctaSecondaryText: 'Написать нам',

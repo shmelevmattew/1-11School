@@ -459,7 +459,7 @@ ul, ol {
 }
 
 .hero__text {
-  font-size: 19px;
+  font-size: 18px;
   line-height: 28px;
   color: #222125;
 }
@@ -2923,7 +2923,7 @@ ul, ol {
   display: block;
 }
 
-/* Animated lines styles (disabled)
+/* Animated lines styles */
 .bottom-promo__lines {
   position: absolute;
   top: 0;
@@ -2979,7 +2979,6 @@ ul, ol {
   animation: lineMove1 20s ease-in-out infinite;
 
 }
-*/
 .feature__heart-img{
   height: 42px;
   width: auto;
@@ -3021,7 +3020,7 @@ ul, ol {
   }
 }
 
-/*@keyframes lineMove1 {
+@keyframes lineMove1 {
   0% {
     transform: translateX(0%);
   }
@@ -3056,7 +3055,6 @@ ul, ol {
     transform: translateX(0%);
   }
 }
-*/
 
 /* Responsive adjustments for animated lines */
 @media (max-width: 1024px) {
