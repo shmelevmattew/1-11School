@@ -12,12 +12,47 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const SITE_CONTENT_PATH = path.join(__dirname, 'data', 'site-content.json');
 const GALLERY_UPLOADS_DIR = path.join(__dirname, '..', 'src', 'images', 'gallery-admin');
+const rawAdminPanelPath = (process.env.ADMIN_PANEL_PATH || '/admin-secret-panel').trim();
+const ADMIN_PANEL_PATH = rawAdminPanelPath.startsWith('/') ? rawAdminPanelPath : `/${rawAdminPanelPath}`;
 const EDITABLE_FIELDS = [
   'heroTitleHtml',
   'heroInfoLine1',
   'heroInfoLine2',
   'ctaPrimaryText',
   'ctaSecondaryText',
+  'featuresSecurityTitleHtml',
+  'featuresSecurityText',
+  'featuresConceptTitleHtml',
+  'featuresConceptTextHtml',
+  'missionTitle',
+  'missionText1Html',
+  'missionText2',
+  'missionPoolMessage',
+  'missionFeature1Title',
+  'missionFeature1TextHtml',
+  'missionFeature2Title',
+  'missionFeature2TextHtml',
+  'missionFeature3Title',
+  'missionFeature3TextHtml',
+  'missionFeature4Title',
+  'missionFeature4TextHtml',
+  'missionActionButtonText',
+  'promoTitleHtml',
+  'promoTextHtml',
+  'galleryTitle',
+  'benefitsTitle',
+  'benefit1Text',
+  'benefit2Text',
+  'benefit3Text',
+  'benefit4Text',
+  'benefit5Text',
+  'benefit6Text',
+  'benefit7Text',
+  'benefit8Text',
+  'benefit9Text',
+  'benefit10Text',
+  'benefit11Text',
+  'benefit12Text',
   'footerTitleHtml',
   'footerPhoneText',
   'footerPhoneHref',
@@ -28,7 +63,16 @@ const EDITABLE_FIELDS = [
   'pricingMainPeriod',
   'pricingMainDescriptionHtml',
   'pricingDiscountTitle',
-  'pricingDiscountDescriptionHtml'
+  'pricingDiscountDescriptionHtml',
+  'pricingPartialTitle',
+  'pricingPartialPrice',
+  'pricingPartialPeriod',
+  'pricingPartialDescriptionHtml',
+  'pricingClubTitle',
+  'pricingClubPrice',
+  'pricingClubPeriod',
+  'pricingClubDescriptionHtml',
+  'pricingCtaText'
 ];
 const DEFAULT_SITE_CONTENT = {
   heroTitleHtml: 'Школа полного  <br> цикла 1–11 классы',
@@ -36,6 +80,46 @@ const DEFAULT_SITE_CONTENT = {
   heroInfoLine2: 'Количество мест ограничено',
   ctaPrimaryText: 'Записаться на экскурсию',
   ctaSecondaryText: 'Написать нам',
+  featuresSecurityTitleHtml: 'Безопасное и комфортное <br> пространство для обучения',
+  featuresSecurityText: 'Территория школы охраняется 24/7.',
+  featuresConceptTitleHtml: 'Концепция <br> «Школы полного дня»',
+  featuresConceptTextHtml:
+    'Школа полного дня — это учебное заведение с&nbsp;продлённым <br> пребыванием детей. После основных уроков ученики<br>остаются под&nbsp;присмотром педагогов: делают домашние <br>задания, посещают кружки и&nbsp;отдыхают. Формат удобен для <br> родителей и&nbsp;способствует всестороннему развитию <br> ребёнка.',
+  missionTitle: 'Наша миссия',
+  missionText1Html:
+    'Мы формируем поколение будущего, обеспечивая высочайший уровень академической подготовки в&nbsp;сочетании с&nbsp;ключевыми компетенциями XXI&nbsp;века.',
+  missionText2: 'Мы стремимся раскрывать потенциал каждого ученика через:',
+  missionPoolMessage: 'К слову, у нас есть бассейн!',
+  missionFeature1Title: 'Продвинутые академические программы',
+  missionFeature1TextHtml:
+    'Основываем обучение на&nbsp;мировых стандартах, чтобы заложить прочный фундамент знаний и&nbsp;критического мышления.',
+  missionFeature2Title: 'Интеграция IT-технологий в&nbsp;обучение',
+  missionFeature2TextHtml:
+    'В&nbsp;обучение включены — программирование, цифровую грамотность и&nbsp;навыки в&nbsp;области искусственного интеллекта, готовя учеников к&nbsp;вызовам цифровой эпохи.',
+  missionFeature3Title: 'Системное развитие Soft Skills',
+  missionFeature3TextHtml:
+    'Огромное внимание в&nbsp;обучении уделяем коммуникации, развитию эмоционального интеллекта, командной работы и&nbsp;лидерства — для гармоничного личностного роста.',
+  missionFeature4Title: 'Углублённое изучение английского языка',
+  missionFeature4TextHtml:
+    'В&nbsp;обучении делаем акцент на&nbsp;межкультурную коммуникацию, подготовку к&nbsp;международным экзаменам и&nbsp;участие в&nbsp;глобальных проектах.',
+  missionActionButtonText: 'Записаться на экскурсию!',
+  promoTitleHtml: 'Растим успешных<br>и&nbsp;уверенных в&nbsp;себе людей!',
+  promoTextHtml:
+    'Создаем среду, где&nbsp;инновации сочетаются<br> с&nbsp;индивидуальным подходом, а&nbsp;ученики становятся уверенными, адаптивными и&nbsp;социально ответственными лидерами, готовыми менять мир к&nbsp;лучшему.',
+  galleryTitle: 'Галерея',
+  benefitsTitle: 'Что вас ждёт',
+  benefit1Text: 'Обучение по основной и&nbsp;дополнительной образовательной программе',
+  benefit2Text: 'Углубленное изучение английского языка и&nbsp;математики',
+  benefit3Text: 'Развитие Soft Skills и&nbsp;эмоционального интеллекта',
+  benefit4Text: 'Компьютерная и&nbsp;финансовая грамотность',
+  benefit5Text: 'Театральная студия и&nbsp;арт-мастерская',
+  benefit6Text: 'Четырех разовое сбалансированное питание с&nbsp;собственной кухни',
+  benefit7Text: 'Бассейн (1 раз в неделю)',
+  benefit8Text: 'Логопедическое и&nbsp;психологическое сопровождение',
+  benefit9Text: 'Ежедневное сопровождение куратора, психолога, логопеда',
+  benefit10Text: 'Дополнительный китайский язык',
+  benefit11Text: 'До 15 детей в классе',
+  benefit12Text: 'Предшкола',
   footerTitleHtml: 'Звоните, если <br>остались вопросы',
   footerPhoneText: '+7 812 407 12 22',
   footerPhoneHref: 'tel:+78124071222',
@@ -44,9 +128,21 @@ const DEFAULT_SITE_CONTENT = {
   pricingMainTitle: 'Школьный абонемент полного дня',
   pricingMainPrice: '900 000 ₽',
   pricingMainPeriod: 'за учебный год',
-  pricingMainDescriptionHtml: 'Ваш ребенок будет находиться в&nbsp;школе с&nbsp;понедельника по&nbsp;пятницу в&nbsp;течение всего учебного года (сентябрь — май).',
+  pricingMainDescriptionHtml:
+    'Пребывание в&nbsp;школе с&nbsp;8:30 до&nbsp;18:30<br>- академическая база, усиленная авторскими методиками<br>- самоподготовка<br>- внеурочная деятельность<br>- английский язык 5 раз в&nbsp;неделю<br>- питание 4 раза в&nbsp;день, собственная кухня<br>- бассейн',
   pricingDiscountTitle: 'Семейная скидка 10%',
   pricingDiscountDescriptionHtml: 'если в&nbsp;школе учатся двое и&nbsp;более детей',
+  pricingPartialTitle: 'Школьный абонемент неполного дня',
+  pricingPartialPrice: '750 000 ₽',
+  pricingPartialPeriod: 'за учебный год',
+  pricingPartialDescriptionHtml:
+    'Пребывание в&nbsp;школе с&nbsp;8:30 до&nbsp;15:30<br>- академическая база, усиленная авторскими методиками<br>- английский язык 5 раз в&nbsp;неделю<br>- питание 3 раза в&nbsp;день',
+  pricingClubTitle: 'Каникулы в&nbsp;летнем клубе',
+  pricingClubPrice: '70 000 ₽',
+  pricingClubPeriod: 'в месяц',
+  pricingClubDescriptionHtml:
+    'Пребывание детей с&nbsp;8:30 до&nbsp;18:30<br>- насыщенная авторская программа с&nbsp;кулинарными и&nbsp;творческими мастер-классами<br>- выезды и&nbsp;походы<br>- 4-разовое питание, собственная кухня',
+  pricingCtaText: 'Записаться на экскурсию',
   galleryImages: [
     'src/images/gallery1.webp',
     'src/images/gallery3.webp',
@@ -277,7 +373,7 @@ app.post('/api/submit-application', async (req, res) => {
   }
 });
 
-app.get('/admin', (req, res) => {
+app.get(ADMIN_PANEL_PATH, (req, res) => {
   res.sendFile(path.join(__dirname, '../admin.html'));
 });
 
@@ -287,4 +383,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Сервер запущен на порту ${PORT}`);
+  console.log(`Админ-панель доступна по пути: ${ADMIN_PANEL_PATH}`);
 });

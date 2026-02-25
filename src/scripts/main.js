@@ -1,9 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
   const applySiteContent = (content) => {
+    const decodeHtmlEntities = (value) => {
+      if (typeof value !== 'string') return value;
+      const textarea = document.createElement('textarea');
+      textarea.innerHTML = value;
+      return textarea.value;
+    };
+
     const setText = (selector, value) => {
       const element = document.querySelector(selector);
       if (element && typeof value === 'string') {
-        element.textContent = value;
+        element.textContent = decodeHtmlEntities(value);
       }
     };
 
@@ -58,6 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
     setText('.hero__info .hero__text:nth-child(2)', content.heroInfoLine2);
     setText('.cta__buttons .button--primary', content.ctaPrimaryText);
     setText('.cta__buttons .button--secondary', content.ctaSecondaryText);
+    setHtml('.feature--security .feature__title', content.featuresSecurityTitleHtml);
+    setText('.feature--security .feature__text', content.featuresSecurityText);
+    setHtml('.feature--concept .feature__title', content.featuresConceptTitleHtml);
+    setHtml('.feature--concept .feature__text', content.featuresConceptTextHtml);
+    setText('.mission__title', content.missionTitle);
+    setHtml('.mission__description p:nth-child(1)', content.missionText1Html);
+    setText('.mission__description p:nth-child(2)', content.missionText2);
+    setText('.mission__pool-message', content.missionPoolMessage);
+    setText('.mission__features .mission-feature:nth-child(1) .mission-feature__title', content.missionFeature1Title);
+    setHtml('.mission__features .mission-feature:nth-child(1) .mission-feature__text', content.missionFeature1TextHtml);
+    setText('.mission__features .mission-feature:nth-child(2) .mission-feature__title', content.missionFeature2Title);
+    setHtml('.mission__features .mission-feature:nth-child(2) .mission-feature__text', content.missionFeature2TextHtml);
+    setText('.mission__features .mission-feature:nth-child(3) .mission-feature__title', content.missionFeature3Title);
+    setHtml('.mission__features .mission-feature:nth-child(3) .mission-feature__text', content.missionFeature3TextHtml);
+    setText('.mission__features .mission-feature:nth-child(4) .mission-feature__title', content.missionFeature4Title);
+    setHtml('.mission__features .mission-feature:nth-child(4) .mission-feature__text', content.missionFeature4TextHtml);
+    setText('.mission-action__button', content.missionActionButtonText);
+    setHtml('.promo__title', content.promoTitleHtml);
+    setHtml('.promo__text', content.promoTextHtml);
+    setText('.gallery__title', content.galleryTitle);
+    setText('.benefits__title', content.benefitsTitle);
     setHtml('.footer__title h2', content.footerTitleHtml);
     setLink('.footer__phone-link', content.footerPhoneHref, content.footerPhoneText);
     setLink('.mobile-menu__phone', content.footerPhoneHref, content.footerPhoneText);
@@ -77,6 +105,46 @@ document.addEventListener('DOMContentLoaded', () => {
       setText('.pricing__card--secondary .pricing__title', content.pricingDiscountTitle);
       setHtml('.pricing__card--secondary .pricing__description', content.pricingDiscountDescriptionHtml);
     }
+
+    const pricingPartialCard = document.querySelector('.pricing__card--tertiary');
+    if (pricingPartialCard) {
+      setText('.pricing__card--tertiary .pricing__title', content.pricingPartialTitle);
+      setText('.pricing__card--tertiary .pricing__price', content.pricingPartialPrice);
+      setText('.pricing__card--tertiary .pricing__period', content.pricingPartialPeriod);
+      setHtml('.pricing__card--tertiary .pricing__description', content.pricingPartialDescriptionHtml);
+    }
+
+    const pricingClubCard = document.querySelector('.pricing__card--quaternary');
+    if (pricingClubCard) {
+      setText('.pricing__card--quaternary .pricing__title', content.pricingClubTitle);
+      setText('.pricing__card--quaternary .pricing__price', content.pricingClubPrice);
+      setText('.pricing__card--quaternary .pricing__period', content.pricingClubPeriod);
+      setHtml('.pricing__card--quaternary .pricing__description', content.pricingClubDescriptionHtml);
+    }
+
+    setText('.pricing__cta .pricing__button', content.pricingCtaText);
+
+    const benefitItems = [
+      content.benefit1Text,
+      content.benefit2Text,
+      content.benefit3Text,
+      content.benefit4Text,
+      content.benefit5Text,
+      content.benefit6Text,
+      content.benefit7Text,
+      content.benefit8Text,
+      content.benefit9Text,
+      content.benefit10Text,
+      content.benefit11Text,
+      content.benefit12Text
+    ];
+    const benefitElements = document.querySelectorAll('.benefit .benefit__text');
+    benefitElements.forEach((element, index) => {
+      const value = benefitItems[index];
+      if (typeof value === 'string') {
+        element.textContent = decodeHtmlEntities(value);
+      }
+    });
 
     setGalleryImages(content.galleryImages);
   };
