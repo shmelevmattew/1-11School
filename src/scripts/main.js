@@ -63,6 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setLink('.mobile-menu__phone', content.footerPhoneHref, content.footerPhoneText);
     setHtml('.footer__address p:nth-child(1)', content.footerAddressLine1Html);
     setText('.footer__address p:nth-child(2)', content.footerAddressLine2);
+
+    const pricingMainCard = document.querySelector('.pricing__card--primary');
+    if (pricingMainCard) {
+      setText('.pricing__card--primary .pricing__title', content.pricingMainTitle);
+      setText('.pricing__card--primary .pricing__price', content.pricingMainPrice);
+      setText('.pricing__card--primary .pricing__period', content.pricingMainPeriod);
+      setHtml('.pricing__card--primary .pricing__description', content.pricingMainDescriptionHtml);
+    }
+
+    const pricingDiscountCard = document.querySelector('.pricing__card--secondary');
+    if (pricingDiscountCard) {
+      setText('.pricing__card--secondary .pricing__title', content.pricingDiscountTitle);
+      setHtml('.pricing__card--secondary .pricing__description', content.pricingDiscountDescriptionHtml);
+    }
+
     setGalleryImages(content.galleryImages);
   };
 

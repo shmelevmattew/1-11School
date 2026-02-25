@@ -10,7 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     'footerPhoneText',
     'footerPhoneHref',
     'footerAddressLine1Html',
-    'footerAddressLine2'
+    'footerAddressLine2',
+    'pricingMainTitle',
+    'pricingMainPrice',
+    'pricingMainPeriod',
+    'pricingMainDescriptionHtml',
+    'pricingDiscountTitle',
+    'pricingDiscountDescriptionHtml'
   ];
   let galleryImages = [];
 

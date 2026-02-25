@@ -22,7 +22,13 @@ const EDITABLE_FIELDS = [
   'footerPhoneText',
   'footerPhoneHref',
   'footerAddressLine1Html',
-  'footerAddressLine2'
+  'footerAddressLine2',
+  'pricingMainTitle',
+  'pricingMainPrice',
+  'pricingMainPeriod',
+  'pricingMainDescriptionHtml',
+  'pricingDiscountTitle',
+  'pricingDiscountDescriptionHtml'
 ];
 const DEFAULT_SITE_CONTENT = {
   heroTitleHtml: 'Школа полного  <br> цикла 1–11 классы',
@@ -35,6 +41,12 @@ const DEFAULT_SITE_CONTENT = {
   footerPhoneHref: 'tel:+78124071222',
   footerAddressLine1Html: 'п. Кузьмоловский, ЖК «Небо», ул.&nbsp;Светлая, д.&nbsp;1',
   footerAddressLine2: 'info@school1-11.ru',
+  pricingMainTitle: 'Школьный абонемент полного дня',
+  pricingMainPrice: '900 000 ₽',
+  pricingMainPeriod: 'за учебный год',
+  pricingMainDescriptionHtml: 'Ваш ребенок будет находиться в&nbsp;школе с&nbsp;понедельника по&nbsp;пятницу в&nbsp;течение всего учебного года (сентябрь — май).',
+  pricingDiscountTitle: 'Семейная скидка 10%',
+  pricingDiscountDescriptionHtml: 'если в&nbsp;школе учатся двое и&nbsp;более детей',
   galleryImages: [
     'src/images/gallery1.webp',
     'src/images/gallery3.webp',
