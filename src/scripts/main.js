@@ -1,4 +1,83 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const applySiteContent = (content) => {
+    const setText = (selector, value) => {
+      const element = document.querySelector(selector);
+      if (element && typeof value === 'string') {
+        element.textContent = value;
+      }
+    };
+
+    const setHtml = (selector, value) => {
+      const element = document.querySelector(selector);
+      if (element && typeof value === 'string') {
+        element.innerHTML = value;
+      }
+    };
+
+    const setLink = (selector, href, text) => {
+      const element = document.querySelector(selector);
+      if (!element) return;
+      if (typeof href === 'string') {
+        element.setAttribute('href', href);
+      }
+      if (typeof text === 'string') {
+        element.textContent = text;
+      }
+    };
+
+    const setGalleryImages = (images) => {
+      if (!Array.isArray(images)) return;
+      const galleryWrapper = document.querySelector('.gallery__wrapper');
+      if (!galleryWrapper) return;
+
+      const safeImages = images
+        .filter((item) => typeof item === 'string')
+        .map((item) => item.trim())
+        .filter((item) => item.startsWith('src/images/'));
+
+      if (safeImages.length === 0) return;
+
+      galleryWrapper.innerHTML = '';
+      safeImages.forEach((imagePath) => {
+        const slide = document.createElement('div');
+        slide.className = 'gallery__slide';
+
+        const image = document.createElement('img');
+        image.src = imagePath;
+        image.alt = 'Фото школы';
+        image.className = 'gallery__image';
+        image.loading = 'lazy';
+
+        slide.appendChild(image);
+        galleryWrapper.appendChild(slide);
+      });
+    };
+
+    setHtml('.hero__title', content.heroTitleHtml);
+    setText('.hero__info .hero__text:nth-child(1)', content.heroInfoLine1);
+    setText('.hero__info .hero__text:nth-child(2)', content.heroInfoLine2);
+    setText('.cta__buttons .button--primary', content.ctaPrimaryText);
+    setText('.cta__buttons .button--secondary', content.ctaSecondaryText);
+    setHtml('.footer__title h2', content.footerTitleHtml);
+    setLink('.footer__phone-link', content.footerPhoneHref, content.footerPhoneText);
+    setLink('.mobile-menu__phone', content.footerPhoneHref, content.footerPhoneText);
+    setHtml('.footer__address p:nth-child(1)', content.footerAddressLine1Html);
+    setText('.footer__address p:nth-child(2)', content.footerAddressLine2);
+    setGalleryImages(content.galleryImages);
+  };
+
+  const loadSiteContent = async () => {
+    try {
+      const response = await fetch('/api/site-content');
+      const result = await response.json();
+      if (response.ok && result.success && result.content) {
+        applySiteContent(result.content);
+      }
+    } catch (error) {
+      console.warn('Не удалось загрузить контент сайта:', error);
+    }
+  };
+
   // Add header scroll behavior
   const setupHeaderScroll = () => {
     const header = document.querySelector('.header');
@@ -1156,7 +1235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   };
 
-  // Initialize all functionality
+  const initializeFeatures = () => {
   setupHeaderScroll();
   setupMobileMenu();
   setupSmoothScroll();
@@ -1179,6 +1258,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize parallax effects
   setupParallaxEffects();
+  };
+
+  // Initialize all functionality after remote content applied
+  loadSiteContent().finally(initializeFeatures);
 
   // Intersection Observer for animation on scroll (for future implementation)
   const setupAnimations = () => {

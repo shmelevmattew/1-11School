@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ-панель | Школа 1-11</title>
+  <link rel="stylesheet" href="src/styles/fonts.css">
+  <link rel="stylesheet" href="src/styles/admin.css">
+</head>
+<body>
+  <main class="admin-page">
+    <section class="admin-card" id="authCard">
+      <h1 class="admin-title">Админ-панель сайта</h1>
+      <p class="admin-subtitle">Введите пароль администратора</p>
+      <form id="loginForm" class="admin-form">
+        <label class="admin-label" for="adminPassword">Пароль</label>
+        <input id="adminPassword" class="admin-input" type="password" autocomplete="current-password" required>
+        <button type="submit" class="admin-button">Войти</button>
+      </form>
+      <p class="admin-status" id="authStatus"></p>
+    </section>
+
+    <section class="admin-card admin-card--hidden" id="editorCard">
+      <div class="admin-card__header">
+        <h2 class="admin-title">Редактирование контента</h2>
+        <a class="admin-link" href="/" target="_blank" rel="noopener noreferrer">Открыть сайт</a>
+      </div>
+      <form id="contentForm" class="admin-form">
+        <label class="admin-label" for="heroTitleHtml">Заголовок на первом экране (HTML разрешен)</label>
+        <textarea id="heroTitleHtml" class="admin-textarea" rows="3" required></textarea>
+
+        <label class="admin-label" for="heroInfoLine1">Первая строка под заголовком</label>
+        <input id="heroInfoLine1" class="admin-input" type="text" required>
+
+        <label class="admin-label" for="heroInfoLine2">Вторая строка под заголовком</label>
+        <input id="heroInfoLine2" class="admin-input" type="text" required>
+
+        <label class="admin-label" for="ctaPrimaryText">Текст кнопки "Записаться"</label>
+        <input id="ctaPrimaryText" class="admin-input" type="text" required>
+
+        <label class="admin-label" for="ctaSecondaryText">Текст кнопки "Написать нам"</label>
+        <input id="ctaSecondaryText" class="admin-input" type="text" required>
+
+        <label class="admin-label" for="footerTitleHtml">Заголовок в футере (HTML разрешен)</label>
+        <textarea id="footerTitleHtml" class="admin-textarea" rows="3" required></textarea>
+
+        <label class="admin-label" for="footerPhoneText">Телефон (текст)</label>
+        <input id="footerPhoneText" class="admin-input" type="text" required>
+
+        <label class="admin-label" for="footerPhoneHref">Ссылка телефона (например `tel:+78124071222`)</label>
+        <input id="footerPhoneHref" class="admin-input" type="text" required>
+
+        <label class="admin-label" for="footerAddressLine1Html">Адрес (первая строка, HTML разрешен)</label>
+        <textarea id="footerAddressLine1Html" class="admin-textarea" rows="2" required></textarea>
+
+        <label class="admin-label" for="footerAddressLine2">Адрес/почта (вторая строка)</label>
+        <input id="footerAddressLine2" class="admin-input" type="text" required>
+
+        <div class="admin-gallery">
+          <h3 class="admin-section-title">Фотографии карусели</h3>
+          <p class="admin-subtitle">Загружайте JPG/PNG/WEBP. Фото добавятся в конец карусели.</p>
+          <div class="admin-actions">
+            <input id="galleryUploadInput" class="admin-input" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+            <button type="button" class="admin-button" id="uploadGalleryButton">Загрузить фото</button>
+          </div>
+          <div id="galleryImagesList" class="admin-gallery-list"></div>
+        </div>
+
+        <div class="admin-actions">
+          <button type="submit" class="admin-button">Сохранить изменения</button>
+          <button type="button" class="admin-button admin-button--ghost" id="logoutButton">Выйти</button>
+        </div>
+      </form>
+      <p class="admin-status" id="saveStatus"></p>
+    </section>
+  </main>
+
+  <script src="src/scripts/admin.js"></script>
+</body>
+</html>
